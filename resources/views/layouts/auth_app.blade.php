@@ -15,6 +15,14 @@
     <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}">
     <link href="{{ asset('assets/css/sweetalert.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" type="text/css"/>
+
+    {{-- <style>
+        @media (max-width: 768px) {
+            .gif-column {
+                display: none;
+            }
+        }
+    </style> --}}
 </head>
 
 <body>
@@ -24,7 +32,7 @@
             <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <div class="login-brand">
-                        <img src="{{ asset('img/logo.png') }}" alt="logo" width="100"
+                        <img src="{{ asset('img/sat2.png') }}" alt="logo" width="120"
                              class="shadow-light">
                     </div>
                     @yield('content')
@@ -51,3 +59,4 @@
 <!-- Page Specific JS File -->
 </body>
 </html>
+

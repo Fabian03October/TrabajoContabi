@@ -24,6 +24,64 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Apellido Paterno -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="apellido_p">Apellido Paterno:</label><span class="text-danger">*</span>
+                            <input id="apellido_p" type="text"
+                                   class="form-control{{ $errors->has('apellido_p') ? ' is-invalid' : '' }}"
+                                   name="apellido_p"
+                                   tabindex="2" placeholder="Enter Apellido Paterno" value="{{ old('apellido_p') }}"
+                                   required>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('apellido_p') }}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Apellido Materno -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="apellido_m">Apellido Materno:</label>
+                            <input id="apellido_m" type="text"
+                                   class="form-control{{ $errors->has('apellido_m') ? ' is-invalid' : '' }}"
+                                   name="apellido_m"
+                                   tabindex="3" placeholder="Enter Apellido Materno" value="{{ old('apellido_m') }}">
+                            <div class="invalid-feedback">
+                                {{ $errors->first('apellido_m') }}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CURP -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="curp">CURP:</label>
+                            <input id="curp" type="text"
+                                   class="form-control{{ $errors->has('curp') ? ' is-invalid' : '' }}"
+                                   name="curp"
+                                   tabindex="4" placeholder="Enter CURP" value="{{ old('curp') }}">
+                            <div class="invalid-feedback">
+                                {{ $errors->first('curp') }}
+                            </div>
+                        </div>
+                    </div>
+                    @php
+                        $today = (new \DateTime())->format('Y-m-d');
+                    @endphp
+
+                    <!-- Fecha nacimiento -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="fecha_nacimiento" style="color: black; font-weight: bold;">Fecha de nacimiento:</label>
+                            <input id="fecha_nacimiento" type="date"
+                                class="form-control{{ $errors->has('fecha_nacimiento') ? ' is-invalid' : '' }}"
+                                name="fecha_nacimiento" max="{{ $today }}"
+                                tabindex="4" placeholder="Ingrese fecha de nacimiento" value="{{ old('fecha_nacimiento', $user->fecha_nacimiento ?? '') }}">
+                            <div class="invalid-feedback">
+                                {{ $errors->first('fecha_nacimiento') }}
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="email">Email:</label><span

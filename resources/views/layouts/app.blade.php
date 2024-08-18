@@ -68,6 +68,8 @@
 <script src="{{ mix('assets/js/profile.js') }}"></script>
 <script src="{{ mix('assets/js/custom/custom.js') }}"></script>
 <script src="{{ asset('assets/js/custom/buscador.js') }}"></script>
+<!-- SWEETALERT -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 @yield('page_js')
 @yield('scripts')
 <script>
