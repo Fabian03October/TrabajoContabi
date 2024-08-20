@@ -27,6 +27,16 @@ class UsuarioController extends Controller
 
         //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $usuarios->links() !!}
     }
+
+        public function activos(Request $request)
+    {
+        // Filtrar usuarios activos (status = 1)
+        $usuarios = User::where('status', 1)->get();
+
+        return view('usuarios.activos', compact('usuarios'));
+    }
+
+
     public static function homoclave(){
         $homoclave = Str::random(3);
 
@@ -51,26 +61,37 @@ class UsuarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $this->validate($request, [
-            'name' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
-            'apellido_p' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
-            'apellido_m' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
-            'curp' => ['required', 'string', 'size:18', 'regex:/^[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]{2}$/'],
-            // 'rfc' => ['required', 'string', 'size:13', 'regex:/^[A-Z]{3,4}\d{6}[A-Z0-9]{3}$/'],
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'roles' => 'required'
-        ]);
+{
+    // Validación de los datos del formulario
+    $this->validate($request, [
+        'name' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
+        'apellido_p' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
+        'apellido_m' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
+        'curp' => ['required', 'string', 'size:18', 'regex:/^[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]{2}$/'],
+        'email' => 'required|email|unique:users,email',
+        'password' => 'required|string|min:8|confirmed',
+        'roles' => 'required|array'
+    ]);
 
-        $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
+    // Recopilar todos los datos del formulario
+    $input = $request->all();
 
-        $user = User::create($input);
-        $user->assignRole($request->input('roles'));
+    // Encriptar la contraseña
+    $input['password'] = Hash::make($input['password']);
 
-        return redirect()->route('usuarios.index')->with('success', 'Contribuyente '.$request->name. ' registrado exitosamente.');
-    }
+    // Establecer el campo status a 1 para indicar que el usuario está activo
+    $input['status'] = 1;
+
+    // Crear el nuevo usuario en la base de datos
+    $user = User::create($input);
+
+    // Asignar los roles seleccionados al usuario
+    $user->assignRole($request->input('roles'));
+
+    // Redireccionar al índice de usuarios con un mensaje de éxito
+    return redirect()->route('usuarios.index')->with('success', 'Contribuyente ' . $request->name . ' registrado exitosamente.');
+}
+
 
     /**
      * Display the specified resource.

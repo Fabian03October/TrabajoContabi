@@ -4,9 +4,16 @@
     </a>
     @can('ver-usuario')
     <a class="nav-link" href="/usuarios">
-        <i class=" fas fa-users"></i><span>Usuarios</span>
+        <i class=" fas fa-users"></i><span>Nuevos Contribuyentes</span>
     </a>
     @endcan
+
+    @can('ver-usuario')
+    <a class="nav-link" href="/usuarios-activos">
+        <i class=" fas fa-users"></i><span>Contribuyentes Activos</span>
+    </a>
+    @endcan
+
     @can('ver-rol')
     <a class="nav-link" href="/roles">
         <i class=" fas fa-user-lock"></i><span>Roles</span>
@@ -14,12 +21,8 @@
     @endcan
     @can('ver-blog')
     <a class="nav-link" href="/blogs">
-        <i class=" fas fa-blog"></i><span>Blogs</span>
+        <i class=" fas fa-blog"></i><span>Facturas</span>
     </a>
     @endcan
-    @can('ver-escuela')
-    <a class="nav-link" href="/escuelas">
-        <i class=" fas fa-blog"></i><span>Escuelas</span>
-    </a>
-    @endcan
+    
 </li>

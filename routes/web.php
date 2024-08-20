@@ -24,6 +24,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
@@ -38,6 +41,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('blogs', BlogController::class);
     Route::resource('escuelas', EscuelaController::class);
+    Route::get('/usuarios-activos', [UsuarioController::class, 'activos'])->name('usuarios.activos');
 
     // Añadimos las rutas para el controlador de facturas
     Route::get('/invoices/create', [InvoiceController::class, 'create'])->name('invoices.create');

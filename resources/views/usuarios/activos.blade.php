@@ -4,7 +4,7 @@
 @can('ver-usuario')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading" style="color:black">Contribuyentes</h3>
+        <h3 class="page__heading" style="color:black">Contribuyentes Activos</h3> <!-- Cambié el título -->
     </div>
     <div class="section-body">
         <div class="row">
@@ -13,7 +13,11 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-3">
                             <div>
-                                
+                            @can('crear-usuario')
+                                    <a class="btn btn-outline-info" href="{{ route('usuarios.create')}}" title="Crear nuevo usuario" style="border-color: rgb(11, 75, 146); color: rgb(11, 75, 146);">
+                                        <i class="fas fa-plus"></i> Nuevo usuario
+                                    </a>
+                                @endcan
                             </div>
                             <br>
                         </div>
@@ -22,7 +26,7 @@
                             <thead style="background-color:rgb(28, 118, 221)">
                                 <th style="display: none;">ID</th>
                                 <th style="color:#fff;">Nombre</th>
-                                <th style="color:#fff;">Correo electronico</th>
+                                <th style="color:#fff;">Correo electrónico</th>
                                 <th style="color:#fff;">Rol</th>
                                 <th style="color:#fff;">Acciones</th>
                             </thead>
@@ -49,11 +53,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-
-                        <!-- Centramos la paginacion a la derecha -->
-                        {{-- <div class="pagination justify-content-end">
-                            {!! $roles->links() !!}
-                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -61,13 +60,8 @@
     </div>
 </section>
 
-<!-- JQUERY -->
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<!-- SWEETALERT -->
-{{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> --}}
-<!-- DATATABLES -->
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<!-- BOOTSTRAP -->
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 
 <script>
@@ -76,13 +70,6 @@
             [10, 25, 50, 100],
             [10, 25, 50, 100]
         ],
-        columns: [
-            { Id: 'Id' },
-            { Nombre: 'Nombre' },
-            { Email: 'E-mail' },
-            { Rol: 'Rol' },
-            { Acciones: 'Acciones' }
-        ],
         language: {
             url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json',
         }
@@ -90,7 +77,7 @@
 
     function confirmDelete(usuarioId, nombre) {
         Swal.fire({
-            title: '¿Deseas borrar el contribuyente ' + nombre + '?',
+            title: '¿Deseas borrar al contribuyente ' + nombre + '?',
             text: "Ya no podrás visualizar este usuario en la tabla.",
             icon: 'warning',
             showCancelButton: true,
@@ -114,9 +101,9 @@
             title: "Felicidades!",
             text: "{{ Session::get('success') }}",
             icon: "success",
-            confirmButtonColor: 'rgb(11, 75, 146)'  // Cambiado aquí
+            confirmButtonColor: 'rgb(11, 75, 146)'
         });
     </script>
-    @endif
+@endif
 @endsection
 @endcan
