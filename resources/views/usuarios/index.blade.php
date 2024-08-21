@@ -4,7 +4,7 @@
 @can('ver-usuario')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading" style="color:black">Contribuyentes</h3>
+        <h3 class="page__heading" style="color:black">Alta de Contribuyentes</h3>
     </div>
     <div class="section-body">
         <div class="row">
@@ -40,11 +40,12 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a  class="btn btn-no-border btn-outline-warning" href="{{ route('usuarios.edit', $usuario->id) }}" title="Editar usuario"><i class="fas fa-edit"></i> Editar</a>
-                                        <button class="btn btn-no-border btn-outline-danger"  onclick="confirmDelete({{ $usuario->id }}, '{{ $usuario->name }}')" title="Borrar usuario">  <i class="fa fa-trash" aria-hidden="true"></i> Borrar</button>
-                                        {!! Form::open(['method' => 'DELETE', 'route' => ['usuarios.destroy', $usuario->id], 'style' => 'display:inline', 'id' => 'delete-form-' . $usuario->id]) !!}
-                                        {!! Form::close() !!}
+                                        <a class="btn btn-no-border btn-outline-primary" href="{{ route('usuarios.show', $usuario->id) }}" title="Revisar usuario">
+                                            <i class="fas fa-eye"></i> Revisar
+                                        </a>
                                     </td>
+
+
                                 </tr>
                                 @endforeach
                             </tbody>

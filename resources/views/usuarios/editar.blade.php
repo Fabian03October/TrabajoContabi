@@ -88,22 +88,48 @@
                                 @endphp
 
                                 <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="color: black; font-weight: bold;" for="FechaIniOP">Fecha de Inicio de Operaciones</label>
+                                    <input id="FechaIniOP" type="date"
+                                        class="form-control{{ $errors->has('FechaIniOP') ? ' is-invalid' : '' }}"
+                                        name="FechaIniOP"
+                                        value="{{ old('FechaIniOP', $user->FechaIniOP ?? '') }}"
+                                        max="{{ $today }}">
+                                    @if ($errors->has('FechaIniOP'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('FechaIniOP') }}
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="color: black; font-weight: bold;" for="fechaUltiCamEst">Fecha del última cambio de estado</label>
+                                    <input id="fechaUltiCamEst" type="date"
+                                        class="form-control{{ $errors->has('fechaUltiCamEst') ? ' is-invalid' : '' }}"
+                                        name="fechaUltiCamEst"
+                                        value="{{ old('fechaUltiCamEst', $user->fechaUltiCamEst ?? '') }}"
+                                        max="{{ $today }}">
+                                    @if ($errors->has('fechaUltiCamEst'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('fechaUltiCamEst') }}
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
                                     <div class="form-group">
-                                        <label style="color: black; font-weight: bold;" for="fecha_nacimiento">Fecha de Nacimiento</label>
-                                        <input id="fecha_nacimiento" type="date"
-                                               class="form-control{{ $errors->has('fecha_nacimiento') ? ' is-invalid' : '' }}"
-                                               name="fecha_nacimiento"
-                                               value="{{ old('fecha_nacimiento', $user->fecha_nacimiento ?? '') }}"
-                                               max="{{ $today }}">
-                                        @if ($errors->has('fecha_nacimiento'))
-                                            <div class="invalid-feedback">
-                                                {{ $errors->first('fecha_nacimiento') }}
-                                            </div>
-                                        @endif
+                                        <label style="color: black; font-weight: bold;" for="NombreComercial">Nombre comercial:<span class="required text-danger">*</span></label>
+                                        {!! Form::text('NombreComercial', null, [
+                                            'class' => 'form-control',
+                                            'pattern' => '[A-Za-záéíóúÁÉÍÓÚñÑ\s]+',
+                                            'title' => 'Debe contener solo letras y espacios'
+                                        ]) !!}
                                     </div>
                                 </div>
-
-
 
                                 @php
                                     // Extrae los primeros 10 caracteres de la CURP, si existen
@@ -116,21 +142,22 @@
                                     // Combina la parte del CURP con la homoclave
                                     $rfc = strtoupper($curpPart . $homoclave);
                                 @endphp
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label style="color: black; font-weight: bold;" for="rfc">RFC <span class="required text-danger">*</span></label>
-                                    {!! Form::text('rfc', $rfc, [
-                                        'class' => 'form-control',
-                                        'pattern' => '[A-Z]{3,4}\d{6}[A-Z0-9]{3}',
-                                        'title' => 'El RFC debe tener el formato válido, por ejemplo: ABC123456XYZ',
-                                        'maxlength' => 13, // Ajusta a 14 si usas RFC con homoclave
-                                        'required' => true
-                                    ]) !!}
-                                    <div class="invalid-feedback">
-                                        {{ $errors->first('rfc') }}
-                                    </div>
-                                </div>
-                            </div>
+                                <div class="col-md-6">
+    <div class="form-group">
+        <label style="color: black; font-weight: bold;" for="rfc">RFC <span class="required text-danger">*</span></label>
+        {!! Form::text('rfc', $user->rfc, [
+            'class' => 'form-control',
+            'pattern' => '[A-Z]{3,4}\d{6}[A-Z0-9]{3}',
+            'title' => 'El RFC debe tener el formato válido, por ejemplo: ABC123456XYZ',
+            'maxlength' => 13, // Ajusta a 14 si usas RFC con homoclave
+            'required' => true
+        ]) !!}
+        <div class="invalid-feedback">
+            {{ $errors->first('rfc') }}
+        </div>
+    </div>
+</div>
+
 
 {{--
                                 <div class="col-md-6">

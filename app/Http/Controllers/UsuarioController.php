@@ -36,6 +36,30 @@ class UsuarioController extends Controller
         return view('usuarios.activos', compact('usuarios'));
     }
 
+        public function activate(Request $request, $id)
+        {
+            $user = User::findOrFail($id);
+        
+            // Generar el RFC a partir de los primeros 10 caracteres de la CURP y la homoclave
+            $rfc = substr($user->curp, 0, 10) . self::homoclave();
+        
+            // Guardar el RFC generado en la base de datos
+            $user->rfc = $rfc;
+            $user->status = 1; // Activar el usuario
+        
+            // Asignar un rol al usuario
+            // Aquí se asigna el rol "Contribuyente", puedes cambiarlo por cualquier rol deseado
+            $role = 'Contribuyente';
+            $user->assignRole($role);
+        
+            // Guardar los cambios en la base de datos
+            $user->save();
+        
+            return redirect()->route('usuarios.index')->with('success', 'Usuario activado, RFC generado y rol asignado exitosamente.');
+        }
+
+
+
 
     public static function homoclave(){
         $homoclave = Str::random(3);
@@ -67,6 +91,9 @@ class UsuarioController extends Controller
         'name' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
         'apellido_p' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
         'apellido_m' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
+        'FechaIniOP' => 'nullable|date',
+        'fechaUltiCamEst' => 'nullable|date',
+        'NombreComercial' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
         'curp' => ['required', 'string', 'size:18', 'regex:/^[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]{2}$/'],
         'email' => 'required|email|unique:users,email',
         'password' => 'required|string|min:8|confirmed',
@@ -82,6 +109,10 @@ class UsuarioController extends Controller
     // Establecer el campo status a 1 para indicar que el usuario está activo
     $input['status'] = 1;
 
+    // Generar el RFC a partir de los primeros 10 caracteres de la CURP y la homoclave en mayúsculas
+$input['rfc'] = strtoupper(substr($input['curp'], 0, 10) . self::homoclave());
+
+
     // Crear el nuevo usuario en la base de datos
     $user = User::create($input);
 
@@ -89,7 +120,7 @@ class UsuarioController extends Controller
     $user->assignRole($request->input('roles'));
 
     // Redireccionar al índice de usuarios con un mensaje de éxito
-    return redirect()->route('usuarios.index')->with('success', 'Contribuyente ' . $request->name . ' registrado exitosamente.');
+    return redirect()->route('usuarios.activos')->with('success', 'Contribuyente ' . $request->name . ' registrado exitosamente.');
 }
 
 
@@ -101,7 +132,11 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+    $roles = Role::pluck('name','name')->all();
+    $userRole = $user->roles->pluck('name','name')->all();
+
+    return view('usuarios.show', compact('user', 'roles', 'userRole'));
     }
 
     /**
@@ -137,7 +172,9 @@ class UsuarioController extends Controller
         'curp' => ['required', 'string', 'size:18', 'regex:/^[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]{2}$/'],
         'rfc' => ['required', 'string', 'size:13', 'regex:/^[A-Z]{3,4}\d{6}[A-Z0-9]{3}$/'],
         'status' => 'boolean', // Validación como booleano
-        'fecha_nacimiento' => 'required',
+        'FechaIniOP' => 'nullable|date',
+        'fechaUltiCamEst' => 'nullable|date',
+        'NombreComercial' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
         'email' => 'required|email|unique:users,email,' . $id,
         'password' => 'nullable|same:confirm-password', // Contraseña opcional
         'roles' => 'required|array'
@@ -156,16 +193,26 @@ class UsuarioController extends Controller
         $input = Arr::except($input, ['password']);
     }
 
-    // Encontrar el usuario y actualizarlo
+    // Encontrar el usuario
     $user = User::findOrFail($id);
+
+    // Asegurar que el RFC no cambie a menos que se proporcione uno nuevo
+    if ($input['rfc'] !== $user->rfc) {
+        $input['rfc'] = strtoupper(substr($input['curp'], 0, 10) . self::homoclave());
+    } else {
+        $input['rfc'] = $user->rfc;
+    }
+
+    // Actualizar el usuario
     $user->update($input);
 
     // Eliminar los roles actuales y asignar los nuevos roles
     DB::table('model_has_roles')->where('model_id', $id)->delete();
     $user->assignRole($request->input('roles'));
 
-    return redirect()->route('usuarios.index')->with('success', 'Cotribuyente ' . $request->name . ' actualizado exitosamente.');
+    return redirect()->route('usuarios.activos')->with('success', 'Contribuyente ' . $request->name . ' actualizado exitosamente.');
 }
+
 
 
 
@@ -178,6 +225,6 @@ class UsuarioController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('usuarios.index');
+        return redirect()->route('usuarios.activos');
     }
 }

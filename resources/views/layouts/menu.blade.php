@@ -4,13 +4,13 @@
     </a>
     @can('ver-usuario')
     <a class="nav-link" href="/usuarios">
-        <i class=" fas fa-users"></i><span>Nuevos Contribuyentes</span>
+        <i class=" fas fa-users"></i><span>Alta de Contribuyentes</span>
     </a>
     @endcan
 
     @can('ver-usuario')
     <a class="nav-link" href="/usuarios-activos">
-        <i class=" fas fa-users"></i><span>Contribuyentes Activos</span>
+        <i class=" fas fa-users"></i><span>Contribuyentes</span>
     </a>
     @endcan
 

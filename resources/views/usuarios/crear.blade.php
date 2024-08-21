@@ -80,24 +80,60 @@
                         </div>
                     </div>
 
-                    <!-- Fecha de Nacimiento -->
-                    @php
-                        $today = (new \DateTime())->format('Y-m-d');
-                    @endphp
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="fecha_nacimiento">Fecha de nacimiento:</label>
-                            <input id="fecha_nacimiento" type="date"
-                                class="form-control{{ $errors->has('fecha_nacimiento') ? ' is-invalid' : '' }}"
-                                name="fecha_nacimiento" max="{{ $today }}"
-                                value="{{ old('fecha_nacimiento') }}">
-                            @if ($errors->has('fecha_nacimiento'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('fecha_nacimiento') }}
-                                </div>
-                            @endif
-                        </div>
-                    </div>
+                    <!-- Fecha de Inicio -->
+@php
+    $today = (new \DateTime())->format('Y-m-d');
+@endphp
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="FechaIniOP">Fecha de Inicio de Operaciones:</label>
+        <input id="FechaIniOP" type="date"
+            class="form-control{{ $errors->has('FechaIniOP') ? ' is-invalid' : '' }}"
+            name="FechaIniOP" max="{{ $today }}"
+            value="{{ old('FechaIniOP') }}">
+        @if ($errors->has('FechaIniOP'))
+            <div class="invalid-feedback">
+                {{ $errors->first('FechaIniOP') }}
+            </div>
+        @endif
+    </div>
+</div>
+
+<!-- Fecha del última cambio de estado -->
+
+@php
+    $today = (new \DateTime())->format('Y-m-d');
+@endphp
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="fechaUltiCamEst">Fecha del última cambio de estado:</label>
+        <input id="fechaUltiCamEst" type="date"
+            class="form-control{{ $errors->has('fechaUltiCamEst') ? ' is-invalid' : '' }}"
+            name="fechaUltiCamEst" max="{{ $today }}"
+            value="{{ old('fechaUltiCamEst') }}">
+        @if ($errors->has('fechaUltiCamEst'))
+            <div class="invalid-feedback">
+                {{ $errors->first('fechaUltiCamEst') }}
+            </div>
+        @endif
+    </div>
+</div>
+
+<!-- Nombre Comercial-->
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="NombreComercial">Nombre Comercial:</label>
+        <input id="NombreComercial" type="text"
+               class="form-control{{ $errors->has('NombreComercial') ? ' is-invalid' : '' }}"
+               name="NombreComercial" placeholder="Ingrese el Nombre Comercial" value="{{ old('NombreComercial') }}">
+        @if ($errors->has('NombreComercial'))
+            <div class="invalid-feedback">
+                {{ $errors->first('NombreComercial') }}
+            </div>
+        @endif
+    </div>
+</div>
+
 
                     <!-- Email -->
                     <div class="col-md-6">

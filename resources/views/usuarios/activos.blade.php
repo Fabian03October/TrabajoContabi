@@ -4,7 +4,7 @@
 @can('ver-usuario')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading" style="color:black">Contribuyentes Activos</h3> <!-- Cambié el título -->
+        <h3 class="page__heading" style="color:black">Contribuyentes</h3> <!-- Cambié el título -->
     </div>
     <div class="section-body">
         <div class="row">

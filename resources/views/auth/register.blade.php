@@ -68,16 +68,44 @@
                         $today = (new \DateTime())->format('Y-m-d');
                     @endphp
 
-                    <!-- Fecha nacimiento -->
-                    <div class="col-md-6">
+                    <!-- Fecha de Inicio -->
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="FechaIniOP" style="color: black; font-weight: bold;">Fecha de Inicio de Operaciones:</label>
+        <input id="FechaIniOP" type="date"
+            class="form-control{{ $errors->has('FechaIniOP') ? ' is-invalid' : '' }}"
+            name="FechaIniOP" max="{{ $today }}"
+            tabindex="4" placeholder="Ingrese Fecha de Inicio de Operaciones" value="{{ old('FechaIniOP', $user->FechaIniOP ?? '') }}">
+        <div class="invalid-feedback">
+            {{ $errors->first('FechaIniOP') }}
+        </div>
+    </div>
+</div>
+
+
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="fechaUltiCamEst" style="color: black; font-weight: bold;">Fecha del última cambio de estado:</label>
+        <input id="fechaUltiCamEst" type="date"
+            class="form-control{{ $errors->has('fechaUltiCamEst') ? ' is-invalid' : '' }}"
+            name="fechaUltiCamEst" max="{{ $today }}"
+            tabindex="4" placeholder="Ingrese Fecha del última cambio de estado<" value="{{ old('fechaUltiCamEst', $user->fechaUltiCamEst ?? '') }}">
+        <div class="invalid-feedback">
+            {{ $errors->first('fechaUltiCamEst') }}
+        </div>
+    </div>
+</div>
+
+<!-- Nombre Comercial -->
+<div class="col-md-6">
                         <div class="form-group">
-                            <label for="fecha_nacimiento" style="color: black; font-weight: bold;">Fecha de nacimiento:</label>
-                            <input id="fecha_nacimiento" type="date"
-                                class="form-control{{ $errors->has('fecha_nacimiento') ? ' is-invalid' : '' }}"
-                                name="fecha_nacimiento" max="{{ $today }}"
-                                tabindex="4" placeholder="Ingrese fecha de nacimiento" value="{{ old('fecha_nacimiento', $user->fecha_nacimiento ?? '') }}">
+                            <label for="NombreComercial">Nombre comercial:</label>
+                            <input id="NombreComercial" type="text"
+                                   class="form-control{{ $errors->has('NombreComercial') ? ' is-invalid' : '' }}"
+                                   name="NombreComercial"
+                                   tabindex="3" placeholder="Ingrese el Nombre Comercial:" value="{{ old('NombreComercial') }}">
                             <div class="invalid-feedback">
-                                {{ $errors->first('fecha_nacimiento') }}
+                                {{ $errors->first('NombreComercial') }}
                             </div>
                         </div>
                     </div>

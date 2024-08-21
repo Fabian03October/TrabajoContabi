@@ -9,6 +9,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\EscuelaController;
 use App\Http\Controllers\nombreController;
 use App\Http\Controllers\InvoiceController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,6 +43,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('blogs', BlogController::class);
     Route::resource('escuelas', EscuelaController::class);
     Route::get('/usuarios-activos', [UsuarioController::class, 'activos'])->name('usuarios.activos');
+    Route::get('usuarios/{id}', [UsuarioController::class, 'show'])->name('usuarios.show');
+    Route::post('usuarios/activate/{id}', [UsuarioController::class, 'activate'])->name('usuarios.activate');
+
+
 
     // Añadimos las rutas para el controlador de facturas
     Route::get('/invoices/create', [InvoiceController::class, 'create'])->name('invoices.create');
