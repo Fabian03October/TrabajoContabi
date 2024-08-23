@@ -14,8 +14,8 @@
                         <div class="d-flex justify-content-between mb-3">
                             <div>
                             @can('crear-usuario')
-                                    <a class="btn btn-outline-info" href="{{ route('usuarios.create')}}" title="Crear nuevo usuario" style="border-color: rgb(11, 75, 146); color: rgb(11, 75, 146);">
-                                        <i class="fas fa-plus"></i> Nuevo usuario
+                                    <a class="btn btn-outline-info" href="{{ route('usuarios.create')}}" title="Crear nuevo contribuyente" style="border-color: rgb(11, 75, 146); color: rgb(11, 75, 146);">
+                                        <i class="fas fa-plus"></i> Nuevo contribuyente
                                     </a>
                                 @endcan
                             </div>
@@ -26,6 +26,7 @@
                             <thead style="background-color:rgb(28, 118, 221)">
                                 <th style="display: none;">ID</th>
                                 <th style="color:#fff;">Nombre</th>
+                                <th style="color:#fff;">RFC</th>
                                 <th style="color:#fff;">Correo electrónico</th>
                                 <th style="color:#fff;">Rol</th>
                                 <th style="color:#fff;">Acciones</th>
@@ -34,7 +35,8 @@
                                 @foreach ($usuarios as $usuario)
                                 <tr>
                                     <td style="display: none;">{{ $usuario->id }}</td>
-                                    <td>{{ ucfirst(strtolower($usuario->name)) }}</td>
+                                    <td>{{ ucfirst(strtolower($usuario->name)) }} {{' '}} {{ucfirst(strtolower($usuario->apellido_p))}} {{' '}} {{ucfirst(strtolower($usuario->apellido_m))}}</td>
+                                    <td>{{ $usuario->rfc }}</td>
                                     <td>{{ $usuario->email }}</td>
                                     <td>
                                         @if(!empty($usuario->getRoleNames()))

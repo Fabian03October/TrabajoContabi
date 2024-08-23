@@ -4,7 +4,7 @@
     </a>
     @can('ver-usuario')
     <a class="nav-link" href="/usuarios">
-        <i class=" fas fa-users"></i><span>Alta de Contribuyentes</span>
+        <i class=" fas fa-users"></i><span>Inscripción al RFC</span>
     </a>
     @endcan
 
@@ -24,5 +24,5 @@
         <i class=" fas fa-blog"></i><span>Facturas</span>
     </a>
     @endcan
-    
+
 </li>

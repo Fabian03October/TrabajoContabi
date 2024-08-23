@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <div class="card card-primary">
-        <div class="card-header"><h4>Register</h4></div>
+        <div class="card-header"><h4>Preinscripción al RFC</h4></div>
 
         <div class="card-body pt-1">
             <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
@@ -12,12 +12,12 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="first_name">Full Name:</label><span
+                            <label for="first_name">Nombres:</label><span
                                     class="text-danger">*</span>
                             <input id="firstName" type="text"
                                    class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                                    name="name"
-                                   tabindex="1" placeholder="Enter Full Name" value="{{ old('name') }}"
+                                   tabindex="1" placeholder="Ingresa nombres" value="{{ old('name') }}"
                                    autofocus required>
                             <div class="invalid-feedback">
                                 {{ $errors->first('name') }}
@@ -31,7 +31,7 @@
                             <input id="apellido_p" type="text"
                                    class="form-control{{ $errors->has('apellido_p') ? ' is-invalid' : '' }}"
                                    name="apellido_p"
-                                   tabindex="2" placeholder="Enter Apellido Paterno" value="{{ old('apellido_p') }}"
+                                   tabindex="2" placeholder="Ingresa Apellido Paterno" value="{{ old('apellido_p') }}"
                                    required>
                             <div class="invalid-feedback">
                                 {{ $errors->first('apellido_p') }}
@@ -45,7 +45,7 @@
                             <input id="apellido_m" type="text"
                                    class="form-control{{ $errors->has('apellido_m') ? ' is-invalid' : '' }}"
                                    name="apellido_m"
-                                   tabindex="3" placeholder="Enter Apellido Materno" value="{{ old('apellido_m') }}">
+                                   tabindex="3" placeholder="Ingresa Apellido Materno" value="{{ old('apellido_m') }}">
                             <div class="invalid-feedback">
                                 {{ $errors->first('apellido_m') }}
                             </div>
@@ -54,11 +54,11 @@
                     <!-- CURP -->
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="curp">CURP:</label>
+                            <label for="curp">CURP:</label><span class="text-danger">*</span>
                             <input id="curp" type="text"
                                    class="form-control{{ $errors->has('curp') ? ' is-invalid' : '' }}"
                                    name="curp"
-                                   tabindex="4" placeholder="Enter CURP" value="{{ old('curp') }}">
+                                   tabindex="4" placeholder="Ingresa CURP" value="{{ old('curp') }}">
                             <div class="invalid-feedback">
                                 {{ $errors->first('curp') }}
                             </div>
@@ -69,35 +69,35 @@
                     @endphp
 
                     <!-- Fecha de Inicio -->
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="FechaIniOP" style="color: black; font-weight: bold;">Fecha de Inicio de Operaciones:</label>
-        <input id="FechaIniOP" type="date"
-            class="form-control{{ $errors->has('FechaIniOP') ? ' is-invalid' : '' }}"
-            name="FechaIniOP" max="{{ $today }}"
-            tabindex="4" placeholder="Ingrese Fecha de Inicio de Operaciones" value="{{ old('FechaIniOP', $user->FechaIniOP ?? '') }}">
-        <div class="invalid-feedback">
-            {{ $errors->first('FechaIniOP') }}
-        </div>
-    </div>
-</div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="fecha_nacimiento" style="color: black; font-weight: bold;">Fecha de nacimiento:</label> <span class="text-danger">*</span>
+                            <input id="fecha_nacimiento" type="date"
+                                class="form-control{{ $errors->has('fecha_nacimiento') ? ' is-invalid' : '' }}"
+                                name="fecha_nacimiento" max="{{ $today }}"
+                                tabindex="4" placeholder="Ingrese su fecha de nacimiento" value="{{ old('fecha_nacimiento', $user->fecha_nacimiento ?? '') }}">
+                            <div class="invalid-feedback">
+                                {{ $errors->first('fecha_nacimiento') }}
+                            </div>
+                        </div>
+                    </div>
 
 
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="fechaUltiCamEst" style="color: black; font-weight: bold;">Fecha del última cambio de estado:</label>
-        <input id="fechaUltiCamEst" type="date"
-            class="form-control{{ $errors->has('fechaUltiCamEst') ? ' is-invalid' : '' }}"
-            name="fechaUltiCamEst" max="{{ $today }}"
-            tabindex="4" placeholder="Ingrese Fecha del última cambio de estado<" value="{{ old('fechaUltiCamEst', $user->fechaUltiCamEst ?? '') }}">
-        <div class="invalid-feedback">
-            {{ $errors->first('fechaUltiCamEst') }}
-        </div>
-    </div>
-</div>
+                    {{-- <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="fechaUltiCamEst" style="color: black; font-weight: bold;">Fecha del última cambio de estado:</label>
+                            <input id="fechaUltiCamEst" type="date"
+                                class="form-control{{ $errors->has('fechaUltiCamEst') ? ' is-invalid' : '' }}"
+                                name="fechaUltiCamEst" max="{{ $today }}"
+                                tabindex="4" placeholder="Ingrese Fecha del última cambio de estado<" value="{{ old('fechaUltiCamEst', $user->fechaUltiCamEst ?? '') }}">
+                            <div class="invalid-feedback">
+                                {{ $errors->first('fechaUltiCamEst') }}
+                            </div>
+                        </div>
+                    </div> --}}
 
-<!-- Nombre Comercial -->
-<div class="col-md-6">
+                    <!-- Nombre Comercial -->
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="NombreComercial">Nombre comercial:</label>
                             <input id="NombreComercial" type="text"
@@ -109,6 +109,26 @@
                             </div>
                         </div>
                     </div>
+
+                    {{-- sexo --}}
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="sexo">Sexo Comercial:</label>
+                            <select id="sexo"
+                                    class="form-control{{ $errors->has('sexo') ? ' is-invalid' : '' }}"
+                                    name="sexo"
+                                    tabindex="3">
+                                <option value="" nulable="disabled">Seleccione una opción</option>
+                                <option value="masculino" {{ old('sexo') == 'masculino' ? 'selected' : '' }}>Masculino</option>
+                                <option value="femenino" {{ old('sexo') == 'femenino' ? 'selected' : '' }}>Femenino</option>
+                                <option value="otro" {{ old('sexo') == 'otro' ? 'selected' : '' }}>Otro</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('sexo') }}
+                            </div>
+                        </div>
+                    </div>
+
 
                     <div class="col-md-6">
                         <div class="form-group">

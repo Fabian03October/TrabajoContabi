@@ -13,7 +13,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-3">
                             <div>
-                                
+
                             </div>
                             <br>
                         </div>
@@ -30,7 +30,7 @@
                                 @foreach ($usuarios as $usuario)
                                 <tr>
                                     <td style="display: none;">{{ $usuario->id }}</td>
-                                    <td>{{ ucfirst(strtolower($usuario->name)) }}</td>
+                                    <td>{{ ucfirst(strtolower($usuario->name)) }} {{' '}} {{ucfirst(strtolower($usuario->apellido_p))}} {{' '}} {{ucfirst(strtolower($usuario->apellido_m))}}</td>
                                     <td>{{ $usuario->email }}</td>
                                     <td>
                                         @if(!empty($usuario->getRoleNames()))

@@ -68,22 +68,22 @@
                                 </div>
                             </div>
 
-                            <!-- Botones -->
-<div class="col-md-12 text-center">
-    <!-- Botón "Activar" -->
-    <form action="{{ route('usuarios.activate', $user->id) }}" method="POST" style="display:inline;">
-    @csrf
-    <button type="submit" class="btn btn-success" title="Activar usuario">
-        <i class="fas fa-check"></i> Activar
-    </button>
-</form>
+                                <!-- Botones -->
+                                <div class="col-md-12 text-center">
+                                    <!-- Botón "Activar" -->
+                            <form action="{{ route('usuarios.activate', $user->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                <button type="submit" class="btn btn-success" title="Activar usuario">
+                                    <i class="fas fa-check"></i> Activar
+                                </button>
+                            </form>
 
 
-    <!-- Botón "Cancelar" -->
-    <a href="{{ route('usuarios.index') }}" class="btn btn-outline-danger" title="Cancelar">
-        <i class="fas fa-times"></i> Cancelar
-    </a>
-</div>
+                                <!-- Botón "Cancelar" -->
+                                <a href="{{ route('usuarios.index') }}" class="btn btn-outline-danger" title="Cancelar">
+                                    <i class="fas fa-times"></i> Cancelar
+                                </a>
+                            </div>
 
                         </div>
                     </div>

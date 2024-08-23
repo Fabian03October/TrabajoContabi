@@ -143,20 +143,20 @@
                                     $rfc = strtoupper($curpPart . $homoclave);
                                 @endphp
                                 <div class="col-md-6">
-    <div class="form-group">
-        <label style="color: black; font-weight: bold;" for="rfc">RFC <span class="required text-danger">*</span></label>
-        {!! Form::text('rfc', $user->rfc, [
-            'class' => 'form-control',
-            'pattern' => '[A-Z]{3,4}\d{6}[A-Z0-9]{3}',
-            'title' => 'El RFC debe tener el formato válido, por ejemplo: ABC123456XYZ',
-            'maxlength' => 13, // Ajusta a 14 si usas RFC con homoclave
-            'required' => true
-        ]) !!}
-        <div class="invalid-feedback">
-            {{ $errors->first('rfc') }}
-        </div>
-    </div>
-</div>
+                                    <div class="form-group">
+                                        <label style="color: black; font-weight: bold;" for="rfc">RFC <span class="required text-danger">*</span></label>
+                                        {!! Form::text('rfc', $user->rfc, [
+                                            'class' => 'form-control',
+                                            'pattern' => '[A-Z]{3,4}\d{6}[A-Z0-9]{3}',
+                                            'title' => 'El RFC debe tener el formato válido, por ejemplo: ABC123456XYZ',
+                                            'maxlength' => 13, // Ajusta a 14 si usas RFC con homoclave
+                                            'required' => true
+                                        ]) !!}
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('rfc') }}
+                                        </div>
+                                    </div>
+                                </div>
 
 
 {{--
@@ -196,7 +196,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 text-center">
-                                    <a href="/usuarios" class="btn btn-secondary" style="color: black; margin-right: 10px;" title="Regresar al inicio">
+                                    <a href="/usuarios-activos" class="btn btn-secondary" style="color: black; margin-right: 10px;" title="Regresar al inicio">
                                         <i class="fas fa-times"></i> Cancelar
                                     </a>
                                     <!-- Botón con clase personalizada -->

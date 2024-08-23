@@ -19,42 +19,42 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
-        //Sin paginación
-        $usuarios = User::all()->where('status',0);
-        return view('usuarios.index',compact('usuarios'));
+        public function index(Request $request)
+        {
+            //Sin paginación
+            $usuarios = User::all()->where('status',0);
+            return view('usuarios.index',compact('usuarios'));
 
-        //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $usuarios->links() !!}
-    }
+            //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $usuarios->links() !!}
+        }
 
         public function activos(Request $request)
-    {
-        // Filtrar usuarios activos (status = 1)
-        $usuarios = User::where('status', 1)->get();
+        {
+            // Filtrar usuarios activos (status = 1)
+            $usuarios = User::where('status', 1)->get();
 
-        return view('usuarios.activos', compact('usuarios'));
-    }
+            return view('usuarios.activos', compact('usuarios'));
+        }
 
         public function activate(Request $request, $id)
         {
             $user = User::findOrFail($id);
-        
+
             // Generar el RFC a partir de los primeros 10 caracteres de la CURP y la homoclave
-            $rfc = substr($user->curp, 0, 10) . self::homoclave();
-        
+            $rfc = strtoupper(substr($user->curp, 0, 10) . self::homoclave());
+
             // Guardar el RFC generado en la base de datos
             $user->rfc = $rfc;
             $user->status = 1; // Activar el usuario
-        
+
             // Asignar un rol al usuario
             // Aquí se asigna el rol "Contribuyente", puedes cambiarlo por cualquier rol deseado
             $role = 'Contribuyente';
             $user->assignRole($role);
-        
+
             // Guardar los cambios en la base de datos
             $user->save();
-        
+
             return redirect()->route('usuarios.index')->with('success', 'Usuario activado, RFC generado y rol asignado exitosamente.');
         }
 
