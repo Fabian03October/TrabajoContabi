@@ -21,7 +21,7 @@
     @endcan
     @can('ver-blog')
     <a class="nav-link" href="/blogs">
-        <i class=" fas fa-blog"></i><span>Facturas</span>
+        <i class=" fas fa-blog"></i><span>Imprimir Constancia</span>
     </a>
     @endcan
 

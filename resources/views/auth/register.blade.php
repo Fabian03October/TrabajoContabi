@@ -83,19 +83,6 @@
                     </div>
 
 
-                    {{-- <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="fechaUltiCamEst" style="color: black; font-weight: bold;">Fecha del última cambio de estado:</label>
-                            <input id="fechaUltiCamEst" type="date"
-                                class="form-control{{ $errors->has('fechaUltiCamEst') ? ' is-invalid' : '' }}"
-                                name="fechaUltiCamEst" max="{{ $today }}"
-                                tabindex="4" placeholder="Ingrese Fecha del última cambio de estado<" value="{{ old('fechaUltiCamEst', $user->fechaUltiCamEst ?? '') }}">
-                            <div class="invalid-feedback">
-                                {{ $errors->first('fechaUltiCamEst') }}
-                            </div>
-                        </div>
-                    </div> --}}
-
                     <!-- Nombre Comercial -->
                     <div class="col-md-6">
                         <div class="form-group">
@@ -113,18 +100,113 @@
                     {{-- sexo --}}
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="sexo">Sexo Comercial:</label>
+                            <label for="sexo">Género:</label>
                             <select id="sexo"
                                     class="form-control{{ $errors->has('sexo') ? ' is-invalid' : '' }}"
                                     name="sexo"
                                     tabindex="3">
                                 <option value="" nulable="disabled">Seleccione una opción</option>
-                                <option value="masculino" {{ old('sexo') == 'masculino' ? 'selected' : '' }}>Masculino</option>
-                                <option value="femenino" {{ old('sexo') == 'femenino' ? 'selected' : '' }}>Femenino</option>
-                                <option value="otro" {{ old('sexo') == 'otro' ? 'selected' : '' }}>Otro</option>
+                                <option value="masculino" {{ old('sexo') == 'Masculino' ? 'selected' : '' }}>Masculino</option>
+                                <option value="femenino" {{ old('sexo') == 'Femenino' ? 'selected' : '' }}>Femenino</option>
+                                <option value="otro" {{ old('sexo') == 'Otro' ? 'selected' : '' }}>Otro</option>
                             </select>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    // Disable the default option after form load
+                                    let selectElement = document.querySelector('select[name="sexo"]');
+                                    if (selectElement) {
+                                        selectElement.options[0].disabled = true;
+                                    }
+                                });
+                            </script>
                             <div class="invalid-feedback">
                                 {{ $errors->first('sexo') }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="cp">Codigo postal:</label><span
+                                    class="text-danger">*</span>
+                            <input id="cp" type="text"
+                                   class="form-control{{ $errors->has('cp') ? ' is-invalid' : '' }}"
+                                   name="cp"
+                                   tabindex="1" placeholder="Ingresa vialidad" value="{{ old('cp') }}"
+                                   autofocus required>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('cp') }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nombre_vialidad">Nombre de la vialidad:</label><span
+                                    class="text-danger">*</span>
+                            <input id="nombre_vialidad" type="text"
+                                   class="form-control{{ $errors->has('nombre_vialidad') ? ' is-invalid' : '' }}"
+                                   name="nombre_vialidad"
+                                   tabindex="1" placeholder="Ingresa vialidad" value="{{ old('nombre_vialidad') }}"
+                                   autofocus required>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('nombre_vialidad') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="num_interior">Número interior:</label><span
+                                    class="text-danger">*</span>
+                            <input id="num_interior" type="text"
+                                   class="form-control{{ $errors->has('num_interior') ? ' is-invalid' : '' }}"
+                                   name="num_interior"
+                                   tabindex="1" placeholder="Ingresa vialidad" value="{{ old('num_interior') }}"
+                                   autofocus required>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('num_interior') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="num_exterior">Número exterior:</label><span
+                                    class="text-danger">*</span>
+                            <input id="num_exterior" type="text"
+                                   class="form-control{{ $errors->has('num_exterior') ? ' is-invalid' : '' }}"
+                                   name="num_exterior"
+                                   tabindex="1" placeholder="Ingresa vialidad" value="{{ old('num_exterior') }}"
+                                   autofocus required>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('num_exterior') }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="colonia">Colonia:</label><span
+                                    class="text-danger">*</span>
+                            <input id="colonia" type="text"
+                                   class="form-control{{ $errors->has('colonia') ? ' is-invalid' : '' }}"
+                                   name="colonia"
+                                   tabindex="1" placeholder="Ingresa vialidad" value="{{ old('colonia') }}"
+                                   autofocus required>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('colonia') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="tipo_vialidad">Tipo de la vialidad:</label>
+                            <input id="tipo_vialidad" type="text"
+                                   class="form-control{{ $errors->has('tipo_vialidad') ? ' is-invalid' : '' }}"
+                                   name="tipo_vialidad"
+                                   tabindex="1" placeholder="Ingresa vialidad" value="{{ old('tipo_vialidad') }}"
+                                   autofocus>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('tipo_vialidad') }}
                             </div>
                         </div>
                     </div>
@@ -173,7 +255,7 @@
                     <div class="col-md-12 mt-4">
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                                Register
+                                Preinscribirse
                             </button>
                         </div>
                     </div>
@@ -182,7 +264,7 @@
         </div>
     </div>
     <div class="mt-5 text-muted text-center">
-        Already have an account ? <a
-                href="{{ route('login') }}">SignIn</a>
+        Usted ya es contribuyente ? <a
+                href="{{ route('login') }}">Ingresar</a>
     </div>
 @endsection

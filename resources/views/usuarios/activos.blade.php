@@ -25,9 +25,15 @@
                         <table class="table table-striped mt-2 table_id" id="miTabla">
                             <thead style="background-color:rgb(28, 118, 221)">
                                 <th style="display: none;">ID</th>
-                                <th style="color:#fff;">Nombre</th>
-                                <th style="color:#fff;">RFC</th>
-                                <th style="color:#fff;">Correo electrónico</th>
+                                <th style="color:#fff; cursor: pointer;" onclick="toggleIcon('icon1')">
+                                    Nombre <i id="icon1" class="fas fa-caret-up"></i>
+                                </th>
+                                <th style="color:#fff; cursor: pointer;" onclick="toggleIcon('icon2')">
+                                    RFC <i id="icon2" class="fas fa-caret-up"></i>
+                                </th>
+                                <th style="color:#fff; cursor: pointer;" onclick="toggleIcon('icon3')">
+                                    Correo electrónico <i id="icon3" class="fas fa-caret-up"></i>
+                                </th>
                                 <th style="color:#fff;">Rol</th>
                                 <th style="color:#fff;">Acciones</th>
                             </thead>
@@ -76,7 +82,16 @@
             url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json',
         }
     });
-
+    function toggleIcon(iconId) {
+            var icon = document.getElementById(iconId);
+            if (icon.classList.contains('fa-caret-up')) {
+                icon.classList.remove('fa-caret-up');
+                icon.classList.add('fa-caret-down');
+            } else {
+                icon.classList.remove('fa-caret-down');
+                icon.classList.add('fa-caret-up');
+            }
+        }
     function confirmDelete(usuarioId, nombre) {
         Swal.fire({
             title: '¿Deseas borrar al contribuyente ' + nombre + '?',

@@ -11,6 +11,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
+use DateTime;
 
 class UsuarioController extends Controller
 {
@@ -85,43 +86,33 @@ class UsuarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-{
-    // Validación de los datos del formulario
-    $this->validate($request, [
-        'name' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
-        'apellido_p' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
-        'apellido_m' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
-        'FechaIniOP' => 'nullable|date',
-        'fechaUltiCamEst' => 'nullable|date',
-        'NombreComercial' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
-        'curp' => ['required', 'string', 'size:18', 'regex:/^[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]{2}$/'],
-        'email' => 'required|email|unique:users,email',
-        'password' => 'required|string|min:8|confirmed',
-        'roles' => 'required|array'
-    ]);
+    {
+        $this->validate($request, [
+            'name' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+$/'],
+            'apellido_p' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+$/'],
+            'apellido_m' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]*$/'],
+            'sexo' => 'required',
+            'fecha_nacimiento' => 'nullable|date',
+            'NombreComercial' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s\'".]+$/'],
+            'curp' => ['required', 'string', 'size:18', 'regex:/^[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]{2}$/'],
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|same:confirm-password',
+            'roles' => 'required'
+        ]);
 
-    // Recopilar todos los datos del formulario
-    $input = $request->all();
+        $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
 
-    // Encriptar la contraseña
-    $input['password'] = Hash::make($input['password']);
+        $input['status'] = 0;
+        $input['status_padron'] = 0;
+        $input['fechaUltiCamEst'] = (new \DateTime())->format('Y-m-d');
+        $user = User::create($input);//crea el contribuyente con todos sus campos
+        $user->assignRole($request->input('roles'));
 
-    // Establecer el campo status a 1 para indicar que el usuario está activo
-    $input['status'] = 1;
-
-    // Generar el RFC a partir de los primeros 10 caracteres de la CURP y la homoclave en mayúsculas
-$input['rfc'] = strtoupper(substr($input['curp'], 0, 10) . self::homoclave());
+        return redirect()->route('usuarios.index')->with('success', 'Contribuyente '.$request->name. ' registrado exitosamente.');
+    }
 
 
-    // Crear el nuevo usuario en la base de datos
-    $user = User::create($input);
-
-    // Asignar los roles seleccionados al usuario
-    $user->assignRole($request->input('roles'));
-
-    // Redireccionar al índice de usuarios con un mensaje de éxito
-    return redirect()->route('usuarios.activos')->with('success', 'Contribuyente ' . $request->name . ' registrado exitosamente.');
-}
 
 
     /**
@@ -133,10 +124,10 @@ $input['rfc'] = strtoupper(substr($input['curp'], 0, 10) . self::homoclave());
     public function show($id)
     {
         $user = User::find($id);
-    $roles = Role::pluck('name','name')->all();
-    $userRole = $user->roles->pluck('name','name')->all();
+        $roles = Role::pluck('name','name')->all();
+        $userRole = $user->roles->pluck('name','name')->all();
 
-    return view('usuarios.show', compact('user', 'roles', 'userRole'));
+        return view('usuarios.show', compact('user', 'roles', 'userRole'));
     }
 
     /**
@@ -213,7 +204,30 @@ $input['rfc'] = strtoupper(substr($input['curp'], 0, 10) . self::homoclave());
     return redirect()->route('usuarios.activos')->with('success', 'Contribuyente ' . $request->name . ' actualizado exitosamente.');
 }
 
+    public function fechas($date){
+        $dateObj = new DateTime($date);
 
+        $day = $dateObj->format('d');
+        $month = $dateObj->format('n');
+        $year = $dateObj->format('Y');
+        $monthNames = [
+            1 => 'enero',
+            2 => 'febrero',
+            3 => 'marzo',
+            4 => 'abril',
+            5 => 'mayo',
+            6 => 'junio',
+            7 => 'julio',
+            8 => 'agosto',
+            9 => 'septiembre',
+            10 => 'octubre',
+            11 => 'noviembre',
+            12 => 'diciembre',
+        ];
+
+        // Format the date using the array
+        return $day.' de '.$monthNames[$month].' del '.$year;
+    }
 
 
     /**
