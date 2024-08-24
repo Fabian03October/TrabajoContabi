@@ -45,6 +45,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/usuarios-activos', [UsuarioController::class, 'activos'])->name('usuarios.activos');
     Route::get('usuarios/{id}', [UsuarioController::class, 'show'])->name('usuarios.show');
     Route::post('usuarios/activate/{id}', [UsuarioController::class, 'activate'])->name('usuarios.activate');
+    Route::get('usuarios/{id}/pdf', [UsuarioController::class, 'pdf'])->name('usuarios.pdf');
+    Route::post('usuarios/{id}/deactivate', [UsuarioController::class, 'deactivate'])->name('usuarios.deactivate');
+
 
 
 

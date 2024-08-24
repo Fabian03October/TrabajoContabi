@@ -80,7 +80,55 @@
                         </div>
                     </div>
 
-                    <!-- Fecha de Inicio -->
+                                        <!-- Fecha de Nacimiento -->
+                                        @php
+    $today = (new \DateTime())->format('Y-m-d');
+@endphp
+
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="FechaNac" style="color: black; font-weight: bold;">Fecha de nacimiento:</label>
+        <input id="FechaNac" type="date"
+            class="form-control{{ $errors->has('FechaNac') ? ' is-invalid' : '' }}"
+            name="FechaNac" max="{{ $today }}"
+            tabindex="4" placeholder="Ingrese Fecha de nacimiento" value="{{ old('FechaNac', $user->FechaNac ?? '') }}">
+        <div class="invalid-feedback">
+            {{ $errors->first('FechaNac') }}
+        </div>
+    </div>
+</div>
+
+
+<!-- Sexo -->
+<div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            <label for="Sexo" style="color: black; font-weight: bold;">Sexo: <span class="text-danger">*</span></label>
+                            <select id="Sexo" name="Sexo" class="form-control custom-select" required>
+                                <option value="">Selecciona el sexo</option>
+                                <option value="masculino" {{ old('Sexo') == 'masculino' ? 'selected' : '' }}>Masculino</option>
+                                <option value="femenino" {{ old('Sexo') == 'femenino' ? 'selected' : '' }}>Femenino</option>
+                                <option value="otro" {{ old('Sexo') == 'otro' ? 'selected' : '' }}>Otro</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+
+<!-- Nacionalidad -->
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            <label for="Nacionalidad" style="color: black; font-weight: bold;">Nacionalidad:</label>
+                            <select id="Nacionalidad" name="Nacionalidad" class="form-control">
+                                <option value="">Selecciona una nacionalidad</option>
+                                <option value="Mexicana" {{ old('Nacionalidad') == 'Mexicana' ? 'selected' : '' }}>Mexicana</option>
+                                <option value="Estadounidense" {{ old('Nacionalidad') == 'Estadounidense' ? 'selected' : '' }}>Estadounidense</option>
+                                <option value="Canadiense" {{ old('Nacionalidad') == 'Canadiense' ? 'selected' : '' }}>Canadiense</option>
+                                <option value="Otro" {{ old('Nacionalidad') == 'Otro' ? 'selected' : '' }}>Otro</option>
+                            </select>
+                        </div>
+                    </div>
+
+<!-- Fecha de Inicio -->
 @php
     $today = (new \DateTime())->format('Y-m-d');
 @endphp

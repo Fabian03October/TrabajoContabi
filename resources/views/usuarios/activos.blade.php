@@ -43,11 +43,25 @@
                                             @endforeach
                                         @endif
                                     </td>
+
+                                    <script>
+                                        function confirmDeactivate(id, name) {
+                                            if (confirm(`¿Estás seguro de que quieres desactivar al usuario ${name}?`)) {
+                                                document.getElementById('deactivate-form-' + id).submit();
+                                            }
+                                        }
+                                    </script>
+
+
                                     <td>
-                                        <a  class="btn btn-no-border btn-outline-warning" href="{{ route('usuarios.edit', $usuario->id) }}" title="Editar usuario"><i class="fas fa-edit"></i> Editar</a>
-                                        <button class="btn btn-no-border btn-outline-danger"  onclick="confirmDelete({{ $usuario->id }}, '{{ $usuario->name }}')" title="Borrar usuario">  <i class="fa fa-trash" aria-hidden="true"></i> Borrar</button>
-                                        {!! Form::open(['method' => 'DELETE', 'route' => ['usuarios.destroy', $usuario->id], 'style' => 'display:inline', 'id' => 'delete-form-' . $usuario->id]) !!}
+                                        <a class="btn btn-no-border btn-outline-warning" href="{{ route('usuarios.edit', $usuario->id) }}" title="Editar usuario"><i class="fas fa-edit"></i> Editar</a>
+                                        <a class="btn btn-no-border btn-outline-info" href="{{ route('usuarios.pdf', $usuario->id) }}" title="Descargar PDF"><i class="fas fa-file-pdf"></i> PDF</a>
+                                        <button class="btn btn-no-border btn-outline-warning" onclick="confirmDeactivate({{ $usuario->id }}, '{{ $usuario->name }}')" title="Desactivar usuario">
+                                        <i class="fa fa-ban" aria-hidden="true"></i> Desactivar
+                                        </button>
+                                        {!! Form::open(['method' => 'POST', 'route' => ['usuarios.deactivate', $usuario->id], 'style' => 'display:inline', 'id' => 'deactivate-form-' . $usuario->id]) !!}
                                         {!! Form::close() !!}
+
                                     </td>
                                 </tr>
                                 @endforeach

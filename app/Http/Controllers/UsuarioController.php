@@ -11,6 +11,8 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class UsuarioController extends Controller
 {
@@ -27,6 +29,38 @@ class UsuarioController extends Controller
 
         //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $usuarios->links() !!}
     }
+
+    public function deactivate($id)
+{
+    $usuario = User::find($id);
+
+    if ($usuario) {
+        $usuario->status = 0; // Cambia el estado a desactivado
+        $usuario->save();
+        
+        return redirect()->back()->with('success', 'Usuario desactivado correctamente.');
+    }
+
+    return redirect()->back()->with('error', 'Usuario no encontrado.');
+}
+
+
+    public function pdf($id)
+{
+    $usuario = User::find($id);
+
+    if (!$usuario) {
+        return redirect()->route('usuarios.index')->with('error', 'Usuario no encontrado.');
+    }
+
+    $data = [
+        'usuario' => $usuario,
+    ];
+
+    $pdf = Pdf::loadView('usuarios.pdf', $data);
+    return $pdf->download('CSF_'.$usuario->nombres.'.pdf');
+}
+
 
         public function activos(Request $request)
     {
@@ -91,6 +125,9 @@ class UsuarioController extends Controller
         'name' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
         'apellido_p' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
         'apellido_m' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
+        'FechaNac' => 'nullable|date',
+        'Sexo' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
+        'Nacionalidad' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
         'FechaIniOP' => 'nullable|date',
         'fechaUltiCamEst' => 'nullable|date',
         'NombreComercial' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
@@ -172,6 +209,9 @@ $input['rfc'] = strtoupper(substr($input['curp'], 0, 10) . self::homoclave());
         'curp' => ['required', 'string', 'size:18', 'regex:/^[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]{2}$/'],
         'rfc' => ['required', 'string', 'size:13', 'regex:/^[A-Z]{3,4}\d{6}[A-Z0-9]{3}$/'],
         'status' => 'boolean', // Validación como booleano
+        'FechaNac' => 'nullable|date',
+        'Sexo' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
+        'Nacionalidad' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
         'FechaIniOP' => 'nullable|date',
         'fechaUltiCamEst' => 'nullable|date',
         'NombreComercial' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],

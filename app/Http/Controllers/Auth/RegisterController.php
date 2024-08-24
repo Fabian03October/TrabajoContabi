@@ -54,6 +54,9 @@ class RegisterController extends Controller
             'apellido_p' => ['required', 'string', 'max:255'],  // Validación para apellido paterno
             'apellido_m' => ['nullable', 'string', 'max:255'],
             'curp' => ['nullable', 'string', 'size:18', 'regex:/^[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]{2}$/'], // Validación para CURP
+            'FechaNac'=>'required',
+            'Sexo' => ['nullable', 'string', 'max:255'],
+            'Nacionalidad' => ['nullable', 'string', 'max:255'],
             'FechaIniOP'=>'required',
             'fechaUltiCamEst'=>'required',
             'NombreComercial' => ['nullable', 'string', 'max:255'], 
@@ -75,6 +78,9 @@ class RegisterController extends Controller
             'apellido_p' => $data['apellido_p'],
             'apellido_m' => $data['apellido_m'],
             'curp' => $data['curp'],
+            'FechaNac' => $data['FechaNac'],
+            'Sexo' => $data['Sexo'],
+            'Nacionalidad' => $data['Nacionalidad'],
             'FechaIniOP' => $data['FechaIniOP'],
             'fechaUltiCamEst' => $data['fechaUltiCamEst'],
             'NombreComercial' => $data['NombreComercial'],
