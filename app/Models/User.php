@@ -33,9 +33,13 @@ class User extends Authenticatable
         'FechaIniOP',
        'fechaUltiCamEst',
        'NombreComercial',
+       'status_padron',
+       'fecha_nacimiento',
+       'sexo',
         'status',
         'email',
         'password',
+        'domicilio_id',
     ];
 
     /**
@@ -47,6 +51,11 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function domicilio()
+    {
+        return $this->belongsTo(Domicilio::class, 'domicilio_id');
+    }
 
     /**
      * The attributes that should be cast to native types.

@@ -14,8 +14,8 @@
                         <div class="d-flex justify-content-between mb-3">
                             <div>
                             @can('crear-usuario')
-                                    <a class="btn btn-outline-info" href="{{ route('usuarios.create')}}" title="Crear nuevo usuario" style="border-color: rgb(11, 75, 146); color: rgb(11, 75, 146);">
-                                        <i class="fas fa-plus"></i> Nuevo usuario
+                                    <a class="btn btn-outline-info" href="{{ route('usuarios.create')}}" title="Crear nuevo contribuyente" style="border-color: rgb(11, 75, 146); color: rgb(11, 75, 146);">
+                                        <i class="fas fa-plus"></i> Nuevo contribuyente
                                     </a>
                                 @endcan
                             </div>
@@ -25,8 +25,15 @@
                         <table class="table table-striped mt-2 table_id" id="miTabla">
                             <thead style="background-color:rgb(28, 118, 221)">
                                 <th style="display: none;">ID</th>
-                                <th style="color:#fff;">Nombre</th>
-                                <th style="color:#fff;">Correo electrónico</th>
+                                <th style="color:#fff; cursor: pointer;" onclick="toggleIcon('icon1')">
+                                    Nombre <i id="icon1" class="fas fa-caret-up"></i>
+                                </th>
+                                <th style="color:#fff; cursor: pointer;" onclick="toggleIcon('icon2')">
+                                    RFC <i id="icon2" class="fas fa-caret-up"></i>
+                                </th>
+                                <th style="color:#fff; cursor: pointer;" onclick="toggleIcon('icon3')">
+                                    Correo electrónico <i id="icon3" class="fas fa-caret-up"></i>
+                                </th>
                                 <th style="color:#fff;">Rol</th>
                                 <th style="color:#fff;">Acciones</th>
                             </thead>
@@ -34,7 +41,8 @@
                                 @foreach ($usuarios as $usuario)
                                 <tr>
                                     <td style="display: none;">{{ $usuario->id }}</td>
-                                    <td>{{ ucfirst(strtolower($usuario->name)) }}</td>
+                                    <td>{{ ucfirst(strtolower($usuario->name)) }} {{' '}} {{ucfirst(strtolower($usuario->apellido_p))}} {{' '}} {{ucfirst(strtolower($usuario->apellido_m))}}</td>
+                                    <td>{{ $usuario->rfc }}</td>
                                     <td>{{ $usuario->email }}</td>
                                     <td>
                                         @if(!empty($usuario->getRoleNames()))
@@ -88,7 +96,16 @@
             url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json',
         }
     });
-
+    function toggleIcon(iconId) {
+            var icon = document.getElementById(iconId);
+            if (icon.classList.contains('fa-caret-up')) {
+                icon.classList.remove('fa-caret-up');
+                icon.classList.add('fa-caret-down');
+            } else {
+                icon.classList.remove('fa-caret-down');
+                icon.classList.add('fa-caret-up');
+            }
+        }
     function confirmDelete(usuarioId, nombre) {
         Swal.fire({
             title: '¿Deseas borrar al contribuyente ' + nombre + '?',

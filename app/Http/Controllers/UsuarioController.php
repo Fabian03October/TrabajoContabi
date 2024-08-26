@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-//agregamos lo siguiente
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
@@ -12,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
 use Barryvdh\DomPDF\Facade\Pdf;
+use DateTime;
+use App\Models\Domicilio;
 
 
 class UsuarioController extends Controller
@@ -21,14 +22,14 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
-        //Sin paginación
-        $usuarios = User::all()->where('status',0);
-        return view('usuarios.index',compact('usuarios'));
+        public function index(Request $request)
+        {
+            //Sin paginación
+            $usuarios = User::all()->where('status',0);
+            return view('usuarios.index',compact('usuarios'));
 
-        //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $usuarios->links() !!}
-    }
+            //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $usuarios->links() !!}
+        }
 
     public function deactivate($id)
 {
@@ -44,8 +45,7 @@ class UsuarioController extends Controller
     return redirect()->back()->with('error', 'Usuario no encontrado.');
 }
 
-
-    public function pdf($id)
+public function pdf($id)
 {
     $usuario = User::find($id);
 
@@ -61,34 +61,33 @@ class UsuarioController extends Controller
     return $pdf->download('CSF_'.$usuario->nombres.'.pdf');
 }
 
-
         public function activos(Request $request)
-    {
-        // Filtrar usuarios activos (status = 1)
-        $usuarios = User::where('status', 1)->get();
+        {
+            // Filtrar usuarios activos (status = 1)
+            $usuarios = User::where('status', 1)->get();
 
-        return view('usuarios.activos', compact('usuarios'));
-    }
+            return view('usuarios.activos', compact('usuarios'));
+        }
 
         public function activate(Request $request, $id)
         {
             $user = User::findOrFail($id);
-        
+
             // Generar el RFC a partir de los primeros 10 caracteres de la CURP y la homoclave
-            $rfc = substr($user->curp, 0, 10) . self::homoclave();
-        
+            $rfc = strtoupper(substr($user->curp, 0, 10) . self::homoclave());
+
             // Guardar el RFC generado en la base de datos
             $user->rfc = $rfc;
             $user->status = 1; // Activar el usuario
-        
+
             // Asignar un rol al usuario
             // Aquí se asigna el rol "Contribuyente", puedes cambiarlo por cualquier rol deseado
             $role = 'Contribuyente';
             $user->assignRole($role);
-        
+
             // Guardar los cambios en la base de datos
             $user->save();
-        
+
             return redirect()->route('usuarios.index')->with('success', 'Usuario activado, RFC generado y rol asignado exitosamente.');
         }
 
@@ -119,46 +118,63 @@ class UsuarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-{
-    // Validación de los datos del formulario
-    $this->validate($request, [
-        'name' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
-        'apellido_p' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
-        'apellido_m' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
-        'FechaNac' => 'nullable|date',
-        'Sexo' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
-        'Nacionalidad' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
-        'FechaIniOP' => 'nullable|date',
-        'fechaUltiCamEst' => 'nullable|date',
-        'NombreComercial' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
-        'curp' => ['required', 'string', 'size:18', 'regex:/^[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]{2}$/'],
-        'email' => 'required|email|unique:users,email',
-        'password' => 'required|string|min:8|confirmed',
-        'roles' => 'required|array'
-    ]);
+    {
+        $this->validate($request, [
+            'name' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+$/'],
+            'apellido_p' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+$/'],
+            'apellido_m' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]*$/'],
+            'sexo' => 'required',
+            'fecha_nacimiento' => 'nullable|date',
+            'NombreComercial' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s\'".]+$/'],
+            'curp' => ['required', 'string', 'size:18', 'regex:/^[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]{2}$/'],
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|same:confirm-password',
+            'roles' => 'required',
+            'cp' => 'required',
+            'nombre_vialidad'=>['nullable', 'string', 'max:255'],
+            'tipo_vialidad' => ['nullable', 'string', 'max:255'],
+            'num_interior' => ['nullable', 'string', 'max:255'],
+            'num_exterior' => ['nullable', 'string', 'max:255'],
+            'colonia' => ['nullable', 'string', 'max:255']
+        ]);
 
-    // Recopilar todos los datos del formulario
-    $input = $request->all();
+        $data = $request->all();
+        $data['password'] = Hash::make($data['password']);
 
-    // Encriptar la contraseña
-    $input['password'] = Hash::make($input['password']);
+        $data['status'] = 0;
+        $data['status_padron'] = 0;
+        $data['fechaUltiCamEst'] = (new \DateTime())->format('Y-m-d');
+        //$user = User::create($input);//crea el contribuyente con todos sus campos
+        $domicilio = Domicilio::create([
+            'cp' => $data['cp'],
+            'nombre_vialidad'=>$data['nombre_vialidad'],
+            'tipo_vialidad' => $data['tipo_vialidad'],
+            'num_interior' => $data['num_interior'],
+            'num_exterior' => $data['num_exterior'],
+            'colonia' => $data['colonia'],
+        ]);
 
-    // Establecer el campo status a 1 para indicar que el usuario está activo
-    $input['status'] = 1;
+        return User::create([
+            'name' => $data['name'],
+            'apellido_p' => $data['apellido_p'],
+            'apellido_m' => $data['apellido_m'],
+            'curp' => $data['curp'],
+            'fecha_nacimiento' => $data['fecha_nacimiento'],
+            'NombreComercial' => $data['NombreComercial'],
+            'sexo' => $data['sexo'],
+            'status' => false,
+            'status_padron' => false,
+            'fechaUltiCamEst' => (new \DateTime())->format('Y-m-d'),
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'domicilio_id' => $domicilio->id, // Usar el ID del domicilio creado
+        ]);
+        $user->assignRole($request->input('roles'));
 
-    // Generar el RFC a partir de los primeros 10 caracteres de la CURP y la homoclave en mayúsculas
-$input['rfc'] = strtoupper(substr($input['curp'], 0, 10) . self::homoclave());
+        return redirect()->route('usuarios.index')->with('success', 'Contribuyente '.$request->name. ' registrado exitosamente.');
+    }
 
 
-    // Crear el nuevo usuario en la base de datos
-    $user = User::create($input);
-
-    // Asignar los roles seleccionados al usuario
-    $user->assignRole($request->input('roles'));
-
-    // Redireccionar al índice de usuarios con un mensaje de éxito
-    return redirect()->route('usuarios.activos')->with('success', 'Contribuyente ' . $request->name . ' registrado exitosamente.');
-}
 
 
     /**
@@ -169,12 +185,20 @@ $input['rfc'] = strtoupper(substr($input['curp'], 0, 10) . self::homoclave());
      */
     public function show($id)
     {
-        $user = User::find($id);
-    $roles = Role::pluck('name','name')->all();
-    $userRole = $user->roles->pluck('name','name')->all();
-
-    return view('usuarios.show', compact('user', 'roles', 'userRole'));
+        // Busca al usuario con su domicilio y roles relacionados
+        $user = User::with('domicilio', 'roles')->find($id);
+    
+        // Obtiene todos los roles disponibles
+        $roles = Role::pluck('name', 'name')->all();
+    
+        // Obtiene los roles del usuario
+        $userRole = $user->roles->pluck('name', 'name')->all();
+    
+        // Retorna la vista con los datos compactados
+        return view('usuarios.show', compact('user', 'roles', 'userRole'));
     }
+    
+
 
     /**
      * Show the form for editing the specified resource.
@@ -217,7 +241,13 @@ $input['rfc'] = strtoupper(substr($input['curp'], 0, 10) . self::homoclave());
         'NombreComercial' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
         'email' => 'required|email|unique:users,email,' . $id,
         'password' => 'nullable|same:confirm-password', // Contraseña opcional
-        'roles' => 'required|array'
+        'roles' => 'required|array',
+        'cp' => 'required',
+        'nombre_vialidad'=>['nullable', 'string', 'max:255'],
+        'tipo_vialidad' => ['nullable', 'string', 'max:255'],
+        'num_interior' => ['nullable', 'string', 'max:255'],
+        'num_exterior' => ['nullable', 'string', 'max:255'],
+        'colonia' => ['nullable', 'string', 'max:255'],
     ]);
 
     $input = $request->all();
@@ -253,7 +283,30 @@ $input['rfc'] = strtoupper(substr($input['curp'], 0, 10) . self::homoclave());
     return redirect()->route('usuarios.activos')->with('success', 'Contribuyente ' . $request->name . ' actualizado exitosamente.');
 }
 
+    public function fechas($date){
+        $dateObj = new DateTime($date);
 
+        $day = $dateObj->format('d');
+        $month = $dateObj->format('n');
+        $year = $dateObj->format('Y');
+        $monthNames = [
+            1 => 'enero',
+            2 => 'febrero',
+            3 => 'marzo',
+            4 => 'abril',
+            5 => 'mayo',
+            6 => 'junio',
+            7 => 'julio',
+            8 => 'agosto',
+            9 => 'septiembre',
+            10 => 'octubre',
+            11 => 'noviembre',
+            12 => 'diciembre',
+        ];
+
+        // Format the date using the array
+        return $day.' de '.$monthNames[$month].' del '.$year;
+    }
 
 
     /**

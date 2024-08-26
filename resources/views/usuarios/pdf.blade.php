@@ -29,6 +29,12 @@
             font-size: 24px;
             margin: 0;
         }
+        .simulador {
+            color: red;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
         .sub-header {
             text-align: center;
             margin-top: 5px;
@@ -64,7 +70,7 @@
             left: 50%;
             transform: translate(-50%, -50%) rotate(-45deg);
             font-size: 60px;
-            color: rgba(200, 200, 200, 0.3);
+            color: rgba(255, 0, 0, 0.3); /* Marca de agua en rojo */
             z-index: -1;
             white-space: nowrap;
         }
@@ -75,6 +81,7 @@
     <div class="container">
         <div class="header">
             <img src="logo.png" alt="Logo">
+            <div class="simulador">SIMULADOR</div>
             <h1>SERVICIO DE ADMINISTRACIÓN TRIBUTARIA</h1>
         </div>
         <div class="sub-header">
@@ -122,13 +129,55 @@
             </tr>
         </table>
         
-        <!-- Sección de datos no requeridos vacía -->
-        <div class="section-title">Datos del  domicilio registrado        </div>
+        <div class="section-title">Datos del Domicilio Registrado</div>
         <table class="content-table">
-            <tr><td colspan="2">N/A</td></tr>
+            <tr>
+                <th>Código Postal:</th>
+                <td>{{ optional($usuario->domicilio)->cp }}</td>
+            </tr>
+            <tr>
+                <th>Nombre de la Vialidad:</th>
+                <td>{{ optional($usuario->domicilio)->nombre_vialidad }}</td>
+            </tr>
+            <tr>
+                <th>Tipo de Vialidad:</th>
+                <td>{{ optional($usuario->domicilio)->tipo_vialidad }}</td>
+            </tr>
+            <tr>
+                <th>Número Exterior:</th>
+                <td>{{ optional($usuario->domicilio)->num_exterior }}</td>
+            </tr>
+            <tr>
+                <th>Número Interior:</th>
+                <td>{{ optional($usuario->domicilio)->num_interior }}</td>
+            </tr>
+            <tr>
+                <th>Colonia:</th>
+                <td>{{ optional($usuario->domicilio)->colonia }}</td>
+            </tr>
+            <tr>
+                <th>Localidad:</th>
+                <td>{{ optional($usuario->domicilio)->localidad }}</td>
+            </tr>
+            <tr>
+                <th>Municipio:</th>
+                <td>{{ optional($usuario->domicilio)->municipio }}</td>
+            </tr>
+            <tr>
+                <th>Entidad:</th>
+                <td>{{ optional($usuario->domicilio)->entidad }}</td>
+            </tr>
+            <tr>
+                <th>Entre Calle 1:</th>
+                <td>{{ optional($usuario->domicilio)->entre_calle1 }}</td>
+            </tr>
+            <tr>
+                <th>Entre Calle 2:</th>
+                <td>{{ optional($usuario->domicilio)->entre_calle2 }}</td>
+            </tr>
         </table>
-        
-        <div class="section-title">Actividad economica        </div>
+
+        <div class="section-title">Actividad economica</div>
         <table class="content-table">
             <tr><td colspan="2">N/A</td></tr>
         </table>

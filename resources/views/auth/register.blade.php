@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <div class="card card-primary">
-        <div class="card-header"><h4>Register</h4></div>
+        <div class="card-header"><h4>Preinscripción al RFC</h4></div>
 
         <div class="card-body pt-1">
             <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
@@ -12,12 +12,12 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="first_name">Full Name:</label><span
+                            <label for="first_name">Nombres:</label><span
                                     class="text-danger">*</span>
                             <input id="firstName" type="text"
                                    class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                                    name="name"
-                                   tabindex="1" placeholder="Enter Full Name" value="{{ old('name') }}"
+                                   tabindex="1" placeholder="Ingresa nombres" value="{{ old('name') }}"
                                    autofocus required>
                             <div class="invalid-feedback">
                                 {{ $errors->first('name') }}
@@ -31,7 +31,7 @@
                             <input id="apellido_p" type="text"
                                    class="form-control{{ $errors->has('apellido_p') ? ' is-invalid' : '' }}"
                                    name="apellido_p"
-                                   tabindex="2" placeholder="Enter Apellido Paterno" value="{{ old('apellido_p') }}"
+                                   tabindex="2" placeholder="Ingresa Apellido Paterno" value="{{ old('apellido_p') }}"
                                    required>
                             <div class="invalid-feedback">
                                 {{ $errors->first('apellido_p') }}
@@ -45,7 +45,7 @@
                             <input id="apellido_m" type="text"
                                    class="form-control{{ $errors->has('apellido_m') ? ' is-invalid' : '' }}"
                                    name="apellido_m"
-                                   tabindex="3" placeholder="Enter Apellido Materno" value="{{ old('apellido_m') }}">
+                                   tabindex="3" placeholder="Ingresa Apellido Materno" value="{{ old('apellido_m') }}">
                             <div class="invalid-feedback">
                                 {{ $errors->first('apellido_m') }}
                             </div>
@@ -54,11 +54,11 @@
                     <!-- CURP -->
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="curp">CURP:</label>
+                            <label for="curp">CURP:</label><span class="text-danger">*</span>
                             <input id="curp" type="text"
                                    class="form-control{{ $errors->has('curp') ? ' is-invalid' : '' }}"
                                    name="curp"
-                                   tabindex="4" placeholder="Enter CURP" value="{{ old('curp') }}">
+                                   tabindex="4" placeholder="Ingresa CURP" value="{{ old('curp') }}">
                             <div class="invalid-feedback">
                                 {{ $errors->first('curp') }}
                             </div>
@@ -68,80 +68,23 @@
                         $today = (new \DateTime())->format('Y-m-d');
                     @endphp
 
-                    <!-- Fecha de Nacimiento -->
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="FechaNac" style="color: black; font-weight: bold;">Fecha de nacimiento:</label>
-        <input id="FechaNac" type="date"
-            class="form-control{{ $errors->has('FechaNac') ? ' is-invalid' : '' }}"
-            name="FechaNac" max="{{ $today }}"
-            tabindex="4" placeholder="Ingrese Fecha de nacimiento" value="{{ old('FechaNac', $user->FechaNac ?? '') }}">
-        <div class="invalid-feedback">
-            {{ $errors->first('FechaNac') }}
-        </div>
-    </div>
-</div>
-
-
-<!-- Sexo -->
-<div class="col-md-6 mb-3">
+                    <!-- Fecha de Inicio -->
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <label for="Sexo" style="color: black; font-weight: bold;">Sexo: <span class="text-danger">*</span></label>
-                            <select id="Sexo" name="Sexo" class="form-control custom-select" required>
-                                <option value="">Selecciona el sexo</option>
-                                <option value="masculino" {{ old('Sexo') == 'masculino' ? 'selected' : '' }}>Masculino</option>
-                                <option value="femenino" {{ old('Sexo') == 'femenino' ? 'selected' : '' }}>Femenino</option>
-                                <option value="otro" {{ old('Sexo') == 'otro' ? 'selected' : '' }}>Otro</option>
-                            </select>
+                            <label for="fecha_nacimiento" style="color: black; font-weight: bold;">Fecha de nacimiento:</label> <span class="text-danger">*</span>
+                            <input id="fecha_nacimiento" type="date"
+                                class="form-control{{ $errors->has('fecha_nacimiento') ? ' is-invalid' : '' }}"
+                                name="fecha_nacimiento" max="{{ $today }}"
+                                tabindex="4" placeholder="Ingrese su fecha de nacimiento" value="{{ old('fecha_nacimiento', $user->fecha_nacimiento ?? '') }}">
+                            <div class="invalid-feedback">
+                                {{ $errors->first('fecha_nacimiento') }}
+                            </div>
                         </div>
                     </div>
 
 
-
-<!-- Nacionalidad -->
-                    <div class="col-md-6 mb-3">
-                        <div class="form-group">
-                            <label for="Nacionalidad" style="color: black; font-weight: bold;">Nacionalidad:</label>
-                            <select id="Nacionalidad" name="Nacionalidad" class="form-control">
-                                <option value="">Selecciona una nacionalidad</option>
-                                <option value="Mexicana" {{ old('Nacionalidad') == 'Mexicana' ? 'selected' : '' }}>Mexicana</option>
-                                <option value="Estadounidense" {{ old('Nacionalidad') == 'Estadounidense' ? 'selected' : '' }}>Estadounidense</option>
-                                <option value="Canadiense" {{ old('Nacionalidad') == 'Canadiense' ? 'selected' : '' }}>Canadiense</option>
-                                <option value="Otro" {{ old('Nacionalidad') == 'Otro' ? 'selected' : '' }}>Otro</option>
-                            </select>
-                        </div>
-                    </div>
-
-
-<!-- Fecha de Inicio -->
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="FechaIniOP" style="color: black; font-weight: bold;">Fecha de Inicio de Operaciones:</label>
-        <input id="FechaIniOP" type="date"
-            class="form-control{{ $errors->has('FechaIniOP') ? ' is-invalid' : '' }}"
-            name="FechaIniOP" max="{{ $today }}"
-            tabindex="4" placeholder="Ingrese Fecha de Inicio de Operaciones" value="{{ old('FechaIniOP', $user->FechaIniOP ?? '') }}">
-        <div class="invalid-feedback">
-            {{ $errors->first('FechaIniOP') }}
-        </div>
-    </div>
-</div>
-
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="fechaUltiCamEst" style="color: black; font-weight: bold;">Fecha del última cambio de estado:</label>
-        <input id="fechaUltiCamEst" type="date"
-            class="form-control{{ $errors->has('fechaUltiCamEst') ? ' is-invalid' : '' }}"
-            name="fechaUltiCamEst" max="{{ $today }}"
-            tabindex="4" placeholder="Ingrese Fecha del última cambio de estado<" value="{{ old('fechaUltiCamEst', $user->fechaUltiCamEst ?? '') }}">
-        <div class="invalid-feedback">
-            {{ $errors->first('fechaUltiCamEst') }}
-        </div>
-    </div>
-</div>
-
-<!-- Nombre Comercial -->
-<div class="col-md-6">
+                    <!-- Nombre Comercial -->
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="NombreComercial">Nombre comercial:</label>
                             <input id="NombreComercial" type="text"
@@ -153,6 +96,121 @@
                             </div>
                         </div>
                     </div>
+
+                    {{-- sexo --}}
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="sexo">Género:</label>
+                            <select id="sexo"
+                                    class="form-control{{ $errors->has('sexo') ? ' is-invalid' : '' }}"
+                                    name="sexo"
+                                    tabindex="3">
+                                <option value="" nulable="disabled">Seleccione una opción</option>
+                                <option value="masculino" {{ old('sexo') == 'Masculino' ? 'selected' : '' }}>Masculino</option>
+                                <option value="femenino" {{ old('sexo') == 'Femenino' ? 'selected' : '' }}>Femenino</option>
+                                <option value="otro" {{ old('sexo') == 'Otro' ? 'selected' : '' }}>Otro</option>
+                            </select>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    // Disable the default option after form load
+                                    let selectElement = document.querySelector('select[name="sexo"]');
+                                    if (selectElement) {
+                                        selectElement.options[0].disabled = true;
+                                    }
+                                });
+                            </script>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('sexo') }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="cp">Codigo postal:</label><span
+                                    class="text-danger">*</span>
+                            <input id="cp" type="text"
+                                   class="form-control{{ $errors->has('cp') ? ' is-invalid' : '' }}"
+                                   name="cp"
+                                   tabindex="1" placeholder="Ingresa vialidad" value="{{ old('cp') }}"
+                                   autofocus required>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('cp') }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nombre_vialidad">Nombre de la vialidad:</label><span
+                                    class="text-danger">*</span>
+                            <input id="nombre_vialidad" type="text"
+                                   class="form-control{{ $errors->has('nombre_vialidad') ? ' is-invalid' : '' }}"
+                                   name="nombre_vialidad"
+                                   tabindex="1" placeholder="Ingresa vialidad" value="{{ old('nombre_vialidad') }}"
+                                   autofocus required>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('nombre_vialidad') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="num_interior">Número interior:</label><span
+                                    class="text-danger">*</span>
+                            <input id="num_interior" type="text"
+                                   class="form-control{{ $errors->has('num_interior') ? ' is-invalid' : '' }}"
+                                   name="num_interior"
+                                   tabindex="1" placeholder="Ingresa vialidad" value="{{ old('num_interior') }}"
+                                   autofocus required>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('num_interior') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="num_exterior">Número exterior:</label><span
+                                    class="text-danger">*</span>
+                            <input id="num_exterior" type="text"
+                                   class="form-control{{ $errors->has('num_exterior') ? ' is-invalid' : '' }}"
+                                   name="num_exterior"
+                                   tabindex="1" placeholder="Ingresa vialidad" value="{{ old('num_exterior') }}"
+                                   autofocus required>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('num_exterior') }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="colonia">Colonia:</label><span
+                                    class="text-danger">*</span>
+                            <input id="colonia" type="text"
+                                   class="form-control{{ $errors->has('colonia') ? ' is-invalid' : '' }}"
+                                   name="colonia"
+                                   tabindex="1" placeholder="Ingresa vialidad" value="{{ old('colonia') }}"
+                                   autofocus required>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('colonia') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="tipo_vialidad">Tipo de la vialidad:</label>
+                            <input id="tipo_vialidad" type="text"
+                                   class="form-control{{ $errors->has('tipo_vialidad') ? ' is-invalid' : '' }}"
+                                   name="tipo_vialidad"
+                                   tabindex="1" placeholder="Ingresa vialidad" value="{{ old('tipo_vialidad') }}"
+                                   autofocus>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('tipo_vialidad') }}
+                            </div>
+                        </div>
+                    </div>
+
 
                     <div class="col-md-6">
                         <div class="form-group">
@@ -197,7 +255,7 @@
                     <div class="col-md-12 mt-4">
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                                Register
+                                Preinscribirse
                             </button>
                         </div>
                     </div>
@@ -206,7 +264,7 @@
         </div>
     </div>
     <div class="mt-5 text-muted text-center">
-        Already have an account ? <a
-                href="{{ route('login') }}">SignIn</a>
+        Usted ya es contribuyente ? <a
+                href="{{ route('login') }}">Ingresar</a>
     </div>
 @endsection

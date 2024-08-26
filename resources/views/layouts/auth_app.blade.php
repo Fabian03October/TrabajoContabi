@@ -32,9 +32,13 @@
             <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <div class="login-brand">
-                        <img src="{{ asset('img/sat2.png') }}" alt="logo" width="120"
-                             class="shadow-light">
+                        <img src="{{ asset('img/sat2.png') }}" alt="logo" width="120" class="shadow-light">
+                        <p class="text-muted mt-2">
+                            <small style="color: red;">La imagen mostrada no tiene validez oficial.</small>
+                        </p>
                     </div>
+
+
                     @yield('content')
                     <div class="simple-footer">
 {{--                        Copyright &copy; {{ getSettingValue('application_name') }}  {{ date('Y') }}--}}

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Domicilio;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -53,15 +54,19 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'apellido_p' => ['required', 'string', 'max:255'],  // Validación para apellido paterno
             'apellido_m' => ['nullable', 'string', 'max:255'],
-            'curp' => ['nullable', 'string', 'size:18', 'regex:/^[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]{2}$/'], // Validación para CURP
-            'FechaNac'=>'required',
-            'Sexo' => ['nullable', 'string', 'max:255'],
-            'Nacionalidad' => ['nullable', 'string', 'max:255'],
-            'FechaIniOP'=>'required',
-            'fechaUltiCamEst'=>'required',
-            'NombreComercial' => ['nullable', 'string', 'max:255'], 
+            'curp' => ['nullable', 'string', 'size:18', 'regex:/^[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]{2}$/'], 
+            'fecha_nacimiento'=>'required',
+            'NombreComercial' => ['nullable', 'string', 'max:255'],
+            'sexo' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'cp' => 'required',
+            'nombre_vialidad'=>['nullable', 'string', 'max:255'],
+            'tipo_vialidad' => ['nullable', 'string', 'max:255'],
+            'num_interior' => ['nullable', 'string', 'max:255'],
+            'num_exterior' => ['nullable', 'string', 'max:255'],
+            'colonia' => ['nullable', 'string', 'max:255'],
+
         ]);
     }
 
@@ -73,20 +78,32 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // Crear el domicilio y obtener el ID
+        $domicilio = Domicilio::create([
+            'cp' => $data['cp'],
+            'nombre_vialidad'=>$data['nombre_vialidad'],
+            'tipo_vialidad' => $data['tipo_vialidad'],
+            'num_interior' => $data['num_interior'],
+            'num_exterior' => $data['num_exterior'],
+            'colonia' => $data['colonia'],
+        ]);
+
+        // Usar el ID del domicilio para crear el usuario
         return User::create([
             'name' => $data['name'],
             'apellido_p' => $data['apellido_p'],
             'apellido_m' => $data['apellido_m'],
             'curp' => $data['curp'],
-            'FechaNac' => $data['FechaNac'],
-            'Sexo' => $data['Sexo'],
-            'Nacionalidad' => $data['Nacionalidad'],
-            'FechaIniOP' => $data['FechaIniOP'],
-            'fechaUltiCamEst' => $data['fechaUltiCamEst'],
+            'fecha_nacimiento' => $data['fecha_nacimiento'],
             'NombreComercial' => $data['NombreComercial'],
-            'status'=>false,
+            'sexo' => $data['sexo'],
+            'status' => false,
+            'status_padron' => false,
+            'fechaUltiCamEst' => (new \DateTime())->format('Y-m-d'),
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'domicilio_id' => $domicilio->id, // Usar el ID del domicilio creado
         ]);
     }
+
 }

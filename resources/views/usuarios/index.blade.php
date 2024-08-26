@@ -4,7 +4,7 @@
 @can('ver-usuario')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading" style="color:black">Alta de Contribuyentes</h3>
+        <h3 class="page__heading" style="color:black">Inscripción al RFC</h3>
     </div>
     <div class="section-body">
         <div class="row">
@@ -13,7 +13,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-3">
                             <div>
-                                
+
                             </div>
                             <br>
                         </div>
@@ -22,6 +22,7 @@
                             <thead style="background-color:rgb(28, 118, 221)">
                                 <th style="display: none;">ID</th>
                                 <th style="color:#fff;">Nombre</th>
+                                <th style="color:#fff;">Curp</th>
                                 <th style="color:#fff;">Correo electronico</th>
                                 <th style="color:#fff;">Rol</th>
                                 <th style="color:#fff;">Acciones</th>
@@ -30,17 +31,21 @@
                                 @foreach ($usuarios as $usuario)
                                 <tr>
                                     <td style="display: none;">{{ $usuario->id }}</td>
-                                    <td>{{ ucfirst(strtolower($usuario->name)) }}</td>
+                                    <td>{{ ucfirst(strtolower($usuario->name)) }} {{' '}} {{ucfirst(strtolower($usuario->apellido_p))}} {{' '}} {{ucfirst(strtolower($usuario->apellido_m))}}</td>
+                                    <td>{{ $usuario->curp }}</td>
                                     <td>{{ $usuario->email }}</td>
                                     <td>
-                                        @if(!empty($usuario->getRoleNames()))
+                                        @if($usuario->getRoleNames()->isNotEmpty())
                                             @foreach($usuario->getRoleNames() as $rolNombre)
                                                 <h5><span class="badge badge-dark">{{ $rolNombre }}</span></h5>
                                             @endforeach
+                                        @else
+                                            <h5><span class="badge badge-dark">Sin rfc</span></h5>
                                         @endif
                                     </td>
+
                                     <td>
-                                        <a class="btn btn-no-border btn-outline-primary" href="{{ route('usuarios.show', $usuario->id) }}" title="Revisar usuario">
+                                        <a class="btn btn-no-border btn-outline-primary" href="{{ route('usuarios.show', $usuario->id) }}" title="Registrar contribuyente al rfc">
                                             <i class="fas fa-eye"></i> Revisar
                                         </a>
                                     </td>
@@ -80,6 +85,7 @@
         columns: [
             { Id: 'Id' },
             { Nombre: 'Nombre' },
+            { Curp: 'Curp' },
             { Email: 'E-mail' },
             { Rol: 'Rol' },
             { Acciones: 'Acciones' }

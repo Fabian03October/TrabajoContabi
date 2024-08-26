@@ -20,17 +20,18 @@ class CreateUsersTable extends Migration
             $table->string('apellido_m')->nullable();
             $table->string('curp')->nullable();
             $table->string('rfc')->unique()->nullable();
-            $table->date('FechaNac')->nullable();
-            $table->string('Sexo')->nullable();
-            $table->string('Nacionalidad')->nullable();
             $table->date('FechaIniOP')->nullable(); // Cambiado de fecha_nacimiento a FechaIniOP
             $table->date('fechaUltiCamEst')->nullable();
             $table->string('NombreComercial')->nullable();
-            $table->boolean('status');
+            $table->string('sexo')->nullable();
+            $table->date('fecha_nacimiento')->nullable();
+            $table->boolean('status');//Estado para poner rfc
+            $table->boolean('status_padron');//esto se pone ACTIVO cuando esta en un regimen
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->foreignId('domicilio_id') ->nullable()->constrained();
             $table->timestamps();
         });
     }

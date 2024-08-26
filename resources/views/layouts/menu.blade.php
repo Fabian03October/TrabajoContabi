@@ -4,7 +4,7 @@
     </a>
     @can('ver-usuario')
     <a class="nav-link" href="/usuarios">
-        <i class=" fas fa-users"></i><span>Alta de Contribuyentes</span>
+        <i class=" fas fa-users"></i><span>Inscripción al RFC</span>
     </a>
     @endcan
 
@@ -20,9 +20,9 @@
     </a>
     @endcan
     @can('ver-blog')
-    <a class="nav-link" href="/blogs">
-        <i class=" fas fa-blog"></i><span>Facturas</span>
+    <a class="nav-link" href="{{ route('usuarios.pdf', auth()->user()->id) }}">
+        <i class="fas fa-file-pdf"></i><span>Imprimir CSF</span>
     </a>
     @endcan
-    
+
 </li>
