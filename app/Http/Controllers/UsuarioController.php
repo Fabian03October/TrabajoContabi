@@ -38,40 +38,43 @@ class UsuarioController extends Controller
     if ($usuario) {
         $usuario->status = 0; // Cambia el estado a desactivado
         $usuario->save();
-        
+
         return redirect()->back()->with('success', 'Usuario desactivado correctamente.');
     }
 
     return redirect()->back()->with('error', 'Usuario no encontrado.');
 }
 
-public function pdf($id)
-{
-    $usuario = User::find($id);
+    public function pdf($id)
+    {
+        $usuario = User::find($id);
 
-    if (!$usuario) {
-        return redirect()->route('usuarios.index')->with('error', 'Usuario no encontrado.');
-    }
-
-    $data = [
-        'usuario' => $usuario,
-    ];
-
-    $pdf = Pdf::loadView('usuarios.pdf', $data);
-    return $pdf->download('CSF_'.$usuario->nombres.'.pdf');
-}
-
-        public function activos(Request $request)
-        {
-            // Filtrar usuarios activos (status = 1)
-            $usuarios = User::where('status', 1)->get();
-
-            return view('usuarios.activos', compact('usuarios'));
+        if (!$usuario) {
+            return redirect()->route('usuarios.index')->with('error', 'Usuario no encontrado.');
         }
 
-        public function activate(Request $request, $id)
-        {
-            $user = User::findOrFail($id);
+        $data = [
+            'usuario' => $usuario,
+        ];
+
+        // $pdf = Pdf::loadView('usuarios.pdf', $data);
+        // return $pdf->download('CSF_'.$usuario->nombres.'.pdf');
+        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('usuarios.pdf', $data);
+        $pdf->set_option('defaultFont', 'Arial');
+        return $pdf->stream('CSF-'. $usuario->name.'.pdf');
+    }
+
+    public function activos(Request $request)
+    {
+        // Filtrar usuarios activos (status = 1)
+        $usuarios = User::where('status', 1)->get();
+
+        return view('usuarios.activos', compact('usuarios'));
+    }
+
+    public function activate(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
 
             // Generar el RFC a partir de los primeros 10 caracteres de la CURP y la homoclave
             $rfc = strtoupper(substr($user->curp, 0, 10) . self::homoclave());
@@ -89,7 +92,7 @@ public function pdf($id)
             $user->save();
 
             return redirect()->route('usuarios.index')->with('success', 'Usuario activado, RFC generado y rol asignado exitosamente.');
-        }
+    }
 
 
 
@@ -187,17 +190,17 @@ public function pdf($id)
     {
         // Busca al usuario con su domicilio y roles relacionados
         $user = User::with('domicilio', 'roles')->find($id);
-    
+
         // Obtiene todos los roles disponibles
         $roles = Role::pluck('name', 'name')->all();
-    
+
         // Obtiene los roles del usuario
         $userRole = $user->roles->pluck('name', 'name')->all();
-    
+
         // Retorna la vista con los datos compactados
         return view('usuarios.show', compact('user', 'roles', 'userRole'));
     }
-    
+
 
 
     /**
