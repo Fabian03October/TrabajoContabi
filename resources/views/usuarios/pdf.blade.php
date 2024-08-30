@@ -12,6 +12,14 @@
             background-color: #fff;
             color: #000;
         }
+        .header {
+            background-color: #494949; /* Color de fondo gris claro */
+            padding: 20px;
+            border: 1px solid #343131; /* Borde gris claro */
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
         .watermark {
             position: absolute;
             top: 50%;
@@ -147,7 +155,7 @@
         .footer {
             padding: 5px; /* Espaciado interno */
             text-align: right; /* Centra el contenido */
-            border-top: 5px solid #141415; /* Borde superior */
+            border-top: 7px solid #494949; /* Borde superior */
             position: relative; /* Posiciona el pie de página en su lugar */
         }
 
@@ -166,7 +174,7 @@
 
     <div class="watermark">SIN VALIDEZ OFICIAL</div>
     <div class="container">
-
+    <div class="header"></div>
         <table class="">
             <tr>
                 <th>
@@ -177,13 +185,16 @@
 
 
                         <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path().'/img/qr.png'))}}" style="width: 50%; height: 20%; float: left;">
-                        <p style="color:grey"><strong>HACIENDA</strong><br>SECRETARÍA DE HACIENDA Y CRÉDITO PÚBLICO</p>
-                        <p style="color:grey"><strong>SAT</strong><br>SERVICIO DE ADMINISTRACIÓN TRIBUTARIA</p>
-                        <p class="uppercase" style="color:grey">{{ $usuario->rfc }}<br>Registro Federal de Contribuyentes</p>
-                        <p class="uppercase" >
+                        {{-- <p style="color:grey"><strong>HACIENDA</strong><br>SECRETARÍA DE HACIENDA Y CRÉDITO PÚBLICO</p> --}}
+                        {{-- <p style="color:grey"><strong>SAT</strong><br>SERVICIO DE ADMINISTRACIÓN TRIBUTARIA</p> --}}
+                        <p class="uppercase" style="color:grey">{{ $usuario->rfc }}</p>
+                        <p  style="color:grey">Registro Federal de Contribuyentes <br> <br></p>
+                        <p class="uppercase"  style="color:grey" >
                             {{ $usuario->name }} {{ $usuario->apellido_p }} {{ $usuario->apellido_m }}<br>
                             Nombre, denominación o razón social</p>
-                        {{-- <p>idCIF: 22080453693<br>VALIDA TU INFORMACIÓN FISCAL</p> --}}
+                        <p  style="color:grey">Nombre, denominación o razón social<br> </p>
+                        <p  style="color:grey">idCIF: 22080453693<br></p>
+                        <p  style="color:grey">VALIDA TU INFORMACIÓN FISCAL</p>
                     </div>
                     {{-- <div class="fiscal-card-right">
                         <img src="codigo_qr.png" alt="Código QR">
@@ -195,9 +206,10 @@
                     <div class="text-center">
                        <table>
                             <th>
-                                <p><strong>CONSTANCIA DE SITUACIÓN FISCAL</strong></p>
-                                <p>Lugar y Fecha de Emisión</p>
-                                <p class="uppercase">
+                                <p  style="font-size: 15px;"><strong>CONSTANCIA DE SITUACIÓN FISCAL</strong> <br> <br></p>
+                                <p style="font-size: 12px; color:rgb(92, 90, 90)">Lugar y Fecha de Emisión</p>
+
+                                <p class="uppercase"  style="font-size: 14px;">
                                    <strong> {{ optional($usuario->domicilio)->municipio}}, {{ optional($usuario->domicilio)->entidad}} A {{ app('App\Http\Controllers\UsuarioController')->fechas(now()->format('Y-m-d')) }}</strong>
                                 </p>
 
@@ -288,7 +300,7 @@
         </table>
         <div class="footer">
             <div class="footer-logo">
-                {{-- <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path().'/img/footer-Sat.png'))}}" style="width: 60%; height: 45%; float: left;"> --}}
+                <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path().'/img/footer-Sat.png'))}}" style="width: 60%; height: 45%; float: left;">
 
             </div>
             <div class="contact-info">
