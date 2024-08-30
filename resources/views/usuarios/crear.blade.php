@@ -130,6 +130,20 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
+                            <label for="tipo_vialidad">Tipo de la vialidad:</label>
+                            <input id="tipo_vialidad" type="text"
+                                   class="form-control{{ $errors->has('tipo_vialidad') ? ' is-invalid' : '' }}"
+                                   name="tipo_vialidad"
+                                   tabindex="1" placeholder="Ingresa vialidad" value="{{ old('tipo_vialidad') }}"
+                                   autofocus>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('tipo_vialidad') }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
                             <label for="nombre_vialidad">Nombre de la vialidad:</label><span
                                     class="text-danger">*</span>
                             <input id="nombre_vialidad" type="text"
@@ -185,19 +199,79 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="tipo_vialidad">Tipo de la vialidad:</label>
-                            <input id="tipo_vialidad" type="text"
-                                   class="form-control{{ $errors->has('tipo_vialidad') ? ' is-invalid' : '' }}"
-                                   name="tipo_vialidad"
-                                   tabindex="1" placeholder="Ingresa vialidad" value="{{ old('tipo_vialidad') }}"
+                            <label for="localidad">localidad:</label>
+                            <input id="localidad" type="text"
+                                   class="form-control{{ $errors->has('localidad') ? ' is-invalid' : '' }}"
+                                   name="localidad"
+                                   tabindex="1" placeholder="Ingresa localidad" value="{{ old('localidad') }}"
+                                   autofocus>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('localidad') }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="municipio">municipio:</label>
+                            <input id="municipio" type="text"
+                                   class="form-control{{ $errors->has('municipio') ? ' is-invalid' : '' }}"
+                                   name="municipio"
+                                   tabindex="1" placeholder="Ingresa municipio" value="{{ old('municipio') }}"
+                                   autofocus>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('municipio') }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="entidad">entidad:</label>
+                            <input id="entidad" type="text"
+                                   class="form-control{{ $errors->has('entidad') ? ' is-invalid' : '' }}"
+                                   name="entidad"
+                                   tabindex="1" placeholder="Ingresa entidad" value="{{ old('entidad') }}"
+                                   autofocus>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('entidad') }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="entre_calle1"> Entre calle:</label>
+                            <input id="entre_calle1" type="text"
+                                   class="form-control{{ $errors->has('entre_calle1') ? ' is-invalid' : '' }}"
+                                   name="entre_calle1"
+                                   tabindex="1" placeholder="Ingresa vialidad" value="{{ old('entre_calle1') }}"
+                                   autofocus>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('entre_calle1') }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="entre_calle2">ENTRE CALLE:</label>
+                            <input id="entre_calle2" type="text"
+                                   class="form-control{{ $errors->has('entre_calle2') ? ' is-invalid' : '' }}"
+                                   name="entre_calle2"
+                                   tabindex="1" placeholder="Ingresa vialidad" value="{{ old('entre_calle2') }}"
                                    autofocus>
                             <div class="invalid-feedback">
                                 {{ $errors->first('tipo_vialidad') }}
                             </div>
                         </div>
                     </div>
+
+
+                    
 
 
 

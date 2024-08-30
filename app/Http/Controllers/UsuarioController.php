@@ -121,61 +121,74 @@ class UsuarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $this->validate($request, [
-            'name' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+$/'],
-            'apellido_p' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+$/'],
-            'apellido_m' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]*$/'],
-            'sexo' => 'required',
-            'fecha_nacimiento' => 'nullable|date',
-            'NombreComercial' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s\'".]+$/'],
-            'curp' => ['required', 'string', 'size:18', 'regex:/^[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]{2}$/'],
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'roles' => 'required',
-            'cp' => 'required',
-            'nombre_vialidad'=>['nullable', 'string', 'max:255'],
-            'tipo_vialidad' => ['nullable', 'string', 'max:255'],
-            'num_interior' => ['nullable', 'string', 'max:255'],
-            'num_exterior' => ['nullable', 'string', 'max:255'],
-            'colonia' => ['nullable', 'string', 'max:255']
-        ]);
+{
+    $this->validate($request, [
+        'name' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+$/'],
+        'apellido_p' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+$/'],
+        'apellido_m' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]*$/'],
+        'sexo' => 'required',
+        'fecha_nacimiento' => 'nullable|date',
+        'NombreComercial' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s\'".]+$/'],
+        'curp' => ['required', 'string', 'size:18', 'regex:/^[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]{2}$/'],
+        'email' => 'required|email|unique:users,email',
+        'password' => 'required|same:confirm-password',
+        'roles' => 'required',
+        'cp' => 'required',
+        'nombre_vialidad'=>['nullable', 'string', 'max:255'],
+        'tipo_vialidad' => ['nullable', 'string', 'max:255'],
+        'num_interior' => ['nullable', 'string', 'max:255'],
+        'num_exterior' => ['nullable', 'string', 'max:255'],
+        'colonia' => ['nullable', 'string', 'max:255'],
+        'localidad' => ['nullable', 'string', 'max:255'],
+        'municipio' => ['nullable', 'string', 'max:255'],
+        'entidad' => ['nullable', 'string', 'max:255'],
+        'entre_calle1' => ['nullable', 'string', 'max:255'],
+        'entre_calle2' => ['nullable', 'string', 'max:255']
 
-        $data = $request->all();
-        $data['password'] = Hash::make($data['password']);
+    ]);
 
-        $data['status'] = 0;
-        $data['status_padron'] = 0;
-        $data['fechaUltiCamEst'] = (new \DateTime())->format('Y-m-d');
-        //$user = User::create($input);//crea el contribuyente con todos sus campos
-        $domicilio = Domicilio::create([
-            'cp' => $data['cp'],
-            'nombre_vialidad'=>$data['nombre_vialidad'],
-            'tipo_vialidad' => $data['tipo_vialidad'],
-            'num_interior' => $data['num_interior'],
-            'num_exterior' => $data['num_exterior'],
-            'colonia' => $data['colonia'],
-        ]);
+    $data = $request->all();
+    $data['password'] = Hash::make($data['password']);
+    $data['status'] = 0;
+    $data['status_padron'] = 0;
+    $data['fechaUltiCamEst'] = (new \DateTime())->format('Y-m-d');
 
-        return User::create([
-            'name' => $data['name'],
-            'apellido_p' => $data['apellido_p'],
-            'apellido_m' => $data['apellido_m'],
-            'curp' => $data['curp'],
-            'fecha_nacimiento' => $data['fecha_nacimiento'],
-            'NombreComercial' => $data['NombreComercial'],
-            'sexo' => $data['sexo'],
-            'status' => false,
-            'status_padron' => false,
-            'fechaUltiCamEst' => (new \DateTime())->format('Y-m-d'),
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'domicilio_id' => $domicilio->id, // Usar el ID del domicilio creado
-        ]);
-        $user->assignRole($request->input('roles'));
+    $domicilio = Domicilio::create([
+        'cp' => $data['cp'],
+        'nombre_vialidad'=>$data['nombre_vialidad'],
+        'tipo_vialidad' => $data['tipo_vialidad'],
+        'num_interior' => $data['num_interior'],
+        'num_exterior' => $data['num_exterior'],
+        'colonia' => $data['colonia'],
+        'localidad' => $data['localidad'],
+        'municipio' => $data['municipio'],
+        'entidad' => $data['entidad'],
+        'entre_calle1' => $data['entre_calle1'],
+        'entre_calle2' => $data['entre_calle2'],
+    ]);
 
-        return redirect()->route('usuarios.index')->with('success', 'Contribuyente '.$request->name. ' registrado exitosamente.');
-    }
+    $user = User::create([
+        'name' => $data['name'],
+        'apellido_p' => $data['apellido_p'],
+        'apellido_m' => $data['apellido_m'],
+        'curp' => $data['curp'],
+        'fecha_nacimiento' => $data['fecha_nacimiento'],
+        'NombreComercial' => $data['NombreComercial'],
+        'sexo' => $data['sexo'],
+        'status' => $data['status'],
+        'status_padron' => $data['status_padron'],
+        'fechaUltiCamEst' => $data['fechaUltiCamEst'],
+        'email' => $data['email'],
+        'password' => $data['password'],
+        'domicilio_id' => $domicilio->id,
+    ]);
+
+    $user->assignRole($request->input('roles'));
+
+    // Redirigir a la lista de usuarios con un mensaje de éxito
+    return redirect()->route('usuarios.index')
+        ->with('success', 'Contribuyente '.$request->name. ' registrado exitosamente.');
+}
 
 
 
@@ -251,6 +264,11 @@ class UsuarioController extends Controller
         'num_interior' => ['nullable', 'string', 'max:255'],
         'num_exterior' => ['nullable', 'string', 'max:255'],
         'colonia' => ['nullable', 'string', 'max:255'],
+        'localidad' => ['nullable', 'string', 'max:255'],
+        'municipio' => ['nullable', 'string', 'max:255'],
+        'entidad' => ['nullable', 'string', 'max:255'],
+        'entre_calle1' => ['nullable', 'string', 'max:255'],
+        'entre_calle2' => ['nullable', 'string', 'max:255']
     ]);
 
     $input = $request->all();

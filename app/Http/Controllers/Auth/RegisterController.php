@@ -66,6 +66,11 @@ class RegisterController extends Controller
             'num_interior' => ['nullable', 'string', 'max:255'],
             'num_exterior' => ['nullable', 'string', 'max:255'],
             'colonia' => ['nullable', 'string', 'max:255'],
+            'localidad' => ['nullable', 'string', 'max:255'],
+            'municipio' => ['nullable', 'string', 'max:255'],
+            'entidad' => ['nullable', 'string', 'max:255'],
+            'entre_calle1' => ['nullable', 'string', 'max:255'],
+            'entre_calle2' => ['nullable', 'string', 'max:255']
 
         ]);
     }
@@ -86,6 +91,11 @@ class RegisterController extends Controller
             'num_interior' => $data['num_interior'],
             'num_exterior' => $data['num_exterior'],
             'colonia' => $data['colonia'],
+            'localidad' => $data['localidad'],
+            'municipio' => $data['municipio'],
+            'entidad' => $data['entidad'],
+            'entre_calle1' => $data['entre_calle1'],
+            'entre_calle2' => $data['entre_calle2'],
         ]);
 
         // Usar el ID del domicilio para crear el usuario
