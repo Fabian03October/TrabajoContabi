@@ -243,12 +243,12 @@ class UsuarioController extends Controller
 {
     // Validación de los datos del formulario
     $this->validate($request, [
+        // Validaciones de usuario
         'name' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
         'apellido_p' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
         'apellido_m' => ['required', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
         'curp' => ['required', 'string', 'size:18', 'regex:/^[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]{2}$/'],
         'rfc' => ['required', 'string', 'size:13', 'regex:/^[A-Z]{3,4}\d{6}[A-Z0-9]{3}$/'],
-        'status' => 'boolean', // Validación como booleano
         'FechaNac' => 'nullable|date',
         'Sexo' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
         'Nacionalidad' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
@@ -256,9 +256,11 @@ class UsuarioController extends Controller
         'fechaUltiCamEst' => 'nullable|date',
         'NombreComercial' => ['nullable', 'regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s.,]+$/'],
         'email' => 'required|email|unique:users,email,' . $id,
-        'password' => 'nullable|same:confirm-password', // Contraseña opcional
+        'password' => 'nullable|same:confirm-password',
         'roles' => 'required|array',
-        'cp' => 'required',
+
+        // Validaciones de domicilio
+        'cp' => 'required|string|max:255',
         'nombre_vialidad'=>['nullable', 'string', 'max:255'],
         'tipo_vialidad' => ['nullable', 'string', 'max:255'],
         'num_interior' => ['nullable', 'string', 'max:255'],
@@ -273,14 +275,13 @@ class UsuarioController extends Controller
 
     $input = $request->all();
 
-    // Convertir 'status' a valor booleano
-    $input['status'] = $request->has('status') ? true : false;
+    $input['status'] = 1;
+
 
     // Encriptar la contraseña si se ha proporcionado
     if (!empty($input['password'])) {
         $input['password'] = Hash::make($input['password']);
     } else {
-        // Eliminar la contraseña del array de entrada si no se proporciona
         $input = Arr::except($input, ['password']);
     }
 
@@ -297,12 +298,31 @@ class UsuarioController extends Controller
     // Actualizar el usuario
     $user->update($input);
 
+    // Actualizar los datos de domicilio
+    $domicilio = $user->domicilio;
+    if ($domicilio) {
+        $domicilio->update([
+            'cp' => $request->input('cp'),
+            'tipo_vialidad' => $request->input('tipo_vialidad'),
+            'nombre_vialidad' => $request->input('nombre_vialidad'),
+            'num_interior' => $request->input('num_interior'),
+            'num_exterior' => $request->input('num_exterior'),
+            'colonia' => $request->input('colonia'),
+            'localidad' => $request->input('localidad'),
+            'municipio' => $request->input('municipio'),
+            'entidad' => $request->input('entidad'),
+            'entre_calle1' => $request->input('entre_calle1'),
+            'entre_calle2' => $request->input('entre_calle2')
+        ]);
+    }
+
     // Eliminar los roles actuales y asignar los nuevos roles
     DB::table('model_has_roles')->where('model_id', $id)->delete();
     $user->assignRole($request->input('roles'));
 
     return redirect()->route('usuarios.activos')->with('success', 'Contribuyente ' . $request->name . ' actualizado exitosamente.');
 }
+
 
     public function fechas($date){
         $dateObj = new DateTime($date);

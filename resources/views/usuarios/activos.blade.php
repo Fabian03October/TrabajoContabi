@@ -63,10 +63,13 @@
 
                                     <td>
                                         <a class="btn btn-no-border btn-outline-warning" href="{{ route('usuarios.edit', $usuario->id) }}" title="Editar usuario"><i class="fas fa-edit"></i> Editar</a>
-                                        <a class="btn btn-no-border btn-outline-info" href="{{ route('usuarios.pdf', $usuario->id) }}" title="Descargar PDF"><i class="fas fa-file-pdf"></i> PDF</a>
-                                        <button class="btn btn-no-border btn-outline-warning" onclick="confirmDeactivate({{ $usuario->id }}, '{{ $usuario->name }}')" title="Desactivar usuario">
+                                        <a class="btn btn-no-border btn-outline-info" href="{{ route('usuarios.pdf', $usuario->id) }}" target="_blank" title="Descargar PDF">
+                                            <i class="fas fa-file-pdf"></i> PDF
+                                        </a>
+
+                                        <!-- <button class="btn btn-no-border btn-outline-warning" onclick="confirmDeactivate({{ $usuario->id }}, '{{ $usuario->name }}')" title="Desactivar usuario">
                                         <i class="fa fa-ban" aria-hidden="true"></i> Desactivar
-                                        </button>
+                                        </button> -->
                                         {!! Form::open(['method' => 'POST', 'route' => ['usuarios.deactivate', $usuario->id], 'style' => 'display:inline', 'id' => 'deactivate-form-' . $usuario->id]) !!}
                                         {!! Form::close() !!}
 

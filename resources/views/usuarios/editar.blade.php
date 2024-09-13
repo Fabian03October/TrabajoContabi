@@ -75,12 +75,6 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" name="status" id="status" value="1" {{ $user->status ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="status">Activar contribuyente</label>
-                                    </div>
-                                </div>
 
                                 @php
                                     $today = (new \DateTime())->format('Y-m-d');
@@ -88,15 +82,15 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label style="color: black; font-weight: bold;" for="FechaNac">Fecha de Nacimiento</label>
-                                        <input id="FechaNac" type="date"
-                                            class="form-control{{ $errors->has('FechaNac') ? ' is-invalid' : '' }}"
-                                            name="FechaNac"
-                                            value="{{ old('FechaNac', $user->FechaNac ?? '') }}"
+                                        <label style="color: black; font-weight: bold;" for="fecha_nacimiento">Fecha de Nacimiento <span class="required text-danger">*</span></label>
+                                        <input id="fecha_nacimiento" type="date"
+                                            class="form-control{{ $errors->has('fecha_nacimiento') ? ' is-invalid' : '' }}"
+                                            name="fecha_nacimiento"
+                                            value="{{ old('fecha_nacimiento', $user->fecha_nacimiento ?? '') }}"
                                             max="{{ $today }}">
-                                        @if ($errors->has('FechaNac'))
+                                        @if ($errors->has('fecha_nacimiento'))
                                             <div class="invalid-feedback">
-                                                {{ $errors->first('FechaNac') }}
+                                                {{ $errors->first('fecha_nacimiento') }}
                                             </div>
                                         @endif
                                     </div>
@@ -104,7 +98,7 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label style="color: black; font-weight: bold;" for="Sexo">Sexo <span class="text-danger">*</span></label>
+                                        <label style="color: black; font-weight: bold;" for="Sexo">Sexo <span class="required text-danger">*</span></label>
                                         <select id="Sexo" name="Sexo" class="form-control custom-select" required>
                                             <option value="">Selecciona el sexo</option>
                                             <option value="masculino" {{ (old('Sexo', $user->Sexo) == 'masculino') ? 'selected' : '' }}>Masculino</option>
@@ -114,22 +108,10 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label style="color: black; font-weight: bold;" for="Nacionalidad">Nacionalidad</label>
-                                        <select id="Nacionalidad" name="Nacionalidad" class="form-control">
-                                            <option value="">Selecciona una nacionalidad</option>
-                                            <option value="Mexicana" {{ (old('Nacionalidad', $user->Nacionalidad) == 'Mexicana') ? 'selected' : '' }}>Mexicana</option>
-                                            <option value="Estadounidense" {{ (old('Nacionalidad', $user->Nacionalidad) == 'Estadounidense') ? 'selected' : '' }}>Estadounidense</option>
-                                            <option value="Canadiense" {{ (old('Nacionalidad', $user->Nacionalidad) == 'Canadiense') ? 'selected' : '' }}>Canadiense</option>
-                                            <option value="Otro" {{ (old('Nacionalidad', $user->Nacionalidad) == 'Otro') ? 'selected' : '' }}>Otro</option>
-                                        </select>
-                                    </div>
-                                </div>
 
-                                <div class="col-md-6">
+                                <!-- <div class="col-md-6">
                                     <div class="form-group">
-                                        <label style="color: black; font-weight: bold;" for="FechaIniOP">Fecha de Inicio de Operaciones</label>
+                                        <label style="color: black; font-weight: bold;" for="FechaIniOP">Fecha de Inicio de Operaciones <span class="required text-danger">*</span></label>
                                         <input id="FechaIniOP" type="date"
                                             class="form-control{{ $errors->has('FechaIniOP') ? ' is-invalid' : '' }}"
                                             name="FechaIniOP"
@@ -141,11 +123,11 @@
                                             </div>
                                         @endif
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="col-md-6">
+                                <!-- <div class="col-md-6">
                                     <div class="form-group">
-                                        <label style="color: black; font-weight: bold;" for="fechaUltiCamEst">Fecha del última cambio de estado</label>
+                                        <label style="color: black; font-weight: bold;" for="fechaUltiCamEst">Fecha del última cambio de estado </label>
                                         <input id="fechaUltiCamEst" type="date"
                                             class="form-control{{ $errors->has('fechaUltiCamEst') ? ' is-invalid' : '' }}"
                                             name="fechaUltiCamEst"
@@ -157,7 +139,7 @@
                                             </div>
                                         @endif
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -197,23 +179,83 @@
                                     </div>
                                 </div>
 
-
-{{--
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label style="color: black; font-weight: bold;" for="rfc">RFC <span class="required text-danger">*</span></label>
-                                        {!! Form::text('rfc', $user->rfc, [
-                                            'class' => 'form-control',
-                                            'pattern' => '[A-Z]{3,4}\d{6}[A-Z0-9]{3}',
-                                            'title' => 'El RFC debe tener el formato válido, por ejemplo: ABC123456XYZ',
-                                            'maxlength' => 13, // Ajusta a 14 si usas RFC con homoclave
-                                            'required' => true
-                                        ]) !!}
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('rfc') }}
-                                        </div>
+                                        <label style="color: black; font-weight: bold;">Codigo Postal: <span class="required text-danger">*</span></label>
+                                        <input type="text" name="cp" class="form-control" value="{{ $user->domicilio->cp }}">
                                     </div>
                                 </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label style="color: black; font-weight: bold;">Tipo de Vialidad:<span class="required text-danger">*</span></label>
+                                        <input type="text" name="tipo_vialidad" class="form-control" value="{{ $user->domicilio->tipo_vialidad }}">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label style="color: black; font-weight: bold;">Nombre de Vialidad:<span class="required text-danger">*</span></label>
+                                        <input type="text" name="nombre_vialidad" class="form-control" value="{{ $user->domicilio->nombre_vialidad }}">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label style="color: black; font-weight: bold;">Numero Interior:<span class="required text-danger">*</span></label>
+                                        <input type="text" name="num_interior" class="form-control" value="{{ $user->domicilio->num_interior }}">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label style="color: black; font-weight: bold;">Numero Exterior: <span class="required text-danger">*</span></label>
+                                        <input type="text" name="num_exterior" class="form-control" value="{{ $user->domicilio->num_exterior }}">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label style="color: black; font-weight: bold;">Colonia:<span class="required text-danger">*</span></label>
+                                        <input type="text" name="colonia" class="form-control" value="{{ $user->domicilio->colonia }}">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label style="color: black; font-weight: bold;">Localidad:<span class="required text-danger">*</span></label>
+                                        <input type="text" name="localidad" class="form-control" value="{{ $user->domicilio->localidad }}">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label style="color: black; font-weight: bold;">Municipio:<span class="required text-danger">*</span></label>
+                                        <input type="text" name="municipio" class="form-control" value="{{ $user->domicilio->municipio }}">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label style="color: black; font-weight: bold;">Entidad:<span class="required text-danger">*</span></label>
+                                        <input type="text" name="entidad" class="form-control" value="{{ $user->domicilio->entidad }}">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label style="color: black; font-weight: bold;">Entre calle 1:<span class="required text-danger">*</span></label>
+                                        <input type="text" name="entre_calle1" class="form-control" value="{{ $user->domicilio->entre_calle1 }}">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label style="color: black; font-weight: bold;">Entre calle 2:<span class="required text-danger">*</span></label>
+                                        <input type="text" name="entre_calle2" class="form-control" value="{{ $user->domicilio->entre_calle2 }}">
+                                    </div>
+                                </div>
+
 
                                 <div class="col-md-6">
                                     <div class="form-group">

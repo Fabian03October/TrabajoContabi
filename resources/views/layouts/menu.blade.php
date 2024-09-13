@@ -1,6 +1,6 @@
 <li class="side-menus {{ Request::is('*') ? 'active' : '' }}">
     <a class="nav-link" href="/home">
-        <i class=" fas fa-building"></i><span>Dashboard</span>
+        <i class=" fas fa-building"></i><span>Inicio</span>
     </a>
     @can('ver-usuario')
     <a class="nav-link" href="/usuarios">
@@ -20,9 +20,12 @@
     </a>
     @endcan
     @can('ver-blog')
-    <a class="nav-link" href="{{ route('usuarios.pdf', auth()->user()->id) }}">
-        <i class="fas fa-file-pdf"></i><span>Imprimir CSF</span>
-    </a>
-    @endcan
+    @if(auth()->user()->id !== 1)
+        <a class="nav-link" href="{{ route('usuarios.pdf', auth()->user()->id) }}" target="_blank">
+            <i class="fas fa-file-pdf"></i><span>Imprimir CSF</span>
+        </a>
+    @endif
+@endcan
+
 
 </li>

@@ -74,19 +74,82 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label style="color: black; font-weight: bold;">Fecha del Último Cambio de Estatus:</label>
-                                    <input type="text" class="form-control" value="{{ $fecha_statusformateada }}" readonly>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
                                     <label style="color: black; font-weight: bold;">Nombre Comercial:</label>
                                     <input type="text" class="form-control" value="{{ $user->NombreComercial }}" readonly>
                                 </div>
                             </div>
 
 
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="color: black; font-weight: bold;">Codigo Postal:</label>
+                                    <input type="text" class="form-control" value="{{ $user->domicilio->cp }}" readonly>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="color: black; font-weight: bold;">Tipo de Vialidad:</label>
+                                    <input type="text" class="form-control" value="{{ $user->domicilio->tipo_vialidad }}" readonly>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="color: black; font-weight: bold;">Nombre de Vialidad:</label>
+                                    <input type="text" class="form-control" value="{{ $user->domicilio->nombre_vialidad }}" readonly>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="color: black; font-weight: bold;">Nuemro interior:</label>
+                                    <input type="text" class="form-control" value="{{ $user->domicilio->num_interior }}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="color: black; font-weight: bold;">Numero Exterior:</label>
+                                    <input type="text" class="form-control" value="{{ $user->domicilio->num_exterior }}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="color: black; font-weight: bold;">Colonia:</label>
+                                    <input type="text" class="form-control" value="{{ $user->domicilio->colonia }}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="color: black; font-weight: bold;">Localidad:</label>
+                                    <input type="text" class="form-control" value="{{ $user->domicilio->localidad }}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="color: black; font-weight: bold;">Municipio:</label>
+                                    <input type="text" class="form-control" value="{{ $user->domicilio->municipio }}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="color: black; font-weight: bold;">Entidad:</label>
+                                    <input type="text" class="form-control" value="{{ $user->domicilio->entidad }}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="color: black; font-weight: bold;">Entre calle:</label>
+                                    <input type="text" class="form-control" value="{{ $user->domicilio->entre_calle1 }}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="color: black; font-weight: bold;"> Entre calle:</label>
+                                    <input type="text" class="form-control" value="{{ $user->domicilio->entre_calle2 }}" readonly>
+                                </div>
+                            </div>
+                             
                                 <!-- Botones -->
                             <div class="col-md-12 text-center">
 

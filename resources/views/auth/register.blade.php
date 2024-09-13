@@ -7,6 +7,11 @@
         <div class="card-header"><h4>Preinscripción al RFC</h4></div>
 
         <div class="card-body pt-1">
+            <!-- Nota al usuario final con color personalizado y auto-ocultamiento -->
+            <div class="alert alert-info" id="autoDismissAlert" role="alert" style="background-color: #487dd9; color: white;">
+                                Por favor, rellena los campos para preinscribirte como nuevo contribuyente.
+            </div>
+
             <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
@@ -41,11 +46,12 @@
                     <!-- Apellido Materno -->
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="apellido_m">Apellido Materno:</label>
+                            <label for="apellido_m">Apellido Materno:<span style="color: red;">*</span></label>
                             <input id="apellido_m" type="text"
                                    class="form-control{{ $errors->has('apellido_m') ? ' is-invalid' : '' }}"
                                    name="apellido_m"
-                                   tabindex="3" placeholder="Ingresa Apellido Materno" value="{{ old('apellido_m') }}">
+                                   tabindex="3" placeholder="Ingresa Apellido Materno" value="{{ old('apellido_m') }}"
+                                   autofocus required>
                             <div class="invalid-feedback">
                                 {{ $errors->first('apellido_m') }}
                             </div>
@@ -58,7 +64,8 @@
                             <input id="curp" type="text"
                                    class="form-control{{ $errors->has('curp') ? ' is-invalid' : '' }}"
                                    name="curp"
-                                   tabindex="4" placeholder="Ingresa CURP" value="{{ old('curp') }}">
+                                   tabindex="4" placeholder="Ingresa CURP" value="{{ old('curp') }}"
+                                   autofocus required>
                             <div class="invalid-feedback">
                                 {{ $errors->first('curp') }}
                             </div>
@@ -68,14 +75,15 @@
                         $today = (new \DateTime())->format('Y-m-d');
                     @endphp
 
-                    <!-- Fecha de Inicio -->
+                    <!-- Fecha de Nacimiento -->
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="fecha_nacimiento" style="color: black; font-weight: bold;">Fecha de nacimiento:</label> <span class="text-danger">*</span>
                             <input id="fecha_nacimiento" type="date"
                                 class="form-control{{ $errors->has('fecha_nacimiento') ? ' is-invalid' : '' }}"
                                 name="fecha_nacimiento" max="{{ $today }}"
-                                tabindex="4" placeholder="Ingrese su fecha de nacimiento" value="{{ old('fecha_nacimiento', $user->fecha_nacimiento ?? '') }}">
+                                tabindex="4" placeholder="Ingrese su fecha de nacimiento" value="{{ old('fecha_nacimiento', $user->fecha_nacimiento ?? '') }}"
+                                autofocus required>
                             <div class="invalid-feedback">
                                 {{ $errors->first('fecha_nacimiento') }}
                             </div>
@@ -90,7 +98,8 @@
                             <input id="NombreComercial" type="text"
                                    class="form-control{{ $errors->has('NombreComercial') ? ' is-invalid' : '' }}"
                                    name="NombreComercial"
-                                   tabindex="3" placeholder="Ingrese el Nombre Comercial:" value="{{ old('NombreComercial') }}">
+                                   tabindex="3" placeholder="Ingrese el Nombre Comercial:" value="{{ old('NombreComercial') }}"
+                                   >
                             <div class="invalid-feedback">
                                 {{ $errors->first('NombreComercial') }}
                             </div>
@@ -100,7 +109,7 @@
                     {{-- sexo --}}
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="sexo">Género:</label>
+                            <label for="sexo">Género:<span style="color: red;">*</span></label>
                             <select id="sexo"
                                     class="form-control{{ $errors->has('sexo') ? ' is-invalid' : '' }}"
                                     name="sexo"
@@ -142,12 +151,12 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="tipo_vialidad">Tipo de la vialidad:</label>
+                            <label for="tipo_vialidad">Tipo de la vialidad:<span style="color: red;">*</span></label>
                             <input id="tipo_vialidad" type="text"
                                    class="form-control{{ $errors->has('tipo_vialidad') ? ' is-invalid' : '' }}"
                                    name="tipo_vialidad"
                                    tabindex="1" placeholder="Ingresa vialidad" value="{{ old('tipo_vialidad') }}"
-                                   autofocus>
+                                   autofocus required>
                             <div class="invalid-feedback">
                                 {{ $errors->first('tipo_vialidad') }}
                             </div>
@@ -215,12 +224,12 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="localidad">localidad:</label>
+                            <label for="localidad">localidad:<span style="color: red;">*</span></label>
                             <input id="localidad" type="text"
                                    class="form-control{{ $errors->has('localidad') ? ' is-invalid' : '' }}"
                                    name="localidad"
                                    tabindex="1" placeholder="Ingresa localidad" value="{{ old('localidad') }}"
-                                   autofocus>
+                                   autofocus required>
                             <div class="invalid-feedback">
                                 {{ $errors->first('localidad') }}
                             </div>
@@ -229,12 +238,12 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="municipio">municipio:</label>
+                            <label for="municipio">municipio:<span style="color: red;">*</span></label>
                             <input id="municipio" type="text"
                                    class="form-control{{ $errors->has('municipio') ? ' is-invalid' : '' }}"
                                    name="municipio"
                                    tabindex="1" placeholder="Ingresa municipio" value="{{ old('municipio') }}"
-                                   autofocus>
+                                   autofocus required>
                             <div class="invalid-feedback">
                                 {{ $errors->first('municipio') }}
                             </div>
@@ -243,12 +252,12 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="entidad">entidad:</label>
+                            <label for="entidad">entidad:<span style="color: red;">*</span></label>
                             <input id="entidad" type="text"
                                    class="form-control{{ $errors->has('entidad') ? ' is-invalid' : '' }}"
                                    name="entidad"
                                    tabindex="1" placeholder="Ingresa entidad" value="{{ old('entidad') }}"
-                                   autofocus>
+                                   autofocus required>
                             <div class="invalid-feedback">
                                 {{ $errors->first('entidad') }}
                             </div>
@@ -257,12 +266,12 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="entre_calle1"> Entre calle:</label>
+                            <label for="entre_calle1"> Entre calle:<span style="color: red;">*</span></label>
                             <input id="entre_calle1" type="text"
                                    class="form-control{{ $errors->has('entre_calle1') ? ' is-invalid' : '' }}"
                                    name="entre_calle1"
                                    tabindex="1" placeholder="Ingresa vialidad" value="{{ old('entre_calle1') }}"
-                                   autofocus>
+                                   autofocus required>
                             <div class="invalid-feedback">
                                 {{ $errors->first('entre_calle1') }}
                             </div>
@@ -271,12 +280,12 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="entre_calle2">ENTRE CALLE:</label>
+                            <label for="entre_calle2">ENTRE CALLE:<span style="color: red;">*</span></label>
                             <input id="entre_calle2" type="text"
                                    class="form-control{{ $errors->has('entre_calle2') ? ' is-invalid' : '' }}"
                                    name="entre_calle2"
                                    tabindex="1" placeholder="Ingresa vialidad" value="{{ old('entre_calle2') }}"
-                                   autofocus>
+                                   autofocus required>
                             <div class="invalid-feedback">
                                 {{ $errors->first('tipo_vialidad') }}
                             </div>
