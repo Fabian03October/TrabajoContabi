@@ -17,7 +17,7 @@ class CreateDomiciliosTable extends Migration
             $table->id();
             $table->integer('cp');
             $table->string('nombre_vialidad');
-            $table->string('tipo_vialidad');
+            $table->string('tipo_vialidad')->nullable();
             $table->string('num_interior');
             $table->string('num_exterior');
             $table->string('colonia');

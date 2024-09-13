@@ -57,6 +57,16 @@ class User extends Authenticatable
         return $this->belongsTo(Domicilio::class, 'domicilio_id');
     }
 
+    public function ActividadUser()
+    {
+        return $this->hasMany(User_Actividade::class, 'user_id');
+    }
+
+    public function Inscripcion()
+    {
+        return $this->hasMany(Inscripcione::class, 'user_id');
+    }
+
     /**
      * The attributes that should be cast to native types.
      *

@@ -176,7 +176,9 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         //Agregamos a spatie
-        Spatie\Permission\PermissionServiceProvider::class
+        Spatie\Permission\PermissionServiceProvider::class,
+
+        App\Providers\BreadcrumbServiceProvider::class
     ],
 
     /*

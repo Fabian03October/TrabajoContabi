@@ -9,7 +9,9 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\EscuelaController;
 use App\Http\Controllers\nombreController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\Simulador\InscripcionController;
 
+use Mews\Captcha\Captcha;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,12 +50,16 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('usuarios/{id}/pdf', [UsuarioController::class, 'pdf'])->name('usuarios.pdf');
     Route::get('usuarios/{id}/desactivar', [UsuarioController::class, 'desactivar'])->name('usuarios.deactivate');
 
+    Route::resource('inscripcion', InscripcionController::class);
 
 
 
-
-
+    Route::post('/tipos-ingreso', [InscripcionController::class, 'select'])->name('inscripcion.select');
     // Añadimos las rutas para el controlador de facturas
     Route::get('/invoices/create', [InvoiceController::class, 'create'])->name('invoices.create');
     Route::post('/invoices', [InvoiceController::class, 'store'])->name('invoices.store');
 });
+
+//rutas para usar el captcha de inscripcion al regimen
+Route::get('captcha', [Captcha::class, 'create'])->name('captcha');
+Route::post('/verificar-codigo', [InscripcionController::class, 'verificarCodigo'])->name('verificar.codigo');
