@@ -1,7 +1,17 @@
+<style>
+    .navbar-breadcrumbs {
+    flex-grow: 1; /* Permite que el contenedor ocupe el espacio disponible */
+    margin-left: 10px; /* Espacio a la izquierda de los breadcrumbs */
+}
+</style>
 <form class="form-inline mr-auto" action="#">
     <ul class="navbar-nav mr-3">
         <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
     </ul>
+     <!-- Breadcrumbs -->
+     <div class="navbar-breadcrumbs">
+        <x-breadcrumbs :breadcrumbs="$breadcrumbs" />
+    </div>
 </form>
 <ul class="navbar-nav navbar-right">
 

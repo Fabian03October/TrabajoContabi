@@ -271,7 +271,7 @@
                     </div>
 
 
-                    
+
 
 
 
@@ -319,7 +319,7 @@
                                         <a href="/usuarios-activos" class="btn btn-secondary" style="color: black; margin-right: 10px;" title="Regresar al inicio">
                                             <i class="fas fa-times"></i> Cancelar
                                         </a>
-                                        <button type="submit" class="btn" title="Guardar nuevo usuario" style="background-color: rgb(11, 75, 146); color: white;">
+                                        <button type="submit" class="btn btn-primary"  title="Guardar nuevo usuario">
                                             <i class="fas fa-check"></i> Guardar
                                         </button>
                                     </div>

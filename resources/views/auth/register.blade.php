@@ -220,7 +220,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
 
                     <div class="col-md-6">
                         <div class="form-group">
@@ -252,6 +252,8 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
+                            <label for="entidad">Entidad:</label><span
+                            class="text-danger">*</span>
                             <label for="entidad">entidad:<span style="color: red;">*</span></label>
                             <input id="entidad" type="text"
                                    class="form-control{{ $errors->has('entidad') ? ' is-invalid' : '' }}"
@@ -280,6 +282,7 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
+                            <label for="entre_calle2">Y calle:</label>
                             <label for="entre_calle2">ENTRE CALLE:<span style="color: red;">*</span></label>
                             <input id="entre_calle2" type="text"
                                    class="form-control{{ $errors->has('entre_calle2') ? ' is-invalid' : '' }}"
@@ -295,7 +298,7 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="email">Email:</label><span
+                            <label for="email">Correo:</label><span
                                     class="text-danger">*</span>
                             <input id="email" type="email"
                                    class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
@@ -309,7 +312,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="password" class="control-label">Password
+                            <label for="password" class="control-label">Contraseña
                                 :</label><span
                                     class="text-danger">*</span>
                             <input id="password" type="password"
@@ -323,7 +326,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="password_confirmation"
-                                   class="control-label">Confirm Password:</label><span
+                                   class="control-label">Confirmar Contraseña:</label><span
                                     class="text-danger">*</span>
                             <input id="password_confirmation" type="password" placeholder="Confirm account password"
                                    class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid': '' }}"
