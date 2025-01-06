@@ -18,7 +18,7 @@ class SeederTablaPermisos extends Seeder
     {
         $permisos = [
             //Operaciones sobre tabla roles
-             'ver-rol',
+            'ver-rol',
             'crear-rol',
             'editar-rol',
             'borrar-rol',

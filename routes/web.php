@@ -10,6 +10,7 @@ use App\Http\Controllers\EscuelaController;
 use App\Http\Controllers\nombreController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\Simulador\InscripcionController;
+use App\Http\Controllers\Simulador\FacturaController;
 
 use Mews\Captcha\Captcha;
 /*
@@ -50,8 +51,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('usuarios/{id}/pdf', [UsuarioController::class, 'pdf'])->name('usuarios.pdf');
     Route::get('usuarios/{id}/desactivar', [UsuarioController::class, 'desactivar'])->name('usuarios.deactivate');
 
+    //Rutas para la inscripción de un contribuyente a regimen
     Route::resource('inscripcion', InscripcionController::class);
 
+    //Rutas para la facturacion
+    Route::resource('facturacion', FacturaController::class);
+    Route::post('/guardar-factura', [FacturaController::class, 'guardarFactura'])->name('guardar.factura');
 
 
     Route::post('/tipos-ingreso', [InscripcionController::class, 'select'])->name('inscripcion.select');

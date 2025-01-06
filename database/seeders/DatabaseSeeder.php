@@ -18,10 +18,12 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         $this->call([
-            TipoPersonaSeeder::class,
-            RegimeneSeeder::class,
-            ActividadeSeeder::class,
-            TipoIngresoSeeder::class,
+            // TipoPersonaSeeder::class,
+            // RegimeneSeeder::class,
+            // ActividadeSeeder::class,
+            // TipoIngresoSeeder::class,
+            // FormaPagoSeeder::class,
+            ObjetoImpuestoSeeder::class,
         ]);
     }
 }

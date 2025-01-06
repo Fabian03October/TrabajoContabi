@@ -53,8 +53,18 @@
         </div>
 
         <nav class="navbar navbar-expand-lg main-navbar">
-            <!-- Puedes añadir elementos adicionales en el navbar si es necesario -->
+            <div class="container-fluid d-flex justify-content-between align-items-center">
+                <!-- Puedes añadir elementos adicionales en el navbar si es necesario -->
+
+                <div class="ml-auto d-flex align-items-center">
+                    <!-- Mostrar nombre del usuario autenticado -->
+                    @if(auth()->check())
+                        <span class="ml-3">{{ auth()->user()->rfc }} | {{ auth()->user()->name }} {{ auth()->user()->apellido_p }} {{ auth()->user()->apellido_m}}</span>
+                    @endif
+                </div>
+            </div>
         </nav>
+
 
         <!-- Sidebar -->
         <div class="main-sidebar main-sidebar-postion">

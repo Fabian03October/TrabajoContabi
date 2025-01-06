@@ -66,6 +66,15 @@ class BreadcrumbServiceProvider extends ServiceProvider
                 $breadcrumbs[] = ['name' => 'Inscripción', 'url' => route('inscripcion.index')];
                 break;
             // Agrega más casos aquí según tus rutas.
+            case 'facturacion.index':
+                $breadcrumbs[] = ['name' => 'Inicio', 'url' => route('home')];
+                $breadcrumbs[] = ['name' => 'facturacion', 'url' => route('facturacion.index')];
+                break;
+            case 'facturacion.create':
+                $breadcrumbs[] = ['name' => 'Inicio', 'url' => route('home')];
+                $breadcrumbs[] = ['name' => 'facturacion', 'url' => route('facturacion.index')];
+                $breadcrumbs[] = ['name' => 'Crear factura', 'url' => route('facturacion.create')];
+                break;
             default:
                 $breadcrumbs[] = ['name' => 'Inicio', 'url' => route('home')];
                 break;
