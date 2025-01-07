@@ -13,6 +13,6 @@ class Tipopersona extends Model
 
     public function tipopersona()
     {
-        return $this->hasMany(Regimene::class, 'tipopersona_id');
+        return $this->hasMany(Actividade::class, 'tipopersona_id');
     }
 }

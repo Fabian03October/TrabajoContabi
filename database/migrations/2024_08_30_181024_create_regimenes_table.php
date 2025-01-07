@@ -17,9 +17,8 @@ class CreateRegimenesTable extends Migration
             $table->id();
             $table->String('nombre');
             $table->text('descripcion');
-            $table->foreignId('tipopersona_id') ->nullable()->constrained();
+            $table->decimal('tasa_impositiva');
             // $table->string('obligacion');
-            // $table->decimal('tasa_impositiva');
             // $table->string('periocidad_pago');
             // $table->string('tipo_contribuyente');
             // $table->text('deducciones_permitidas');

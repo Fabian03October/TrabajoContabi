@@ -9,10 +9,15 @@ class Actividade extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre', 'descripcion','obligacion','tasa_impositiva','periocidad_pago','regimene_id'];
+    protected $fillable = ['nombre', 'clave','descripcion','categoria','obligacion','tasa_impositiva','periocidad_pago','regimene_id','tipopersona_id'];
 
-    public function ActividadTipoIngreso()
+    public function ActividadIncripcione()
     {
-        return $this->hasMany(TipoIngreso::class, 'actividade_id');
+        return $this->hasMany(Inscripcione::class, 'actividade_id');
+    }
+
+    public function ActividadObligacione()
+    {
+        return $this->hasMany(Obligacione_actividade::class, 'actividade_id');
     }
 }

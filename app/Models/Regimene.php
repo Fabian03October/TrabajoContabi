@@ -9,7 +9,7 @@ class Regimene extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre', 'descripcion','tipopersona_id'];
+    protected $fillable = ['nombre', 'descripcion','tasa_impositiva'];
 
     public function regimen()
     {

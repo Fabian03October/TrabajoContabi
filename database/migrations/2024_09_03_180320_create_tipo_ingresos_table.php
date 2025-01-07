@@ -13,13 +13,13 @@ class CreateTipoIngresosTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_ingresos', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-            $table->string('descipcion');
-            $table->foreignId('actividade_id') ->nullable()->constrained();
-            $table->timestamps();
-        });
+        // Schema::create('tipo_ingresos', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('nombre');
+        //     $table->string('descipcion');
+        //     $table->foreignId('actividade_id') ->nullable()->constrained();
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -29,6 +29,6 @@ class CreateTipoIngresosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_ingresos');
+        // Schema::dropIfExists('tipo_ingresos');
     }
 }

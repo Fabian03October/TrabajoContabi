@@ -10,5 +10,5 @@ class Inscripcione extends Model
     use HasFactory;
 
 
-    protected $fillable = ['fecha_inicio', 'fecha_fin','porcentaje','user_id','tipo_ingreso_id'];
+    protected $fillable = ['fecha_inicio', 'fecha_fin','porcentaje','user_id','actividade_id'];
 }

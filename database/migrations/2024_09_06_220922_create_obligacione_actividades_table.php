@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIncripcionesTable extends Migration
+class CreateObligacioneActividadesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateIncripcionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('incripciones', function (Blueprint $table) {
+        Schema::create('obligacione_actividades', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha_inicio');
-            $table->date('fecha_fin');
-            $table->decimal('porcentaje');//Porcentaje del ingreso del contribuyente en ese regimen
-            $table->foreignId('user_id') ->nullable()->constrained();
+            $table->foreignId('obligacione_id') ->nullable()->constrained();
             $table->foreignId('actividade_id') ->nullable()->constrained();
             $table->timestamps();
         });
@@ -31,6 +28,6 @@ class CreateIncripcionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('incripciones');
+        Schema::dropIfExists('obligacione_actividades');
     }
 }
