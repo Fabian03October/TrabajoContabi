@@ -24,6 +24,12 @@
         <a class="nav-link" href="{{ route('usuarios.pdf', auth()->user()->id) }}" target="_blank">
             <i class="fas fa-file-pdf"></i><span>Imprimir CSF</span>
         </a>
+
+        <a class="nav-link" href="/inscripcion">
+        <i class=" fas fa-user-lock"></i><span>Inscripcion a un regimen</span>
+    </a>
+
+
     @endif
 @endcan
 

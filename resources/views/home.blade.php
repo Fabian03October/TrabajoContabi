@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="section">
-    @can('ver-blog') 
+    @can('ver-usuario') 
         <div class="section-header">
             <h3 class="page__heading">Dashboard</h3>
         </div>

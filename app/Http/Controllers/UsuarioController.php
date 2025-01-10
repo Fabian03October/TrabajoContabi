@@ -13,6 +13,9 @@ use Illuminate\Support\Arr;
 use Barryvdh\DomPDF\Facade\Pdf;
 use DateTime;
 use App\Models\Domicilio;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NotificacionContribuyente;
+
 
 
 class UsuarioController extends Controller
@@ -91,6 +94,19 @@ class UsuarioController extends Controller
             // Guardar los cambios en la base de datos
             $user->save();
 
+
+            
+            // Enviar correo de notificación
+            $details = [
+                'title' => 'Activación de Contribuyente',
+                'name' => $user->name, // Asegúrate de que el nombre del usuario esté presente
+                'body' => 'Tu cuenta ha sido activada exitosamente. Puedes acceder a tu panel en el siguiente enlace.',
+                'url' => route('home')
+            ];
+        
+            Mail::to($user->email)->send(new NotificacionContribuyente($details));
+
+
             return redirect()->route('usuarios.index')->with('success', 'Usuario activado, RFC generado y rol asignado exitosamente.');
     }
 
@@ -149,7 +165,7 @@ class UsuarioController extends Controller
 
     $data = $request->all();
     $data['password'] = Hash::make($data['password']);
-    $data['status'] = 0;
+    $data['status'] = 1;
     $data['status_padron'] = 0;
     $data['fechaUltiCamEst'] = (new \DateTime())->format('Y-m-d');
 

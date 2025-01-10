@@ -68,3 +68,51 @@ Route::group(['middleware' => ['auth']], function() {
 //rutas para usar el captcha de inscripcion al regimen
 Route::get('captcha', [Captcha::class, 'create'])->name('captcha');
 Route::post('/verificar-codigo', [InscripcionController::class, 'verificarCodigo'])->name('verificar.codigo');
+
+
+Route::post('/simulador/procesar', [InscripcionController::class, 'procesar'])->name('inscripcion.procesar');
+Route::get('/simulador/asalariado', [InscripcionController::class, 'asalariado'])->name('inscripcion.asalariado');
+Route::get('/simulador/jubilado', [InscripcionController::class, 'jubilado'])->name('inscripcion.jubilado');
+Route::get('/simulador/profesional', [InscripcionController::class, 'profesional'])->name('inscripcion.profesional');
+Route::get('/simulador/Renta', [InscripcionController::class, 'rentas'])->name('inscripcion.rentas');
+
+Route::get('/simulador/PreguntasProfe', [InscripcionController::class, 'PreguntasProfe'])->name('inscripcion.PreguntasProfe');
+
+//la ruta de la vista de empresas
+Route::get('/simulador/ActividadesEmpresariales', [InscripcionController::class, 'ActividadesEmpre'])->name('inscripcion.ActividadesEmpre');
+
+//la ruta de porcientos
+Route::get('/simulador/porciento', [InscripcionController::class, 'porciento'])->name('inscripcion.porciento');
+
+// Preguntas adicionales de la empresa
+Route::get('/simulador/Preguntasadicionales', [InscripcionController::class, 'Preguntasadicionales'])->name('inscripcion.Preguntasadicionales');
+
+// seleccionable
+Route::get('/simulador/Seleccionable', [InscripcionController::class, 'Seleccionable'])->name('inscripcion.Seleccionable');
+
+//PlataformasTecnologicas
+Route::get('/simulador/PlataformasTecnologicas', [InscripcionController::class, 'PlataformasTecnologicas'])->name('inscripcion.PlataformasTecnologicas');
+
+// Preguntas adicionales 2
+Route::get('/simulador/Preguntasadicionales_B', [InscripcionController::class, 'Preguntasadicionales_B'])->name('inscripcion.Preguntasadicionales_B');
+
+// Preguntas adicionales 3
+Route::get('/simulador/Preguntasadicionales_c', [InscripcionController::class, 'Preguntasadicionales_c'])->name('inscripcion.Preguntasadicionales_c');
+
+// Preguntas adicionales 4
+Route::get('/simulador/Preguntasadicionales_D', [InscripcionController::class, 'Preguntasadicionales_D'])->name('inscripcion.Preguntasadicionales_D');
+
+//RescursosNaturales
+Route::get('/simulador/RescursosNaturales', [InscripcionController::class, 'RescursosNaturales'])->name('inscripcion.RescursosNaturales');
+
+//RescursosNaturales
+Route::get('/simulador/RescursosNaturalesB', [InscripcionController::class, 'RescursosNaturalesB'])->name('inscripcion.RescursosNaturalesB');
+
+//PaginaRFC
+Route::get('/simulador/PaginaRFC', [InscripcionController::class, 'PaginaRFC'])->name('inscripcion.PaginaRFC');
+
+//Servicios
+Route::get('/simulador/Servicios', [InscripcionController::class, 'Servicios'])->name('inscripcion.Servicios');
+
+//Servicios
+Route::get('/simulador/ServiciosB', [InscripcionController::class, 'ServiciosB'])->name('inscripcion.ServiciosB');

@@ -46,29 +46,49 @@
                         <h4>Tipos de ingreso</h4>
                         <hr class="divider"> <!-- Línea horizontal -->
                         <label for="xx" class="instructions">
-                            Instrucciones: Señala el tipo de ingreso que percibes dando clic en la opción que corresponda. Pasa el apuntador del mouse o da clic sobre el texto de cada ingreso para obtener ayuda.
+                            Instrucciones: Señala el tipo de ingreso que percibes dando clic en la opción que corresponda.
                         </label>
                         <hr class="divider">
-                        <label for="income-types" class="instructions">
-                            Por favor identifica el tipo de ingreso que percibes:
+                        <form action="{{ route('inscripcion.procesar') }}" method="POST">
+                @csrf
+                <div class="checkbox-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="asalariado" name="income[]" value="asalariado">
+                        <label class="form-check-label" for="asalariado">Eres asalariado</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="jubilado" name="income[]" value="jubilado">
+                        <label class="form-check-label" for="jubilado">Eres jubilado o pensionado</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="profesional" name="income[]" value="profesional">
+                        <label class="form-check-label" for="profesional">Prestas servicios profesionales de manera independiente</label>
+                    </div>
+                    <!-- Añade más checkboxes según sea necesario -->
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="rentas" name="income[]" value="rentas">
+                        <label class="form-check-label" for="rentas">Cobras rentas por el alquiler de casa habitación, oficinas, locales</label>
+                    </div>
+
+                    <label for="xx" class="instructions">
+                         Tienes un negocio y:
                         </label>
-                        <form action="{{ route('inscripcion.select') }}" method="POST">
-                            @csrf
-                            <div class="checkbox-group">
-                                @foreach(\App\Models\TipoIngreso::all() as $familia)
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="income{{ $familia->id }}" name="income[]" value="{{ $familia->id }}">
-                                        <label class="form-check-label" for="income{{ $familia->id }}">
-                                            {{ $familia->nombre }}
-                                        </label>
-                                    </div>
-                                @endforeach
-                                <!-- Puedes agregar más checkboxes estáticos aquí si es necesario -->
-                            </div>
-                            <button type="submit" class="btn btn-primary" title="Guardar nuevo usuario">
-                                <i class="fas fa-check"></i> Guardar
-                            </button>
-                        </form>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="ActividadesEmpre" name="income[]" value="ActividadesEmpre">
+                        <label class="form-check-label" for="ActividadesEmpre">Realizas actividades empresariales (comerciales, industriales, agrícolas, ganaderas, silvícolas o pesqueras)</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="profesional" name="income[]" value="profesional">
+                        <label class="form-check-label" for="profesional">Actividades empresariales con ingresos por la enajenación de bienes o la prestación de servicios a través de Internet, plataformas, aplicaciones informáticas y similares</label>
+                    </div>
+                    
+
+                </div>
+                <button type="submit" class="btn btn-primary">Continuar</button>
+            </form>
                     </div>
                 </div>
             </div>

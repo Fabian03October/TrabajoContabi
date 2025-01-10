@@ -213,7 +213,7 @@
                             <input id="colonia" type="text"
                                    class="form-control{{ $errors->has('colonia') ? ' is-invalid' : '' }}"
                                    name="colonia"
-                                   tabindex="1" placeholder="Ingresa vialidad" value="{{ old('colonia') }}"
+                                   tabindex="1" placeholder="Ingresa colonia" value="{{ old('colonia') }}"
                                    autofocus required>
                             <div class="invalid-feedback">
                                 {{ $errors->first('colonia') }}
@@ -238,7 +238,7 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="municipio">municipio:<span style="color: red;">*</span></label>
+                            <label for="municipio">Municipio:<span style="color: red;">*</span></label>
                             <input id="municipio" type="text"
                                    class="form-control{{ $errors->has('municipio') ? ' is-invalid' : '' }}"
                                    name="municipio"
@@ -252,9 +252,7 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="entidad">Entidad:</label><span
-                            class="text-danger">*</span>
-                            <label for="entidad">entidad:<span style="color: red;">*</span></label>
+                            <label for="entidad">Entidad:</label><span style="color: red;">*</span></label>
                             <input id="entidad" type="text"
                                    class="form-control{{ $errors->has('entidad') ? ' is-invalid' : '' }}"
                                    name="entidad"
@@ -272,7 +270,7 @@
                             <input id="entre_calle1" type="text"
                                    class="form-control{{ $errors->has('entre_calle1') ? ' is-invalid' : '' }}"
                                    name="entre_calle1"
-                                   tabindex="1" placeholder="Ingresa vialidad" value="{{ old('entre_calle1') }}"
+                                   tabindex="1" placeholder="Ingresa nombre de la calle" value="{{ old('entre_calle1') }}"
                                    autofocus required>
                             <div class="invalid-feedback">
                                 {{ $errors->first('entre_calle1') }}
@@ -283,11 +281,11 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="entre_calle2">Y calle:</label>
-                            <label for="entre_calle2">ENTRE CALLE:<span style="color: red;">*</span></label>
+                           <span style="color: red;">*</span></label>
                             <input id="entre_calle2" type="text"
                                    class="form-control{{ $errors->has('entre_calle2') ? ' is-invalid' : '' }}"
                                    name="entre_calle2"
-                                   tabindex="1" placeholder="Ingresa vialidad" value="{{ old('entre_calle2') }}"
+                                   tabindex="1" placeholder="Ingresa nombre de la calle" value="{{ old('entre_calle2') }}"
                                    autofocus required>
                             <div class="invalid-feedback">
                                 {{ $errors->first('tipo_vialidad') }}
@@ -310,32 +308,43 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+
+                  
+
+
+                    <div class="col-md-6 mb-3">
                         <div class="form-group">
-                            <label for="password" class="control-label">Contraseña
-                                :</label><span
-                                    class="text-danger">*</span>
+                            <label style="color: black; font-weight: bold;" for="password">Contraseña <span class="text-danger">*</span></label>
                             <input id="password" type="password"
-                                   class="form-control{{ $errors->has('password') ? ' is-invalid': '' }}"
-                                   placeholder="Set account password" name="password" tabindex="2" required>
+                                class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                placeholder="Set account password" name="password" tabindex="2" required>
                             <div class="invalid-feedback">
                                 {{ $errors->first('password') }}
                             </div>
+                            <small id="passwordHelpBlock" class="form-text text-muted" style="color: red;">
+                                La contraseña debe contener al menos una mayúscula, una minúscula, un número y un carácter especial.
+                            </small>
+                            <div id="passwordStrength" class="progress mt-2" style="height: 10px; display: none;">
+                                <div id="passwordProgressBar" class="progress-bar" role="progressbar" style="width: 0%;"></div>
+                            </div>
+                            <div id="passwordFeedback" class="invalid-feedback">
+                                Debe cumplir con los requisitos de la contraseña.
+                            </div>
                         </div>
                     </div>
+
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="password_confirmation"
-                                   class="control-label">Confirmar Contraseña:</label><span
-                                    class="text-danger">*</span>
+                            <label for="password_confirmation" class="control-label">Confirmar Contraseña:</label><span class="text-danger">*</span>
                             <input id="password_confirmation" type="password" placeholder="Confirm account password"
-                                   class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid': '' }}"
-                                   name="password_confirmation" tabindex="2">
+                                class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid': '' }}"
+                                name="password_confirmation" tabindex="2">
                             <div class="invalid-feedback">
                                 {{ $errors->first('password_confirmation') }}
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-12 mt-4">
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
@@ -343,6 +352,7 @@
                             </button>
                         </div>
                     </div>
+
                 </div>
             </form>
         </div>
@@ -352,3 +362,49 @@
                 href="{{ route('login') }}">Ingresar</a>
     </div>
 @endsection
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#password').on('keyup', function() {
+            var password = $(this).val();
+
+            // Validar longitud mínima y caracteres especiales
+            var minLength = 8; // Mínimo 8 caracteres
+            var specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/; // Caracteres especiales
+
+            var isValidLength = password.length >= minLength;
+            var hasSpecialChars = specialChars.test(password);
+
+            // Validar al menos una mayúscula, una minúscula y un número
+            var hasUpperCase = /[A-Z]/.test(password);
+            var hasLowerCase = /[a-z]/.test(password);
+            var hasNumber = /\d/.test(password);
+
+            // Calcular la fuerza de la contraseña
+            var strength = 0;
+            if (isValidLength) strength++;
+            if (hasSpecialChars) strength++;
+            if (hasUpperCase && hasLowerCase) strength++;
+            if (hasNumber) strength++;
+
+            // Mostrar barra de progreso y actualizar porcentaje
+            $('#passwordStrength').show();
+            $('#passwordProgressBar').css('width', (strength * 25) + '%');
+
+            // Mostrar mensaje de feedback basado en la fuerza de la contraseña
+            if (strength >= 3) {
+                $('#passwordHelpBlock').css('color', 'black');
+                $('#passwordFeedback').hide();
+            } else {
+                $('#passwordHelpBlock').css('color', 'red');
+                $('#passwordFeedback').show();
+            }
+        });
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(function() {
+            document.getElementById('autoDismissAlert').style.display = 'none';
+        }, 4000); // La alerta desaparecerá después de 5 segundos
+    });
+</script>
+
