@@ -431,5 +431,294 @@ class ObligacioneActividadesSeeder extends Seeder
             'actividade_id'=>23,
         ]);
 
+         // Prestas servicios profesionales de manera independiente-> OTROS SERVICIOS DE APOYO ->Servicios de traducción e interpretación
+         DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 2,
+            'actividade_id'=>24,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 9,
+            'actividade_id'=>24,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 1,
+            'actividade_id'=>24,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 8,
+            'actividade_id'=>24,
+        ]);
+
+        // Prestas servicios profesionales de manera independiente-> OTROS SERVICIOS DE APOYO ->Dirección de corporativos y empresas financieras
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 2,
+            'actividade_id'=>25,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 5,
+            'actividade_id'=>25,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 3,
+            'actividade_id'=>25,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 7,
+            'actividade_id'=>25,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 5,
+            'actividade_id'=>25,
+        ]);
+
+        // Prestas servicios profesionales de manera independiente-> OTROS SERVICIOS DE APOYO ->Dirección de corporativos y empresas no financieras
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 2,
+            'actividade_id'=>26,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 5,
+            'actividade_id'=>26,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 3,
+            'actividade_id'=>26,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 7,
+            'actividade_id'=>26,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 5,
+            'actividade_id'=>26,
+        ]);
+
+         // Prestas servicios profesionales de manera independiente-> OTROS SERVICIOS DE APOYO ->Servicios de administración de negocios
+         DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 2,
+            'actividade_id'=>27,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 5,
+            'actividade_id'=>27,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 3,
+            'actividade_id'=>27,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 7,
+            'actividade_id'=>27,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 5,
+            'actividade_id'=>27,
+        ]);
+
+         // Prestas servicios profesionales de manera independiente-> OTROS SERVICIOS DE APOYO ->Servicios de preparación de documentos
+         DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 2,
+            'actividade_id'=>28,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 3,
+            'actividade_id'=>28,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 7,
+            'actividade_id'=>28,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 5,
+            'actividade_id'=>28,
+        ]);
+
+          // Prestas servicios profesionales de manera independiente->Apoyo a actividades agropecuarias y forestales->Administración de empresas o negocios agrícolas
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 2,
+            'actividade_id'=>29,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 9,
+            'actividade_id'=>29,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 1,
+            'actividade_id'=>29,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 8,
+            'actividade_id'=>29,
+        ]);
+
+
+          // Prestas servicios profesionales de manera independiente->Apoyo a actividades agropecuarias y forestales-> Administración de empresas o negocios ganaderos
+          DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 2,
+            'actividade_id'=>30,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 6,
+            'actividade_id'=>30,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 3,
+            'actividade_id'=>30,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 7,
+            'actividade_id'=>30,
+        ]);
+
+        // Prestas servicios profesionales de manera independiente->Apoyo a actividades agropecuarias y forestales-> Administración de empresas o negocios ganaderos
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 2,
+            'actividade_id'=>31,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 6,
+            'actividade_id'=>31,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 5,
+            'actividade_id'=>31,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 3,
+            'actividade_id'=>31,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 7,
+            'actividade_id'=>31,
+        ]);
+
+        // Cobras rentas por el alquiler de casa habitación, oficinas, locales->Apoyo a actividades agropecuarias y forestales-> Alquiler de Viviendas amuebladas
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 2,
+            'actividade_id'=>32,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 10,
+            'actividade_id'=>32,
+        ]);
+
+        // Cobras rentas por el alquiler de casa habitación, oficinas, locales->Apoyo a actividades agropecuarias y forestales-> Alquiler de Viviendas no amuebladas
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 2,
+            'actividade_id'=>33,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 5,
+            'actividade_id'=>33,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 10,
+            'actividade_id'=>33,
+        ]);
+
+         // Cobras rentas por el alquiler de casa habitación, oficinas, locales->Apoyo a actividades agropecuarias y forestales-> Alquiler de Salones para fiestas y convenciones
+         DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 2,
+            'actividade_id'=>34,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 5,
+            'actividade_id'=>34,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 3,
+            'actividade_id'=>34,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 7,
+            'actividade_id'=>34,
+        ]);
+
+         // Cobras rentas por el alquiler de casa habitación, oficinas, locales->Apoyo a actividades agropecuarias y forestales-> Alquiler de Oficinas y locales comerciales
+         DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 2,
+            'actividade_id'=>35,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 5,
+            'actividade_id'=>35,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 3,
+            'actividade_id'=>35,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 7,
+            'actividade_id'=>35,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 10,
+            'actividade_id'=>35,
+        ]);
+
+        // Realizas actividades empresariales (comerciales, industriales, agrícolas, ganaderas, silvícolas o pesqueras)->RecursosNaturales->AGRICULTURA-> Siembra, cultivo y cosecha de soya
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 2,
+            'actividade_id'=>36,
+        ]);
+
+         // Realizas actividades empresariales (comerciales, industriales, agrícolas, ganaderas, silvícolas o pesqueras)->RecursosNaturales->AGRICULTURA-> Siembra, cultivo y cosecha de cártamo
+         DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 2,
+            'actividade_id'=>37,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 11,
+            'actividade_id'=>37,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 3,
+            'actividade_id'=>37,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' => 7,
+            'actividade_id'=>37,
+        ]);
     }
 }

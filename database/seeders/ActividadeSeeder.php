@@ -305,5 +305,187 @@ class ActividadeSeeder extends Seeder
             'regimene_id'=>3,
             'tipopersona_id'=>1,
         ]);
+
+        //OTROS SERVICIOS DE APOYO ->24
+        DB::table('actividades')->insert([
+            'nombre' => 'Servicios de traducción e interpretación',
+            'clave'=>'866',
+            'descripcion'=>'',
+            'categoria'=>'ServiciosdeApoyo',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+        //OTROS SERVICIOS DE APOYO ->25
+        DB::table('actividades')->insert([
+            'nombre' => 'Dirección de corporativos y empresas financieras',
+            'clave'=>'872',
+            'descripcion'=>'',
+            'categoria'=>'ServiciosdeApoyo',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+        //OTROS SERVICIOS DE APOYO ->26
+        DB::table('actividades')->insert([
+            'nombre' => 'Dirección de corporativos y empresas no financieras',
+            'clave'=>'873',
+            'descripcion'=>'',
+            'categoria'=>'ServiciosdeApoyo',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+         //OTROS SERVICIOS DE APOYO ->27
+         DB::table('actividades')->insert([
+            'nombre' => 'Servicios de administración de negocios ',
+            'clave'=>'874',
+            'descripcion'=>'',
+            'categoria'=>'ServiciosdeApoyo',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+         //OTROS SERVICIOS DE APOYO ->28
+         DB::table('actividades')->insert([
+            'nombre' => 'Servicios de preparación de documentos',
+            'clave'=>'888',
+            'descripcion'=>'',
+            'categoria'=>'ServiciosdeApoyo',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+        // Apoyo a actividades agropecuarias y forestales->29
+        DB::table('actividades')->insert([
+            'nombre' => 'Administración de empresas o negocios agrícolas',
+            'clave'=>'84',
+            'descripcion'=>'',
+            'categoria'=>'ActividadesAgropecuarias',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+         // Apoyo a actividades agropecuarias y forestales->30
+         DB::table('actividades')->insert([
+            'nombre' => 'Administración de empresas o negocios ganaderos ',
+            'clave'=>'86',
+            'descripcion'=>'',
+            'categoria'=>'ActividadesAgropecuarias',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+         // Apoyo a actividades agropecuarias y forestales->31
+         DB::table('actividades')->insert([
+            'nombre' => 'Administración de empresas o negocios forestales',
+            'clave'=>'88',
+            'descripcion'=>'',
+            'categoria'=>'ActividadesAgropecuarias',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+        // Cobras Renrtas por alquiler->32
+        DB::table('actividades')->insert([
+            'nombre' => 'Alquiler de Viviendas amuebladas',
+            'clave'=>'802',
+            'descripcion'=>'',
+            'categoria'=>'Rentas',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>4,
+            'tipopersona_id'=>1,
+        ]);
+
+         // Cobras Renrtas por alquiler->33
+         DB::table('actividades')->insert([
+            'nombre' => 'Alquiler de Viviendas no amuebladas',
+            'clave'=>'803',
+            'descripcion'=>'',
+            'categoria'=>'Rentas',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>4,
+            'tipopersona_id'=>1,
+        ]);
+
+        // Cobras Renrtas por alquiler->34
+        DB::table('actividades')->insert([
+            'nombre' => 'Alquiler de Salones para fiestas y convenciones',
+            'clave'=>'804',
+            'descripcion'=>'',
+            'categoria'=>'Rentas',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>4,
+            'tipopersona_id'=>1,
+        ]);
+
+
+        // Cobras Renrtas por alquiler->35
+        DB::table('actividades')->insert([
+            'nombre' => 'Alquiler de Oficinas y locales comerciales',
+            'clave'=>'805',
+            'descripcion'=>'',
+            'categoria'=>'Rentas',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>4,
+            'tipopersona_id'=>1,
+        ]);
+
+        // Agicultura->36
+        DB::table('actividades')->insert([
+            'nombre' => 'Siembra, cultivo y cosecha de soya',
+            'clave'=>'1',
+            'descripcion'=>'',
+            'categoria'=>'Agricultura',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+        // Agicultura->36
+        DB::table('actividades')->insert([
+            'nombre' => 'Siembra, cultivo y cosecha de cártamo',
+            'clave'=>'2',
+            'descripcion'=>'',
+            'categoria'=>'Agricultura',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
     }
 }

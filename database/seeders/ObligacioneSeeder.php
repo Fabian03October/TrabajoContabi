@@ -67,15 +67,17 @@ class ObligacioneSeeder extends Seeder
             'clave'=>'78',
             'descripcion'=>'15 días hábiles siguientes a aquél en que se venda el bien o preste el servicio',
         ]);
+        //10
         DB::table('obligaciones')->insert([
-            'nombre' => '',
-            'clave'=>'',
-            'descripcion'=>'',
+            'nombre' => 'Declarar mensualmente el ISR. Régimen de Arrendamiento.',
+            'clave'=>'2',
+            'descripcion'=>'A más tardar el día 17 del mes inmediato posterior al periodo que corresponda.',
         ]);
+        //11
         DB::table('obligaciones')->insert([
-            'nombre' => '',
-            'clave'=>'',
-            'descripcion'=>'',
+            'nombre' => 'Declarar mensualmente el ISR por actividades empresariales.',
+            'clave'=>'33',
+            'descripcion'=>'A más tardar el día 17 del mes inmediato posterior al periodo que corresponda.',
         ]);
         DB::table('obligaciones')->insert([
             'nombre' => '',
