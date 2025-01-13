@@ -9,8 +9,10 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\EscuelaController;
 use App\Http\Controllers\nombreController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\Simulador\InscripcionRFC\ProfesionalInscripcionController;
 use App\Http\Controllers\Simulador\InscripcionController;
 use App\Http\Controllers\Simulador\FacturaController;
+
 
 use Mews\Captcha\Captcha;
 /*
@@ -73,7 +75,14 @@ Route::post('/verificar-codigo', [InscripcionController::class, 'verificarCodigo
 Route::post('/simulador/procesar', [InscripcionController::class, 'procesar'])->name('inscripcion.procesar');
 Route::get('/simulador/asalariado', [InscripcionController::class, 'asalariado'])->name('inscripcion.asalariado');
 Route::get('/simulador/jubilado', [InscripcionController::class, 'jubilado'])->name('inscripcion.jubilado');
-Route::get('/simulador/profesional', [InscripcionController::class, 'profesional'])->name('inscripcion.profesional');
+
+//ACTIVIDAD-PROFESIONAL
+Route::get('/simulador/profesional', [ProfesionalInscripcionController::class, 'profesional'])->name('inscripcion.profesional');
+Route::post('/simulador/porcientoPorfesional', [ProfesionalInscripcionController::class, 'porcientoPorfesional'])->name('inscripcion.porcientoPorfesional');
+Route::post('/simulador/procesarProfesional', [ProfesionalInscripcionController::class, 'procesarProfesional'])->name('inscripcion.procesarProfesional');
+Route::post('/simulador/inscribirProfesional', [ProfesionalInscripcionController::class, 'inscribirProfesional'])->name('inscripcion.inscribirProfesional');
+
+
 Route::get('/simulador/Renta', [InscripcionController::class, 'rentas'])->name('inscripcion.rentas');
 
 Route::get('/simulador/PreguntasProfe', [InscripcionController::class, 'PreguntasProfe'])->name('inscripcion.PreguntasProfe');

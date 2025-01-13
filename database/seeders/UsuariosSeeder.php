@@ -43,6 +43,24 @@ class UsuariosSeeder extends Seeder
                 'entre_calle2' => 'Calle ' . rand(51, 100),
             ]);
 
+            $user1 = User::create([
+                'name' => 'admin',
+                'apellido_p' => $persona['apellido_p'],
+                'apellido_m' => $persona['apellido_m'],
+                'curp' => $persona['curp'],
+                'rfc'=>'',
+                'FechaIniOP' => '1980-01-01',
+                'fechaUltiCamEst' => '1980-01-01',
+                'NombreComercial' => 'Negocio ' . $persona['nombre'],
+                'sexo' => 'H',
+                'status' => 1,
+                'status_padron' => 0,
+                'fechaUltiCamEst' => now(),
+                'email' => strtolower('admin@gmail.com'),
+                'password' => Hash::make('Plantel121'),
+                'rfc' => strtoupper(substr($persona['curp'], 0, 10) . Str::random(3)), // RFC generado
+                'domicilio_id' => $domicilio->id, // Relación con el domicilio
+            ]);
             // Crear un usuario de ejemplo para cada entrada
             $user = User::create([
                 'name' => $persona['nombre'],
@@ -62,7 +80,7 @@ class UsuariosSeeder extends Seeder
             ]);
 
             // Asignar rol al usuario
-            $user->assignRole('Contribuyente');
+            //$user->assignRole('Contribuyente');
         }
     }
 }

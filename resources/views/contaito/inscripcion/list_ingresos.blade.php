@@ -50,45 +50,45 @@
                         </label>
                         <hr class="divider">
                         <form action="{{ route('inscripcion.procesar') }}" method="POST">
-                @csrf
-                <div class="checkbox-group">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="asalariado" name="income[]" value="asalariado">
-                        <label class="form-check-label" for="asalariado">Eres asalariado</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="jubilado" name="income[]" value="jubilado">
-                        <label class="form-check-label" for="jubilado">Eres jubilado o pensionado</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="profesional" name="income[]" value="profesional">
-                        <label class="form-check-label" for="profesional">Prestas servicios profesionales de manera independiente</label>
-                    </div>
-                    <!-- Añade más checkboxes según sea necesario -->
+                            @csrf
+                            <div class="checkbox-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="asalariado" name="income[]" value="asalariado">
+                                    <label class="form-check-label" for="asalariado">Eres asalariado</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="jubilado" name="income[]" value="jubilado">
+                                    <label class="form-check-label" for="jubilado">Eres jubilado o pensionado</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="profesional" name="income[]" value="profesional">
+                                    <label class="form-check-label" for="profesional">Prestas servicios profesionales de manera independiente</label>
+                                </div>
+                                <!-- Añade más checkboxes según sea necesario -->
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="rentas" name="income[]" value="rentas">
-                        <label class="form-check-label" for="rentas">Cobras rentas por el alquiler de casa habitación, oficinas, locales</label>
-                    </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rentas" name="income[]" value="rentas">
+                                    <label class="form-check-label" for="rentas">Cobras rentas por el alquiler de casa habitación, oficinas, locales</label>
+                                </div>
 
-                    <label for="xx" class="instructions">
-                         Tienes un negocio y:
-                        </label>
+                                <label for="xx" class="instructions">
+                                    Tienes un negocio y:
+                                    </label>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="ActividadesEmpre" name="income[]" value="ActividadesEmpre">
-                        <label class="form-check-label" for="ActividadesEmpre">Realizas actividades empresariales (comerciales, industriales, agrícolas, ganaderas, silvícolas o pesqueras)</label>
-                    </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ActividadesEmpre" name="income[]" value="ActividadesEmpre">
+                                    <label class="form-check-label" for="ActividadesEmpre">Realizas actividades empresariales (comerciales, industriales, agrícolas, ganaderas, silvícolas o pesqueras)</label>
+                                </div>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="profesional" name="income[]" value="profesional">
-                        <label class="form-check-label" for="profesional">Actividades empresariales con ingresos por la enajenación de bienes o la prestación de servicios a través de Internet, plataformas, aplicaciones informáticas y similares</label>
-                    </div>
-                    
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="profesional" name="income[]" value="profesional">
+                                    <label class="form-check-label" for="profesional">Actividades empresariales con ingresos por la enajenación de bienes o la prestación de servicios a través de Internet, plataformas, aplicaciones informáticas y similares</label>
+                                </div>
 
-                </div>
-                <button type="submit" class="btn btn-primary">Continuar</button>
-            </form>
+
+                            </div>
+                            <button type="submit" class="btn btn-primary">Continuar</button>
+                        </form>
                     </div>
                 </div>
             </div>

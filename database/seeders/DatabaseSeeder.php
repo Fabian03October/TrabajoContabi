@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             //TipoIngresoSeeder::class,
             FormaPagoSeeder::class,
             ObjetoImpuestoSeeder::class,
+            UsuariosSeeder::class,
         ]);
     }
 }

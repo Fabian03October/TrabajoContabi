@@ -13,10 +13,10 @@ class CreateIncripcionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('incripciones', function (Blueprint $table) {
+        Schema::create('inscripciones', function (Blueprint $table) {
             $table->id();
             $table->date('fecha_inicio');
-            $table->date('fecha_fin');
+            $table->date('fecha_fin')->nullable();
             $table->decimal('porcentaje');//Porcentaje del ingreso del contribuyente en ese regimen
             $table->foreignId('user_id') ->nullable()->constrained();
             $table->foreignId('actividade_id') ->nullable()->constrained();
@@ -31,6 +31,6 @@ class CreateIncripcionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('incripciones');
+        Schema::dropIfExists('inscripciones');
     }
 }

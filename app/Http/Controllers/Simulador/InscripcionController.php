@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Simulador;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+
 class InscripcionController extends Controller
 {
     /**
@@ -48,23 +49,23 @@ class InscripcionController extends Controller
 
 
 
-    
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    
+
      public function procesar(Request $request)
      {
          // Obtiene las selecciones del formulario
          $selecciones = $request->input('income', []);
- 
+
          if (empty($selecciones)) {
              return redirect()->back()->with('error', 'Debes seleccionar al menos una opción.');
          }
- 
+
          // Procesa cada selección y redirige según sea necesario
          foreach ($selecciones as $seleccion) {
              switch ($seleccion) {
@@ -89,24 +90,20 @@ class InscripcionController extends Controller
              }
          }
      }
- 
+
      public function asalariado()
      {
          // Retorna la vista para preguntas relacionadas con asalariados
          return view('contaito.inscripcion.asalariado');
      }
- 
+
      public function jubilado()
      {
          // Retorna la vista para preguntas relacionadas con jubilados
          return view('contaito.inscripcion.jubilado');
      }
- 
-     public function profesional()
-     {
-         // Retorna la vista para preguntas relacionadas con servicios profesionales
-         return view('contaito.inscripcion.profesiona');
-     }
+
+
 
      public function rentas()
      {

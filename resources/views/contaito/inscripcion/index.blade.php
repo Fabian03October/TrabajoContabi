@@ -14,7 +14,7 @@
                         <form id="form-regimen" method="POST" action="{{ route('verificar.codigo') }}">
                             @csrf
                             <div class="form-group required">
-                                <label for="tipo_persona" style="color:black">Selecciona el tipo de persona:</label>
+                                <label for="tipo_persona" style="color:black">Instrucciones:	Indique las opciones con las cuales quiere generar el simulador cuestionario:</label>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" id="persona_fisica" name="tipo_persona" value="fisica" required>
                                     <label class="form-check-label" for="persona_fisica">Persona Física</label>

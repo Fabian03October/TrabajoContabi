@@ -66,7 +66,7 @@ class ActividadeSeeder extends Seeder
         //5
         DB::table('actividades')->insert([
             'nombre' => 'Bufetes Juridicos',
-            'clave'=>'720',
+            'clave'=>'831',
             'descripcion'=>'',
             'categoria'=>'Profesionales',
             'obligacion'=>'',
@@ -79,7 +79,7 @@ class ActividadeSeeder extends Seeder
         //6
         DB::table('actividades')->insert([
             'nombre' => 'Notarias Publicas',
-            'clave'=>'720',
+            'clave'=>'832',
             'descripcion'=>'',
             'categoria'=>'Profesionales',
             'obligacion'=>'',
