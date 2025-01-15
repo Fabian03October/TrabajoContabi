@@ -92,6 +92,9 @@
                                 </table>
                             </div>
                             <div class="continue-btn">
+                                <a href="{{ route('inscripcion.profesional') }}" class="btn btn-secondary" style="color: black; margin-right: 10px;" title="Regresar al inicio">
+                                    <i class="fas fa-arrow-left"></i> Regresar
+                                </a>
                                 <button type="submit" class="btn btn-primary" id="continueButton" style="display: none;">Continuar</button>
                             </div>
                         </form>

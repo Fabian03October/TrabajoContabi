@@ -15,12 +15,15 @@ class ProfesionalInscripcionController extends Controller
 {
 
     public $actividadEconomica;
-    // private $filteredActivities = [];
+    public $actividades;
+    public $obligaciones;
+    public $regimen;
 
     public function profesional()
      {
          return view('contaito.inscripcion.profesionales.profesiona');
      }
+
 
      //funcion para mandar a la vita de porcentajes las activiades seleccionadas
      public function porcientoPorfesional(Request $request)
@@ -33,9 +36,8 @@ class ProfesionalInscripcionController extends Controller
 
          // Obtener las actividades seleccionadas desde la base de datos
          $actividades = Actividade::whereIn('id', $request->actividades)->get();
-        //  $this->actividadEconomica=$actividades;
-        //  dd($this->numeros);
-         // Redirigir a la vista con las actividades seleccionadas
+
+         $this->actividades=$actividades;
          return view('contaito.inscripcion.profesionales.porcentajes', compact('actividades'));
      }
 
@@ -91,26 +93,30 @@ class ProfesionalInscripcionController extends Controller
         if (empty($filteredActivities)) {
             return redirect()->route('inscripcion.procesarProfesional')->withErrors('No se encontraron actividades para procesar.');
         }
-        // dd(Auth::user()->id);
+
+        $usuario = Auth::user();
         // Procesar las actividades
         foreach ($filteredActivities as $activity) {
             Inscripcione::create([
                 'fecha_inicio' => now(), //fecha actual
                 'fecha_fin' =>null,
                 'porcentaje' => $activity['porcentaje'], // Porcentaje desde el arreglo
-                'user_id' => Auth::user()->id,      // ID del usuario autenticado
+                'user_id' => $usuario->id,      // ID del usuario autenticado
                 'actividade_id' => $activity['id_actividad'], // ID de la actividad
-                // 'forma_actividad' => $activity['forma_actividad'], // Forma de actividad desde el arreglo
-
-                // Agrega más campos aquí según lo necesario
             ]);
         }
+
+        $usuario->update([
+            'FechaIniOP' => now(),
+            'status_padron' => 1,
+        ]);
 
         // Limpiar el arreglo de la sesión
         session()->forget('filteredActivities');
 
-        return redirect()->route('home')->with('success', 'Actividades inscritas correctamente.');
-    }
 
+        // return redirect()->route('home')->with('success', 'Actividades inscritas correctamente.');
+        return view('contaito.inscripcion.profesionales.inscripcionExitosa');
+    }
 
 }

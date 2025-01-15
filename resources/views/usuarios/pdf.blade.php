@@ -153,6 +153,7 @@
             /* border-right: 1px solid #000; */
         }
         .footer {
+            margin-top: auto;
             padding: 5px; /* Espaciado interno */
             text-align: right; /* Centra el contenido */
             border-top: 7px solid #494949; /* Borde superior */
@@ -167,6 +168,16 @@
         .footer .footer-logo img {
             height: auto; /* Mantiene la proporción de las imágenes */
             margin: 0 10px; /* Espacio entre las imágenes */
+        }
+
+        .header2 {
+            background-color: #494949; /* Color de fondo gris claro */
+            padding: 20px;
+            border: 1px solid #343131; /* Borde gris claro */
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+            page-break-before: always;
         }
     </style>
 </head>
@@ -184,7 +195,7 @@
                         {{-- <img src="{{ asset('img/sat2.png') }}" alt="logo" width="120" class="shadow-light"> --}}
 
 
-                        <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path().'/img/qr.png'))}}" style="width: 50%; height: 20%; float: left;">
+                        <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path().'/img/qr.png'))}}" style="width: 50%; height: 15%; float: left;">
                         {{-- <p style="color:grey"><strong>HACIENDA</strong><br>SECRETARÍA DE HACIENDA Y CRÉDITO PÚBLICO</p> --}}
                         {{-- <p style="color:grey"><strong>SAT</strong><br>SERVICIO DE ADMINISTRACIÓN TRIBUTARIA</p> --}}
                         <p class="uppercase" style="color:grey">{{ $usuario->rfc }}</p>
@@ -224,7 +235,10 @@
         </table>
 
         <table class="info-table">
-            <caption><strong>Datos de Identificación del Contribuyente:</strong></caption>
+            <tr>
+                <th colspan="2" class="section-header" style="background-color: #dedede;">Datos de Identificación del Contribuyente:</th>
+            </tr>
+            {{-- <caption><strong></strong></caption> --}}
             <tr>
                 <th>RFC:</th>
                 <td class="uppercase">{{ $usuario->rfc }}</td>
@@ -252,7 +266,7 @@
             <tr>
                 <th>Estatus en el Padrón:</th>
                 @if ($usuario->status_padron == 1)
-                    <td>Activo</td>
+                    <td>ACTIVO</td>
                 @else
                     <td>INACTIVO</td>
                 @endif
@@ -268,7 +282,9 @@
         </table>
         <br>
         <table class="info-table2">
-            <caption><strong>Datos del domicilio registrado</strong></caption>
+            <tr>
+                <th colspan="2" class="section-header" style="background-color: #dedede;">Datos del domicilio registrado</th>
+            </tr>
             <tr>
                 <th>Código postal: {{ optional($usuario->domicilio)->cp }}</th>
                 <td></td>
@@ -290,26 +306,169 @@
                 <th>Nombre de la Entidad Federativa: {{ optional($usuario->domicilio)->entidad }}</th>
                 <td>Entre Calle: {{ optional($usuario->domicilio)->entre_calle1 }}</td>
             </tr>
-
-
             <tr>
-                <th></th>
-                <td></td>
+                <th colspan="2">Y calle: </th>¡
             </tr>
-
         </table>
+        <br>
         <div class="footer">
+            <br>
             <div class="footer-logo">
                 <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path().'/img/footer-Sat.png'))}}" style="width: 60%; height: 45%; float: left;">
-
             </div>
-            <div class="contact-info">
-                <p> <strong>Contacto</strong></p>
-                <p>Av. Hidalgo 77, col. Guerrero, CP. 06300, Ciudad de México.</p>
-                <p>Atención telefonica desde cualquier parte del pais</p>
-                <p>MarcaGAT 55 627 22 728 </p>
+            <div class="contact-info" style="font-size: 0.9em; line-height: 1.5; text-align: justify;">
+                <p><strong>Información de Contacto</strong></p>
+                <p><strong>Instituto Tecnológico de Oaxaca</strong></p>
+                <p>Av. Ing. Víctor Bravo Ahuja No. 125, Col. Reforma, CP. 68050, Oaxaca de Juárez, Oaxaca.</p>
+                <p>Teléfono: +52 951 515 2799</p>
+                {{-- <br>
+                <p><strong>Desarrolladores:</strong></p>
+                <ul style="list-style-type: disc; padding-left: 20px;">
+                    <li>Sergio Saul Ramirez Lopez - Desarrollador Backend</li>
+                    <li>Fabian Martinez - Desarrolladora Frontend</li>
+                </ul>
+                <p>Correo de contacto: equipo.desarrollo@itoaxaca.edu.mx</p> --}}
             </div>
         </div>
+        <div class="header2"></div>
+        <div class="watermark">SIN VALIDEZ OFICIAL</div>
+        <div>
+            <table class="info-table2" style="width: 100%; border-collapse: collapse;">
+                <tr>
+                    <th colspan="5" class="section-header" style="background-color: #dedede; text-align: left; padding: 8px;">
+                        Actividades Económicas:
+                    </th>
+                </tr>
+                <thead>
+                    <tr>
+                        <th class="text-center" style="width: 5%; background-color: #dedede;">Orden</th>
+                        <th style="width: 50%; background-color: #dedede;">Actividad Económica</th>
+                        <th style="width: 15%; background-color: #dedede;">Porcentaje</th>
+                        <th style="width: 15%; background-color: #dedede;">Fecha Inicio</th>
+                        <th style="width: 15%; background-color: #dedede;">Fecha Fin</th>
+                    </tr>
+                </thead>
+                <tbody style="font-size: 0.8em; padding: 4px;">
+                    @if($actividades != null && $actividades->isNotEmpty()) <!-- Verifica si hay actividades -->
+                        @foreach($actividades as $actividad)
+                            <tr>
+                                <th scope="row" style="text-align: center; width: 5%;">{{ $loop->iteration }}</th>
+                                <td style="text-align: center; width: 50%;">{{$actividad->actividad}}</td>
+                                <td style="text-align: center; width: 15%;">{{$actividad->porcentaje}}</td>
+                                <td style="text-align: center; width: 15%;">{{$usuario->FechaIniOP}}</td>
+                                <td style="text-align: center; width: 15%;"></td>
+                            </tr>
+                        @endforeach
+                    @else <!-- Si no hay actividades -->
+                        <tr>
+                            <th scope="row" colspan="5" style="text-align: center;">Sin actividades economicas fiscales</th>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
+            <br>
+            <table class="info-table" style="width: 100%; border-collapse: collapse;">
+                <tr>
+                    <th colspan="3" class="section-header" style="background-color: #dedede; text-align: left; padding: 8px;">
+                        Regimenes:
+                    </th>
+                </tr>
+                <thead>
+                    <tr>
+                        <th style="text-align: center; width: 70%; background-color: #dedede;">Regimen</th>
+                        <th style="width: 15%; background-color: #dedede;">Fecha Inicio</th>
+                        <th style="width: 15%; background-color: #dedede;">Fecha Fin</th>
+                    </tr>
+                </thead>
+                <tbody style="font-size: 0.8em;">
+                    @if($regimenes != null && $regimenes->isNotEmpty())
+                    @foreach($regimenes as $regimen)
+                        <tr>
+                            <td style=" width: 70%;">{{$regimen->regimenes}}</td>
+                            <td style="text-align: center; width: 15%;">{{$usuario->FechaIniOP}}</td>
+                            <td style="text-align: center; width: 15%;"></td>
+                        </tr>
+                    @endforeach
+                    @else
+                        <tr>
+                            <th scope="row" colspan="3" style="text-align: center; background-color: white">Sin Regimen Fiscal</th>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
+
+            <br>
+            <table class="info-table2" style="width: 100%; border-collapse: collapse;">
+                <tr>
+                    <th colspan="4" class="section-header" style="background-color: #dedede; text-align: left; padding: 8px;">
+                        Obligaciones:
+                    </th>
+                </tr>
+                <thead>
+                    <tr>
+                        <th class="text-center" style="width: 40%; background-color: #dedede;">Decripcion de la Obligacion</th>
+                        <th style="width: 30%; background-color: #dedede;">Descripcion</th>
+                        <th style="width: 15%; background-color: #dedede;">Fecha Inicio</th>
+                        <th style="width: 15%; background-color: #dedede;">Fecha Fin</th>
+                    </tr>
+                </thead>
+                <tbody style="font-size: 0.8em; padding: 4px;">
+                    @if($obligaciones != null && $obligaciones->isNotEmpty())
+                        @foreach($obligaciones as $obligacion)
+                        <tr>
+                            {{-- <th scope="row" style="width: 40%;"></th> --}}
+                            <td style="width: 40%; text-align: justify">
+                                {{$obligacion->nombre}}
+                            </td>
+
+                            <td style="width: 30%; text-align: justify">
+                                {{$obligacion->descripcion}}
+                            </td>
+                            <td style="width: 15%;text-align: center">
+                                    {{$usuario->FechaIniOP}}
+                            </td>
+                            <td style="width: 15%;"></td>
+                        </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <th scope="row" colspan="4" style="text-align: center; background-color: white">Sin Obligaciones Fiscales</th>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
+            <br>
+            <div>
+                <label style="font-size: 0.7em; line-height: 1.5; text-align: justify; display: block; color: black; font-weight: bold;">
+                    Sus datos personales son incorporados y protegidos en los sistemas del SAT, de conformidad con los Lineamientos de Protección de Datos
+                    Personales y con diversas disposiciones fiscales y legales sobre confidencialidad y protección de datos, a fin de ejercer las facultades conferidas a la autoridad fiscal.
+                    <br>
+                    Si desea modificar o corregir sus datos personales, puede acudir a cualquier Módulo de Servicios Tributarios y/o a través de la dirección <a href="http://sat.gob.mx" target="_blank">http://sat.gob.mx</a>.
+                    <br>
+                    "La corrupción tiene consecuencias ¡denúnciala! Si conoces algún posible acto de corrupción o delito presenta una queja o denuncia a través de:
+                    <a href="http://www.sat.gob.mx" target="_blank">www.sat.gob.mx</a>,
+                    <a href="mailto:denuncias@sat.gob.mx">denuncias@sat.gob.mx</a>,
+                    desde México: (55) 8852 2222, desde el extranjero: +55 8852 2222, SAT móvil o <a href="http://www.gob.mx/sfp" target="_blank">www.gob.mx/sfp</a>".
+                </label>
+            </div>
+            {{-- <br> --}}
+            <div class="footer">
+                <br>
+                <div class="footer-logo">
+                    <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path().'/img/footer-Sat.png'))}}" style="width: 60%; height: 25%; float: left;">
+                </div>
+                <div class="contact-info" style="font-size: 0.9em; line-height: 1.5; text-align: justify;">
+                    <p><strong>Información de Desarrolladores</strong></p>
+                    <p><strong>Instituto Tecnológico de Oaxaca</strong></p>
+                    <p>Sergio Saul Ramirez Lopez</p>
+                    <p>Fabian</p>
+                    <p>Correo electrónico: equipo.desarrollo@itoaxaca.edu.mx</p>
+
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </body>
 </html>

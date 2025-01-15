@@ -487,5 +487,214 @@ class ActividadeSeeder extends Seeder
             'regimene_id'=>3,
             'tipopersona_id'=>1,
         ]);
+
+        // Recreativos-37
+        DB::table('actividades')->insert([
+            'nombre' => 'Cantantes y grupos musicales',
+            'clave'=>'1018',
+            'descripcion'=>'',
+            'categoria'=>'Recreativos',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+        // Recreativos-38
+        DB::table('actividades')->insert([
+            'nombre' => 'Agentes y representantes de artistas, deportistas y similares ',
+            'clave'=>'1027',
+            'descripcion'=>'',
+            'categoria'=>'Recreativos',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+        // Recreativos-39
+        DB::table('actividades')->insert([
+            'nombre' => 'Artistas y técnicos independientes',
+            'clave'=>'1028',
+            'descripcion'=>'',
+            'categoria'=>'Recreativos',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+        // Recreativos-40
+        DB::table('actividades')->insert([
+            'nombre' => 'Artistas y técnicos independientes',
+            'clave'=>'1028',
+            'descripcion'=>'',
+            'categoria'=>'Inmuebles',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+
+        // Recreativos-40
+        DB::table('actividades')->insert([
+            'nombre' => 'Artistas y técnicos independientes',
+            'clave'=>'1028',
+            'descripcion'=>'',
+            'categoria'=>'Inmuebles',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+        // Recreativos-41
+        DB::table('actividades')->insert([
+            'nombre' => 'Otros servicios relacionados con los servicios inmobiliarios ',
+            'clave'=>'812',
+            'descripcion'=>'',
+            'categoria'=>'Inmuebles',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+        // Inversiones-42
+        DB::table('actividades')->insert([
+            'nombre' => 'Asesoría en inversiones',
+            'clave'=>'719',
+            'descripcion'=>'',
+            'categoria'=>'Inversiones',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+        // Inversiones-43
+        DB::table('actividades')->insert([
+            'nombre' => 'Agentes, ajustadores y gestores de seguros de vida',
+            'clave'=>'797',
+            'descripcion'=>'',
+            'categoria'=>'Inversiones',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+        // Inversiones-44
+        DB::table('actividades')->insert([
+            'nombre' => 'Agentes, ajustadores y gestores de seguros contra riesgos agropecuarios',
+            'clave'=>'798',
+            'descripcion'=>'',
+            'categoria'=>'Inversiones',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+        // Inversiones-45
+        DB::table('actividades')->insert([
+            'nombre' => 'Agentes, ajustadores y gestores de otros seguros',
+            'clave'=>'799',
+            'descripcion'=>'',
+            'categoria'=>'Inversiones',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+        // Cobras Renrtas por alquiler->46
+        DB::table('actividades')->insert([
+            'nombre' => 'Alquiler de Teatros, estadios, auditorios y similares',
+            'clave'=>'806',
+            'descripcion'=>'',
+            'categoria'=>'Rentas',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>4,
+            'tipopersona_id'=>1,
+        ]);
+
+        // Cobras Renrtas por alquiler->47
+        DB::table('actividades')->insert([
+            'nombre' => 'Alquiler de Fincas destinadas a fines agrícolas o ganaderos',
+            'clave'=>'807',
+            'descripcion'=>'',
+            'categoria'=>'Rentas',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>4,
+            'tipopersona_id'=>1,
+        ]);
+
+        // Cobras Renrtas por alquiler->48
+        DB::table('actividades')->insert([
+            'nombre' => 'Alquiler de Otros inmuebles',
+            'clave'=>'808',
+            'descripcion'=>'',
+            'categoria'=>'Rentas',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>4,
+            'tipopersona_id'=>1,
+        ]);
+
+        // Cobras Renrtas por alquiler->49
+        DB::table('actividades')->insert([
+            'nombre' => 'Alquiler de inmuebles para escuelas, colegios de profesionales e instituciones de asistencia y beneficencia o empresas asociaciones u organismos no comerciales',
+            'clave'=>'2224',
+            'descripcion'=>'',
+            'categoria'=>'Rentas',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>4,
+            'tipopersona_id'=>1,
+        ]);
+
+         // Dividendos->50
+         DB::table('actividades')->insert([
+            'nombre' => 'Dividendos',
+            'clave'=>'2321',
+            'descripcion'=>'Socio o accionista 100%',
+            'categoria'=>'Dividendos',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>6,
+            'tipopersona_id'=>1,
+        ]);
+
+        // Intereses por inversiones o depósitos en sistema financiero ->51
+        DB::table('actividades')->insert([
+            'nombre' => 'Intereses por inversiones o depósitos en sistema financiero ',
+            'clave'=>'76',
+            'descripcion'=>'Socio o accionista 100%',
+            'categoria'=>'Intereses',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>7,
+            'tipopersona_id'=>1,
+        ]);
     }
 }

@@ -20,6 +20,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const checkboxContainer5 = document.getElementById('checkbox-container5');
     const icon5 = document.getElementById('toggle-icon5');
 
+    const toggleApoyo = document.getElementById('toggle-apoyo');
+    const checkboxContainer6 = document.getElementById('checkbox-container6');
+    const icon6 = document.getElementById('toggle-icon6');
+
+    const toggleRecreativo = document.getElementById('toggle-recreativo');
+    const checkboxContainer7 = document.getElementById('checkbox-container7');
+    const icon7 = document.getElementById('toggle-icon7');
+
+    const toggleagropecuarias = document.getElementById('toggle-agropecuarias');
+    const checkboxContainer8 = document.getElementById('checkbox-container8');
+    const icon8 = document.getElementById('toggle-icon8');
+
+    const toggleInmuebles = document.getElementById('toggle-inmuebles');
+    const checkboxContainer9 = document.getElementById('checkbox-container9');
+    const icon9 = document.getElementById('toggle-icon9');
+
+    const togglefinancieros = document.getElementById('toggle-financieros');
+    const checkboxContainer10 = document.getElementById('checkbox-container10');
+    const icon10 = document.getElementById('toggle-icon10');
     // Función para alternar el display y el icono
     function toggleVisibility(container, icon) {
         if (container.style.display === 'none') {
@@ -50,5 +69,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
     toggleTurismo.addEventListener('click', function () {
         toggleVisibility(checkboxContainer5, icon5);
+    });
+
+    toggleApoyo.addEventListener('click', function () {
+        toggleVisibility(checkboxContainer6, icon6);
+    });
+
+    toggleRecreativo.addEventListener('click', function () {
+        toggleVisibility(checkboxContainer7, icon7);
+    });
+
+    toggleagropecuarias.addEventListener('click', function () {
+        toggleVisibility(checkboxContainer8, icon8);
+    });
+
+    toggleInmuebles.addEventListener('click', function () {
+        toggleVisibility(checkboxContainer9, icon9);
+    });
+
+    togglefinancieros.addEventListener('click', function () {
+        toggleVisibility(checkboxContainer10, icon10);
     });
 });

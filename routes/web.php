@@ -65,22 +65,30 @@ Route::group(['middleware' => ['auth']], function() {
     // Añadimos las rutas para el controlador de facturas
     Route::get('/invoices/create', [InvoiceController::class, 'create'])->name('invoices.create');
     Route::post('/invoices', [InvoiceController::class, 'store'])->name('invoices.store');
+
+    //ACTIVIDAD-PROFESIONAL
+    Route::get('/simulador/profesional', [ProfesionalInscripcionController::class, 'profesional'])->name('inscripcion.profesional');
+    Route::post('/simulador/porcientoPorfesional', [ProfesionalInscripcionController::class, 'porcientoPorfesional'])->name('inscripcion.porcientoPorfesional');
+    Route::post('/simulador/procesarProfesional', [ProfesionalInscripcionController::class, 'procesarProfesional'])->name('inscripcion.procesarProfesional');
+    Route::post('/simulador/inscribirProfesional', [ProfesionalInscripcionController::class, 'inscribirProfesional'])->name('inscripcion.inscribirProfesional');
+    Route::get('/simulador/procesarProfesional', [ProfesionalInscripcionController::class, 'regresarprocesarProfesional'])->name('inscripcion.procesarProfesionall');
+
+    //para el modal de eliminar roles
+    Route::post('roles/eliminar/{id}',[RolController::class, 'eliminar'])->name('roles.eliminar');
+
+
+    //rutas para regresar atras en las vistas de inscripcion a regimen
+    Route::get('/verificar-codigo', [InscripcionController::class, 'mostrarFormulario'])->name('verificar.codigooo');
 });
 
 //rutas para usar el captcha de inscripcion al regimen
 Route::get('captcha', [Captcha::class, 'create'])->name('captcha');
 Route::post('/verificar-codigo', [InscripcionController::class, 'verificarCodigo'])->name('verificar.codigo');
 
-
 Route::post('/simulador/procesar', [InscripcionController::class, 'procesar'])->name('inscripcion.procesar');
 Route::get('/simulador/asalariado', [InscripcionController::class, 'asalariado'])->name('inscripcion.asalariado');
 Route::get('/simulador/jubilado', [InscripcionController::class, 'jubilado'])->name('inscripcion.jubilado');
 
-//ACTIVIDAD-PROFESIONAL
-Route::get('/simulador/profesional', [ProfesionalInscripcionController::class, 'profesional'])->name('inscripcion.profesional');
-Route::post('/simulador/porcientoPorfesional', [ProfesionalInscripcionController::class, 'porcientoPorfesional'])->name('inscripcion.porcientoPorfesional');
-Route::post('/simulador/procesarProfesional', [ProfesionalInscripcionController::class, 'procesarProfesional'])->name('inscripcion.procesarProfesional');
-Route::post('/simulador/inscribirProfesional', [ProfesionalInscripcionController::class, 'inscribirProfesional'])->name('inscripcion.inscribirProfesional');
 
 
 Route::get('/simulador/Renta', [InscripcionController::class, 'rentas'])->name('inscripcion.rentas');

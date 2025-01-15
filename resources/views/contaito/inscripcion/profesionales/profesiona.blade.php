@@ -240,8 +240,144 @@
                                 </div>
                             </div>
 
+                            <br>
+                            <div id="toggle-apoyo" class="toggle-button">
+                                <span>Otros servicios de apoyo</span>
+                                <span id="toggle-icon6" class="toggle-icon6">➕</span>
+                            </div>
+
+                            <div id="checkbox-container6" style="display: none; border: 0.5px solid #ced4da; padding: 25px;">
+                                <div class="checkbox-group text-left">
+                                    @foreach (App\Models\Actividade::where('categoria', 'ServiciosdeApoyo')->get() as $actividad)
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                id="actividad_{{ $actividad->id }}"
+                                                name="actividades[]"
+                                                value="{{ $actividad->id }}">
+                                            <label
+                                                class="form-check-label"
+                                                for="actividad_{{ $actividad->id }}">
+                                                {{ $actividad->nombre }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+
+                            <br>
+                            <div id="toggle-agropecuarias" class="toggle-button">
+                                <span>Apoyo a actividades agropecuarias y forestales</span>
+                                <span id="toggle-icon8" class="toggle-icon8">➕</span>
+                            </div>
+
+                            <div id="checkbox-container8" style="display: none; border: 0.5px solid #ced4da; padding: 25px;">
+                                <div class="checkbox-group text-left">
+                                    @foreach (App\Models\Actividade::where('categoria', 'ActividadesAgropecuarias')->get() as $actividad)
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                id="actividad_{{ $actividad->id }}"
+                                                name="actividades[]"
+                                                value="{{ $actividad->id }}">
+                                            <label
+                                                class="form-check-label"
+                                                for="actividad_{{ $actividad->id }}">
+                                                {{ $actividad->nombre }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+
+
+                            <br>
+                            <div id="toggle-recreativo" class="toggle-button">
+                                <span>Recreativos</span>
+                                <span id="toggle-icon7" class="toggle-icon7">➕</span>
+                            </div>
+
+                            <div id="checkbox-container7" style="display: none; border: 0.5px solid #ced4da; padding: 25px;">
+                                <div class="checkbox-group text-left">
+                                    @foreach (App\Models\Actividade::where('categoria', 'Recreativos')->get() as $actividad)
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                id="actividad_{{ $actividad->id }}"
+                                                name="actividades[]"
+                                                value="{{ $actividad->id }}">
+                                            <label
+                                                class="form-check-label"
+                                                for="actividad_{{ $actividad->id }}">
+                                                {{ $actividad->nombre }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+
+
+                            <br>
+                            <div id="toggle-inmuebles" class="toggle-button">
+                                <span>	Servicios inmobiliarios y de administración de inmuebles</span>
+                                <span id="toggle-icon9" class="toggle-icon9">➕</span>
+                            </div>
+
+                            <div id="checkbox-container9" style="display: none; border: 0.5px solid #ced4da; padding: 25px;">
+                                <div class="checkbox-group text-left">
+                                    @foreach (App\Models\Actividade::where('categoria', 'Inmuebles')->get() as $actividad)
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                id="actividad_{{ $actividad->id }}"
+                                                name="actividades[]"
+                                                value="{{ $actividad->id }}">
+                                            <label
+                                                class="form-check-label"
+                                                for="actividad_{{ $actividad->id }}">
+                                                {{ $actividad->nombre }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+
+                            <br>
+                            <div id="toggle-financieros" class="toggle-button">
+                                <span>	Financieros</span>
+                                <span id="toggle-icon10" class="toggle-icon10">➕</span>
+                            </div>
+
+                            <div id="checkbox-container10" style="display: none; border: 0.5px solid #ced4da; padding: 25px;">
+                                <div class="checkbox-group text-left">
+                                    @foreach (App\Models\Actividade::where('categoria', 'Financieros')->get() as $actividad)
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                id="actividad_{{ $actividad->id }}"
+                                                name="actividades[]"
+                                                value="{{ $actividad->id }}">
+                                            <label
+                                                class="form-check-label"
+                                                for="actividad_{{ $actividad->id }}">
+                                                {{ $actividad->nombre }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+
                             <div class="continue-btn">
+                                <a href="{{ route('verificar.codigooo') }}" class="btn btn-secondary" style="color: black; margin-right: 10px;" title="Regresar al inicio">
+                                    <i class="fas fa-arrow-left"></i> Regresar
+                                </a>
                                 <button type="submit" class="btn btn-primary">Continuar</button>
+
                             </div>
                         </form>
                     </div>

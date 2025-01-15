@@ -104,6 +104,9 @@
                                 Las obligaciones y características fiscales proporcionadas en esta guía, se asignan con base en la legislación fiscal vigente y en la información que proporcionaste en cada una de las preguntas del cuestionario, por lo que éstas podrán variar si dicha legislación sufre cambios o si te ubicas en una situación jurídica o de hecho diferente. Esta guía se emite con fines informativos, no crea derechos ni establece obligaciones distintas a las contenidas en las disposiciones fiscales vigentes.
                             </label>
                             <div class="continue-btn">
+                                {{-- <a href="{{ route('inscripcion.procesarProfesionall') }}" class="btn btn-secondary" style="color: black; margin-right: 10px;" title="Regresar al inicio">
+                                    <i class="fas fa-arrow-left"></i> Regresar
+                                </a> --}}
                                 <button type="submit" class="btn btn-primary">Inscribir</button>
                             </div>
                         </form>

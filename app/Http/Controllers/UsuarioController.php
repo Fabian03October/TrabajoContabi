@@ -15,8 +15,7 @@ use DateTime;
 use App\Models\Domicilio;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NotificacionContribuyente;
-
-
+use App\Models\Inscripcione;
 
 class UsuarioController extends Controller
 {
@@ -51,6 +50,43 @@ class UsuarioController extends Controller
     public function pdf($id)
     {
         $usuario = User::find($id);
+        if (!$usuario) {
+            // Manejar el caso donde no se encuentra el usuario
+            abort(404, 'Usuario no encontrado');
+        }
+        $actividades= Inscripcione::query()
+                    ->join('users','users.id','=','inscripciones.user_id')
+                    ->join('actividades','actividades.id','=','inscripciones.actividade_id')
+                    ->join('regimenes','regimenes.id','=','actividades.regimene_id')
+                    ->select('actividades.id as id','actividades.nombre as actividad','inscripciones.porcentaje as porcentaje')
+                    ->where('users.id','=',$usuario->id)
+                    // ->distinct()
+                    ->get();
+
+        $actividadIds = $actividades->pluck('id');
+
+        // Obtener las obligaciones asociadas a las actividades
+        $obligaciones = Inscripcione::query()
+                    ->join('users', 'users.id', '=', 'inscripciones.user_id')
+                    ->join('actividades', 'actividades.id', '=', 'inscripciones.actividade_id')
+                    ->join('regimenes', 'regimenes.id', '=', 'actividades.regimene_id')
+                    ->join('obligacione_actividades', 'obligacione_actividades.actividade_id', '=', 'actividades.id')
+                    ->join('obligaciones', 'obligaciones.id', '=', 'obligacione_actividades.obligacione_id')
+                    ->select('obligaciones.clave as clave','obligaciones.nombre as nombre','obligaciones.descripcion as descripcion')
+                    ->whereIn('actividades.id', $actividadIds) // Usar whereIn con los IDs de las actividades
+                    ->distinct() // Asegurar que no haya duplicados
+                    ->get();
+
+        $regimenes= Inscripcione::query()
+                    ->join('users','users.id','=','inscripciones.user_id')
+                    ->join('actividades','actividades.id','=','inscripciones.actividade_id')
+                    ->join('regimenes','regimenes.id','=','actividades.regimene_id')
+                    ->select('regimenes.nombre as regimenes')
+                    ->where('users.id','=',$usuario->id)
+                    ->distinct()
+                    ->get();
+        // // Mostrar solo las obligaciones (sin duplicados)
+        // dd($regimenes);
 
         if (!$usuario) {
             return redirect()->route('usuarios.index')->with('error', 'Usuario no encontrado.');
@@ -58,6 +94,9 @@ class UsuarioController extends Controller
 
         $data = [
             'usuario' => $usuario,
+            'actividades'=>$actividades,
+            'obligaciones'=>$obligaciones,
+            'regimenes'=>$regimenes,
         ];
 
         // $pdf = Pdf::loadView('usuarios.pdf', $data);
@@ -95,7 +134,7 @@ class UsuarioController extends Controller
             $user->save();
 
 
-            
+
             // Enviar correo de notificación
             $details = [
                 'title' => 'Activación de Contribuyente',
@@ -103,7 +142,7 @@ class UsuarioController extends Controller
                 'body' => 'Tu cuenta ha sido activada exitosamente. Puedes acceder a tu panel en el siguiente enlace.',
                 'url' => route('home')
             ];
-        
+
             Mail::to($user->email)->send(new NotificacionContribuyente($details));
 
 

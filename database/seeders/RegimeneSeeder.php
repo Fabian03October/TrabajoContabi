@@ -38,11 +38,24 @@ class RegimeneSeeder extends Seeder
             'descripcion'=>'',
             'tasa_impositiva'=>1.2
         ]);
-
+        //5
         DB::table('regimenes')->insert([
             'nombre' => 'Régimen de Sueldos y Salarios e Ingresos Asimilados a Salarios.',
             'descripcion'=>'',
             'tasa_impositiva'=>1.2
+        ]);
+        //6
+        DB::table('regimenes')->insert([
+            'nombre' => 'Régimen de Ingresos por Dividendos (socios y accionistas)',
+            'descripcion'=>'',
+            'tasa_impositiva'=>1.5
+        ]);
+
+        //7
+        DB::table('regimenes')->insert([
+            'nombre' => 'Régimen de los ingresos por intereses',
+            'descripcion'=>'',
+            'tasa_impositiva'=>1.5
         ]);
 
         // DB::table('regimenes')->insert([

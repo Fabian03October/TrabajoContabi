@@ -79,6 +79,20 @@ class ObligacioneSeeder extends Seeder
             'clave'=>'33',
             'descripcion'=>'A más tardar el día 17 del mes inmediato posterior al periodo que corresponda.',
         ]);
+        //12
+        DB::table('obligaciones')->insert([
+            'nombre' => 'Declarar trimestralmente el ISR. Régimen de Arrendamiento.',
+            'clave'=>'734',
+            'descripcion'=>'A más tardar el día 17 del mes inmediato posterior al trimestre que corresponda el pago',
+        ]);
+
+        //13
+        DB::table('obligaciones')->insert([
+            'nombre' => 'Declarar trimestralmente el IVA.',
+            'clave'=>'740',
+            'descripcion'=>'A más tardar el día 17 del mes inmediato posterior al trimestre que corresponda.',
+        ]);
+
         DB::table('obligaciones')->insert([
             'nombre' => '',
             'clave'=>'',

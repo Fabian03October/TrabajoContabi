@@ -240,4 +240,10 @@ public function ServiciosB()
         return view('contaito.inscripcion.list_ingresos');
         // return redirect()->back()->with('success', 'Código verificado correctamente.');
     }
+
+    //METODOS PARA REGRESAR ATRAS EN LAS VISTAS
+     public function mostrarFormulario()
+    {
+        return view('contaito.inscripcion.list_ingresos');
+    }
 }
