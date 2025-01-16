@@ -1011,5 +1011,338 @@ class ObligacioneActividadesSeeder extends Seeder
             'obligacione_id' =>2,
             'actividade_id'=>49,
         ]);
+
+        //Otros Ingresos->Explotación de concesiones, permisos, autorizaciones o contrat-> 3, 78, 59
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>2,
+            'actividade_id'=>52,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>14,
+            'actividade_id'=>52,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>15,
+            'actividade_id'=>52,
+        ]);
+
+        //Otros Ingresos->Explotación del subsuelo sujetos a regímenes fiscales preferentes-> 3, 204, 73
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>2,
+            'actividade_id'=>53,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>16,
+            'actividade_id'=>53,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>17,
+            'actividade_id'=>53,
+        ]);
+
+        //Otros Ingresos->Explotación del subsuelo-> 3, 58, 9, 579
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>2,
+            'actividade_id'=>54,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>18,
+            'actividade_id'=>54,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>3,
+            'actividade_id'=>54,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>7,
+            'actividade_id'=>54,
+        ]);
+
+        //Otros Ingresos->Participación en productos del subsuelo sujetos a regímenes fiscales preferentes-> 3, 204, 73
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>2,
+            'actividade_id'=>55,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>16,
+            'actividade_id'=>55,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>17,
+            'actividade_id'=>55,
+        ]);
+
+         //Otros Ingresos->Participación en productos del subsuelo-> 3, 58, 9, 579
+         DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>2,
+            'actividade_id'=>56,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>18,
+            'actividade_id'=>56,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>3,
+            'actividade_id'=>56,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>7,
+            'actividade_id'=>56,
+        ]);
+
+         //Otros Ingresos->Ingresos derivados del otorgamiento de fianzas o avales-> 3, 58, 9, 579
+         DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>2,
+            'actividade_id'=>57,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>18,
+            'actividade_id'=>57,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>3,
+            'actividade_id'=>57,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>7,
+            'actividade_id'=>57,
+        ]);
+
+        //Otros Ingresos->Regalías por uso o goce temporal de patentes y franquicias-> 3, 58
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>2,
+            'actividade_id'=>58,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>18,
+            'actividade_id'=>58,
+        ]);
+
+        //Otros Ingresos->Operaciones financieras derivadas en el Mercado Mexicano de Derivados -> 3, 58
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>2,
+            'actividade_id'=>59,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>18,
+            'actividade_id'=>59,
+        ]);
+
+        //Otros Ingresos->Operaciones financieras derivadas en el Mercado Mexicano de Derivados -> 3, 58
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>2,
+            'actividade_id'=>59,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>18,
+            'actividade_id'=>59,
+        ]);
+
+        //Otros Ingresos->Inversiones realizadas en sociedades residentes en el extranjero sin establecimiento en el país  -> 3
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>2,
+            'actividade_id'=>60,
+        ]);
+
+        //Otros Ingresos->Ganancia cambiaria y los intereses obtenidos por otros créditos, operaciones o préstamos otorgados a residentes en el extranjero -> 3, 9,579
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>2,
+            'actividade_id'=>62,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>3,
+            'actividade_id'=>62,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>7,
+            'actividade_id'=>62,
+        ]);
+
+        //Otros Ingresos->Dividendos o utilidades distribuidos por sociedades residentes en el extranjero-> 3
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>2,
+            'actividade_id'=>63,
+        ]);
+
+        //Otros Ingresos->Remanente distribuible proveniente de personas morales con fines no lucrativos del Impuesto Sobre la Renta-> 3
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>2,
+            'actividade_id'=>64,
+        ]);
+
+        //Otros Ingresos->Intereses del extranjero -> 3
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>2,
+            'actividade_id'=>65,
+        ]);
+
+        //Cobras rentas por el alquiler de casa habitación, oficinas, locales->Alquiler de Viviendas amuebladas -> 842, 841, 849
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>20,
+            'actividade_id'=>66,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>21,
+            'actividade_id'=>66,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>22,
+            'actividade_id'=>66,
+        ]);
+
+        //Cobras rentas por el alquiler de casa habitación, oficinas, locales->Alquiler de Viviendas no amuebladas -> 842, 841,27
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>20,
+            'actividade_id'=>67,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>21,
+            'actividade_id'=>67,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>8,
+            'actividade_id'=>67,
+        ]);
+
+        //Cobras rentas por el alquiler de casa habitación, oficinas, locales->Alquiler de Salones para fiestas y convenciones-> 842, 20,841, 849
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>20,
+            'actividade_id'=>68,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>5,
+            'actividade_id'=>68,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>21,
+            'actividade_id'=>68,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>22,
+            'actividade_id'=>68,
+        ]);
+
+        //Cobras rentas por el alquiler de casa habitación, oficinas, locales->Alquiler de Oficinas y locales comerciales-> 842, 20,841, 849
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>20,
+            'actividade_id'=>69,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>5,
+            'actividade_id'=>69,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>21,
+            'actividade_id'=>69,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>22,
+            'actividade_id'=>69,
+        ]);
+
+        //Cobras rentas por el alquiler de casa habitación, oficinas, locales->Alquiler de Teatros, estadios, auditorios y similares-> 842, 841, 849, 27
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>20,
+            'actividade_id'=>70,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>21,
+            'actividade_id'=>70,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>22,
+            'actividade_id'=>70,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>8,
+            'actividade_id'=>70,
+        ]);
+
+        //Cobras rentas por el alquiler de casa habitación, oficinas, locales->Alquiler de Fincas destinadas a fines agrícolas o ganaderos-> 842, 841
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>20,
+            'actividade_id'=>71,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>21,
+            'actividade_id'=>71,
+        ]);
+
+        //Cobras rentas por el alquiler de casa habitación, oficinas, locales->Alquiler de Otros inmuebles-> 842, 841, 849
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>20,
+            'actividade_id'=>72,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>21,
+            'actividade_id'=>72,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>22,
+            'actividade_id'=>72,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>8,
+            'actividade_id'=>72,
+        ]);
+
+
+         //Cobras rentas por el alquiler de casa habitación, oficinas, locales->Alquiler de inmuebles para escuelas, colegios de profesionales e instituciones de asistencia y beneficencia o empresas asociaciones u organismos no comerciales-> 842, 20,841, 849
+         DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>20,
+            'actividade_id'=>73,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>5,
+            'actividade_id'=>73,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>21,
+            'actividade_id'=>73,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>22,
+            'actividade_id'=>73,
+        ]);
     }
 }

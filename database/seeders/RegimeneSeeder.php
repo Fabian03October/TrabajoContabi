@@ -58,6 +58,13 @@ class RegimeneSeeder extends Seeder
             'tasa_impositiva'=>1.5
         ]);
 
+        //8
+        DB::table('regimenes')->insert([
+            'nombre' => 'Régimen de los demás ingresos',
+            'descripcion'=>'',
+            'tasa_impositiva'=>1.5
+        ]);
+
         // DB::table('regimenes')->insert([
         //     'nombre' => 'Régimen general de ley',
         //     'descripcion'=>'',

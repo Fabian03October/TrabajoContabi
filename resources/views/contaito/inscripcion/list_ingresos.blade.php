@@ -73,7 +73,7 @@
 
                                 <label for="xx" class="instructions">
                                     Tienes un negocio y:
-                                    </label>
+                                </label>
 
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="ActividadesEmpre" name="income[]" value="ActividadesEmpre">
@@ -85,6 +85,65 @@
                                     <label class="form-check-label" for="profesional">Actividades empresariales con ingresos por la enajenación de bienes o la prestación de servicios a través de Internet, plataformas, aplicaciones informáticas y similares</label>
                                 </div>
 
+                                <label for="xx" class="instructions">
+                                    Tienes otro tipo de ingreso:
+                                </label>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="InteresesProvenientes" name="income[]" value="InteresesProvenientes">
+                                    <label class="form-check-label" for="InteresesProvenientes"> Intereses provenientes de inversiones o depósitos del sistema financiero</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="dividendos" name="income[]" value="dividendos">
+                                    <label class="form-check-label" for="dividendos">Dividendos</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="obras" name="income[]" value="obras">
+                                    <label class="form-check-label" for="obras">Explotación de obras de tu creación</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="otros" name="income[]" value="obras">
+                                    <label class="form-check-label" for="otros">Otros ingresos</label>
+                                </div>
+
+                                <label for="xx" class="instructions">
+                                    Optas por Régimen Simplificado de Confianza ya que:
+                                </label>
+
+                                <label for="xx" class="instructions">
+                                    Realizas actividades agrícolas, ganaderas, silvícolas y pesqueras
+                                </label>
+
+                                <div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="noexceden" name="income[]" value="noexceden">
+                                        <label class="form-check-label" for="noexceden"> Tus ingresos no exceden de $900,000.00 pesos anuales.</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="exceden" name="income[]" value="exceden">
+                                        <label class="form-check-label" for="exceden"> Tus ingresos exceden de $900,000.00 pesos anuales.</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ActividadesEmpreIndustria" name="income[]" value="ActividadesEmpreIndustria">
+                                    <label class="form-check-label" for="ActividadesEmpreIndustria">Realizas actividades empresariales (entre otras las comerciales, industriales o de servicios)</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rentasabitacion" name="income[]" value="rentasabitacion">
+                                    <label class="form-check-label" for="rentasabitacion"> Cobras rentas por el alquiler de casa habitación, oficinas, locales</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="prestasservicios" name="income[]" value="prestasservicios">
+                                    <label class="form-check-label" for="prestasservicios"> Prestas servicios profesionales de manera independiente</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="similarsalarios" name="income[]" value="similarsalarios">
+                                    <label class="form-check-label" for="similarsalarios"> Tu ingreso se asimila a salarios/label>
+                                </div>
 
                             </div>
                             <button type="submit" class="btn btn-primary">Continuar</button>

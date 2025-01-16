@@ -93,6 +93,71 @@ class ObligacioneSeeder extends Seeder
             'descripcion'=>'A más tardar el día 17 del mes inmediato posterior al trimestre que corresponda.',
         ]);
 
+        //14
+        DB::table('obligaciones')->insert([
+            'nombre' => 'Presentar la declaración y pago de Impuesto al Valor Agregado (IVA) cuando se enajene un bien o se preste un servicio de manera accidental por única vez.',
+            'clave'=>'78',
+            'descripcion'=>'15 días hábiles siguientes a aquél en que se venda el bien o preste el servicio',
+        ]);
+
+        //15
+        DB::table('obligaciones')->insert([
+            'nombre' => 'Declarar el ISR. Régimen de Demás Ingresos esporádicos.',
+            'clave'=>'59',
+            'descripcion'=>'Quince días hábiles después de obtenido el ingreso',
+        ]);
+        //16
+        DB::table('obligaciones')->insert([
+            'nombre' => 'Presentar la declaración anual de Impuesto Sobre la Renta (ISR) donde se informe sobre los ingresos en regímenes fiscales preferentes. (Empresas multinacionales).',
+            'clave'=>'204',
+            'descripcion'=>'En el mes de febrero de cada año',
+        ]);
+
+        //17
+        DB::table('obligaciones')->insert([
+            'nombre' => 'Declarar anualmente el ISR. Inversiones en regímenes fiscales preferentes.',
+            'clave'=>'73',
+            'descripcion'=>'Conjuntamente con la declaración anual del ejercicio',
+        ]);
+
+        //18
+        DB::table('obligaciones')->insert([
+            'nombre' => 'Declarar mensualmente el ISR. Régimen de Demás Ingresos.',
+            'clave'=>'58',
+            'descripcion'=>'A más tardar el día 17 del mes inmediato posterior al periodo que corresponda.',
+        ]);
+        //19
+        DB::table('obligaciones')->insert([
+            'nombre' => 'Declarar semestralmente el ISR por Intereses y ganancia cambiaria. Demás ingresos.',
+            'clave'=>'60',
+            'descripcion'=>'En los meses de julio del mismo ejercicio y enero del siguiente',
+        ]);
+
+        //20
+        DB::table('obligaciones')->insert([
+            'nombre' => 'Ajuste anual de ISR correspondiente a la declaración anual. Régimen Simplificado de Confianza.',
+            'clave'=>'842',
+            'descripcion'=>'A más tardar el día 30 del mes de abril del ejercicio siguiente',
+        ]);
+        //21
+        DB::table('obligaciones')->insert([
+            'nombre' => 'Pago provisional mensual de ISR. Régimen Simplificado de Confianza.',
+            'clave'=>'841',
+            'descripcion'=>'A más tardar el día 17 del mes de calendario inmediato posterior a aquél al que corresponda el pago',
+        ]);
+        //22
+        DB::table('obligaciones')->insert([
+            'nombre' => 'Declarar mensualmente el IVA.',
+            'clave'=>'849',
+            'descripcion'=>'A más tardar el día 17 del mes inmediato posterior al periodo que corresponda.',
+        ]);
+
+        DB::table('obligaciones')->insert([
+            'nombre' => '',
+            'clave'=>'',
+            'descripcion'=>'',
+        ]);
+
         DB::table('obligaciones')->insert([
             'nombre' => '',
             'clave'=>'',

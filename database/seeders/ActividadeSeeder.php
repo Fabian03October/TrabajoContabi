@@ -696,5 +696,292 @@ class ActividadeSeeder extends Seeder
             'regimene_id'=>7,
             'tipopersona_id'=>1,
         ]);
+
+        //Otros ingresos-> 52
+        DB::table('actividades')->insert([
+            'nombre' => 'Explotación de concesiones, permisos, autorizaciones o contrat',
+            'clave'=>'167',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>8,
+            'tipopersona_id'=>1,
+        ]);
+        //Otros ingresos-> 53
+        DB::table('actividades')->insert([
+            'nombre' => 'Explotación del subsuelo sujetos a regímenes fiscales preferentes',
+            'clave'=>'168',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>8,
+            'tipopersona_id'=>1,
+        ]);
+
+        //Otros ingresos-> 54
+        DB::table('actividades')->insert([
+            'nombre' => 'Explotación del subsuelo',
+            'clave'=>'169',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>8,
+            'tipopersona_id'=>1,
+        ]);
+
+        //Otros ingresos-> 55
+        DB::table('actividades')->insert([
+            'nombre' => 'Participación en productos del subsuelo sujetos a regímenes fiscales preferentes',
+            'clave'=>'170',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>8,
+            'tipopersona_id'=>1,
+        ]);
+
+         //Otros ingresos-> 56
+         DB::table('actividades')->insert([
+            'nombre' => 'Participación en productos del subsuelo ',
+            'clave'=>'171',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>8,
+            'tipopersona_id'=>1,
+        ]);
+
+
+         //Otros ingresos-> 57
+         DB::table('actividades')->insert([
+            'nombre' => 'Ingresos derivados del otorgamiento de fianzas o avales',
+            'clave'=>'800',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>8,
+            'tipopersona_id'=>1,
+        ]);
+
+        //Otros ingresos-> 58
+        DB::table('actividades')->insert([
+            'nombre' => 'Regalías por uso o goce temporal de patentes y franquicias',
+            'clave'=>'830',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>8,
+            'tipopersona_id'=>1,
+        ]);
+
+
+        //Otros ingresos-> 59
+        DB::table('actividades')->insert([
+            'nombre' => 'Operaciones financieras derivadas en el Mercado Mexicano de Derivados ',
+            'clave'=>'875',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>8,
+            'tipopersona_id'=>1,
+        ]);
+
+        //Otros ingresos-> 60
+        DB::table('actividades')->insert([
+            'nombre' => 'Inversiones realizadas en sociedades residentes en el extranjero sin establecimiento en el país ',
+            'clave'=>'877',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>8,
+            'tipopersona_id'=>1,
+        ]);
+
+        //Otros ingresos-> 61
+        DB::table('actividades')->insert([
+            'nombre' => 'Ganancia cambiaria y los intereses obtenidos por otros créditos, operaciones o préstamos otorgados',
+            'clave'=>'878',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>8,
+            'tipopersona_id'=>1,
+        ]);
+
+        //Otros ingresos-> 62
+        DB::table('actividades')->insert([
+            'nombre' => 'Ganancia cambiaria y los intereses obtenidos por otros créditos, operaciones o préstamos otorgados a residentes en el extranjero ',
+            'clave'=>'879',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>8,
+            'tipopersona_id'=>1,
+        ]);
+
+         //Otros ingresos-> 63
+         DB::table('actividades')->insert([
+            'nombre' => 'Dividendos o utilidades distribuidos por sociedades residentes en el extranjero',
+            'clave'=>'880',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>8,
+            'tipopersona_id'=>1,
+        ]);
+
+         //Otros ingresos-> 64
+         DB::table('actividades')->insert([
+            'nombre' => 'Remanente distribuible proveniente de personas morales con fines no lucrativos del Impuesto Sobre la Renta',
+            'clave'=>'881',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>8,
+            'tipopersona_id'=>1,
+        ]);
+
+        //Otros ingresos-> 65
+        DB::table('actividades')->insert([
+            'nombre' => 'Intereses del extranjero ',
+            'clave'=>'882',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>8,
+            'tipopersona_id'=>1,
+        ]);
+
+        //Cobras rentas por el alquiler de casa habitación, oficinas, locales 66
+        DB::table('actividades')->insert([
+            'nombre' => 'Alquiler de Viviendas amuebladas ',
+            'clave'=>'882',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>2,
+            'tipopersona_id'=>1,
+        ]);
+
+        //Cobras rentas por el alquiler de casa habitación, oficinas, locales  ->67
+        DB::table('actividades')->insert([
+            'nombre' => 'Alquiler de Viviendas no amuebladas',
+            'clave'=>'803',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>2,
+            'tipopersona_id'=>1,
+        ]);
+
+        //Cobras rentas por el alquiler de casa habitación, oficinas, locales  ->68
+        DB::table('actividades')->insert([
+            'nombre' => 'Alquiler de Salones para fiestas y convenciones',
+            'clave'=>'804',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>2,
+            'tipopersona_id'=>1,
+        ]);
+        //Cobras rentas por el alquiler de casa habitación, oficinas, locales  ->69
+        DB::table('actividades')->insert([
+            'nombre' => 'Alquiler de Oficinas y locales comerciales',
+            'clave'=>'805',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>2,
+            'tipopersona_id'=>1,
+        ]);
+
+          //Cobras rentas por el alquiler de casa habitación, oficinas, locales  ->70
+          DB::table('actividades')->insert([
+            'nombre' => 'Alquiler de Teatros, estadios, auditorios y similares',
+            'clave'=>'806',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>2,
+            'tipopersona_id'=>1,
+        ]);
+
+          //Cobras rentas por el alquiler de casa habitación, oficinas, locales  ->71
+          DB::table('actividades')->insert([
+            'nombre' => 'Alquiler de Fincas destinadas a fines agrícolas o ganaderos',
+            'clave'=>'807',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>2,
+            'tipopersona_id'=>1,
+        ]);
+
+         //Cobras rentas por el alquiler de casa habitación, oficinas, locales  ->72
+         DB::table('actividades')->insert([
+            'nombre' => 'Alquiler de Otros inmuebles',
+            'clave'=>'808',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>2,
+            'tipopersona_id'=>1,
+        ]);
+
+        //Cobras rentas por el alquiler de casa habitación, oficinas, locales  ->73
+        DB::table('actividades')->insert([
+            'nombre' => 'Alquiler de inmuebles para escuelas, colegios de profesionales e instituciones de asistencia y beneficencia o empresas asociaciones u organismos no comerciales',
+            'clave'=>'2224',
+            'descripcion'=>'',
+            'categoria'=>'Otros',
+            'obligacion'=>'',
+            'tasa_impositiva'=>1.0,
+            'periocidad_pago'=>'',
+            'regimene_id'=>2,
+            'tipopersona_id'=>1,
+        ]);
+
     }
 }
