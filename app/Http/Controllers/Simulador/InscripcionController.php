@@ -74,10 +74,23 @@ class InscripcionController extends Controller
                      return redirect()->route('inscripcion.asalariado');
                  case 'jubilado':
                      // Redirige a preguntas relacionadas con jubilados
-                     return redirect()->route('inscripcion.jubilado');
+                     return redirect()->route('inscripcion.procesarJubilado');
                  case 'profesional':
                      // Redirige a preguntas relacionadas con profesionales
                      return redirect()->route('inscripcion.profesional');
+
+                case 'dividendos':
+                // Redirige a preguntas relacionadas con jubilados
+                    return redirect()->route('inscripcion.procesarDividendos');
+                case 'InteresesProvenientes':
+                    // Redirige a preguntas relacionadas con jubilados
+                    return redirect()->route('inscripcion.Intereses');
+                case 'obras':
+                    // Redirige a preguntas relacionadas con jubilados
+                    return redirect()->route('inscripcion.Explotacion');
+                case 'similarsalarios':
+                    // Redirige a preguntas relacionadas con jubilados
+                    return redirect()->route('inscripcion.asalariado');
 
                 case 'rentas':
                         // Redirige a preguntas relacionadas con profesionales

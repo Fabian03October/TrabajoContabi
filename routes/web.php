@@ -18,6 +18,13 @@ use App\Http\Controllers\ActividadesController;
 use App\Http\Controllers\ObligacionController;
 use App\Models\Actividade;
 use Mews\Captcha\Captcha;
+use App\Http\Controllers\Simulador\InscripcionRFC\AsalariadoInscripController;
+use App\Http\Controllers\Simulador\InscripcionRFC\JubiladoInscripController;
+use App\Http\Controllers\Simulador\InscripcionRFC\RentasInscripcionController;
+use App\Http\Controllers\Simulador\InscripcionRFC\DividendosInscripController;
+use App\Http\Controllers\Simulador\InscripcionRFC\InteresesInscripController;
+use App\Http\Controllers\Simulador\InscripcionRFC\ExplotacionInscripController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -89,6 +96,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/simulador/inscribirCobrarRentas', [CobroRentasInscripcionController::class, 'inscribirCobroRentas'])->name('inscripcion.inscribirCobroRentas');
 
 
+
     //para el modal de eliminar roles
     Route::post('roles/eliminar/{id}',[RolController::class, 'eliminar'])->name('roles.eliminar');
 
@@ -117,12 +125,39 @@ Route::get('captcha', [Captcha::class, 'create'])->name('captcha');
 Route::post('/verificar-codigo', [InscripcionController::class, 'verificarCodigo'])->name('verificar.codigo');
 
 Route::post('/simulador/procesar', [InscripcionController::class, 'procesar'])->name('inscripcion.procesar');
-Route::get('/simulador/asalariado', [InscripcionController::class, 'asalariado'])->name('inscripcion.asalariado');
-Route::get('/simulador/jubilado', [InscripcionController::class, 'jubilado'])->name('inscripcion.jubilado');
+
+//asalariadoo
+Route::get('/simulador/asalariado', [AsalariadoInscripController::class, 'asalariado'])->name('inscripcion.asalariado');
+Route::post('/simulador/porcientoAsalariado', [AsalariadoInscripController::class, 'porcientoAsalariado'])->name('inscripcion.porcientoAsalariado');
+Route::post('/simulador/procesarAsalariado', [AsalariadoInscripController::class, 'procesarAsalariado'])->name('inscripcion.procesarAsalariado');
+Route::post('/simulador/inscribirAsalariado', [AsalariadoInscripController::class, 'inscribirAsalariado'])->name('inscripcion.inscribirAsalariado');
+
+//jubilado
+Route::get('/simulador/procesarJubilado', [JubiladoInscripController::class, 'procesarJubilado'])->name('inscripcion.procesarJubilado');
+Route::post('/simulador/inscribirJubilado', [JubiladoInscripController::class, 'inscribirJubilado'])->name('inscripcion.inscribirJubilado');
 
 
+// Rentas
+Route::get('/simulador/Renta', [RentasInscripcionController::class, 'rentas'])->name('inscripcion.rentas');
+Route::get('/simulador/porcientoRentas', [RentasInscripcionController::class, 'porcientoRentas'])->name('inscripcion.porcientoRentas');
+Route::post('/simulador/procesarRentas', [RentasInscripcionController::class, 'procesarRentas'])->name('inscripcion.procesarRentas');
+Route::post('/simulador/inscribirRentas', [RentasInscripcionController::class, 'inscribirRentas'])->name('inscripcion.inscribirRentas');
 
-Route::get('/simulador/Renta', [InscripcionController::class, 'rentas'])->name('inscripcion.rentas');
+//Dividendo
+Route::get('/simulador/procesarDividendos', [DividendosInscripController::class, 'procesarDividendos'])->name('inscripcion.procesarDividendos');
+Route::get('/simulador/inscribirDividendos', [DividendosInscripController::class, 'inscribirDividendos'])->name('inscripcion.inscribirDividendos');
+
+// Intereses
+Route::get('/simulador/Intereses', [InteresesInscripController::class, 'Intereses'])->name('inscripcion.Intereses');
+Route::get ('/simulador/porcientoIntereses', [InteresesInscripController::class, 'porcientoIntereses'])->name('inscripcion.porcientoIntereses');
+Route::get ('/simulador/procesarIntereses', [InteresesInscripController::class, 'procesarIntereses'])->name('inscripcion.procesarIntereses');
+Route::post('/simulador/inscribirIntereses', [InteresesInscripController::class, 'inscribirIntereses'])->name('inscripcion.inscribirIntereses');
+
+//Explotacion
+Route::get('/simulador/Explotacion', [ExplotacionInscripController::class, 'Explotacion'])->name('inscripcion.Explotacion');
+Route::post('/simulador/porcientoExplotacion', [ExplotacionInscripController::class, 'porcientoExplotacion'])->name('inscripcion.porcientoExplotacion');
+Route::post('/simulador/procesarExplotacion', [ExplotacionInscripController::class, 'procesarExplotacion'])->name('inscripcion.procesarExplotacion');
+Route::post('/simulador/inscribirExplotacion', [ExplotacionInscripController::class, 'inscribirExplotacion'])->name('inscripcion.inscribirExplotacion');
 
 Route::get('/simulador/PreguntasProfe', [InscripcionController::class, 'PreguntasProfe'])->name('inscripcion.PreguntasProfe');
 

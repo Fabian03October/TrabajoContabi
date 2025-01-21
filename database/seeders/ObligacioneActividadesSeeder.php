@@ -1344,5 +1344,66 @@ class ObligacioneActividadesSeeder extends Seeder
             'obligacione_id' =>22,
             'actividade_id'=>73,
         ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>2,
+            'actividade_id'=>76,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>3,
+            'actividade_id'=>76,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>6,
+            'actividade_id'=>76,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>7,
+            'actividade_id'=>76,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>3,
+            'actividade_id'=>78,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>7,
+            'actividade_id'=>78,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>2,
+            'actividade_id'=>79,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>6,
+            'actividade_id'=>79,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>2,
+            'actividade_id'=>80,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>3,
+            'actividade_id'=>80,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>6,
+            'actividade_id'=>80,
+        ]);
+
+        DB::table('obligacione_actividades')->insert([
+            'obligacione_id' =>7,
+            'actividade_id'=>80
+        ]);
     }
 }
+

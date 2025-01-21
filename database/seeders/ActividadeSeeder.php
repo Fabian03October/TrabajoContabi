@@ -758,5 +758,57 @@ class ActividadeSeeder extends Seeder
             'tipopersona_id'=>1,
         ]);
 
+        //'Artistas y técnicos independientes' ->74
+        DB::table('actividades')->insert([
+            'nombre' => 'Artistas y técnicos independientes',
+            'clave'=>'1028',
+            'categoria'=>'Explotacion',
+            'tasa_impositiva'=>1.0,
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+        // ->75
+        DB::table('actividades')->insert([
+            'nombre' => 'Creación de obras artísticas escritas, autorizando a terceros su publicación en periódicos y revistas, que se destines para su enajenación al público',
+            'clave'=>'1029',
+            'categoria'=>'Explotacion',
+            'tasa_impositiva'=>1.0,
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+        //76
+        DB::table('actividades')->insert([
+            'nombre' => 'Reproducción en serie de grabaciones de obras musicales, permitiendo a terceros su publicación',
+            'clave'=>'2322',
+            'categoria'=>'Explotacion',
+            'tasa_impositiva'=>1.0,
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+        //77
+        DB::table('actividades')->insert([
+            'nombre' => 'Transmisión temporal de derechos patrimoniales u otorgamiento temporal de licencias de uso a terceros por obras de su autoría',
+            'clave'=>'2323',
+            'categoria'=>'Explotacion',
+            'tasa_impositiva'=>1.0,
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+        //'Creación de obras como ideas o frases publicitarias, logotipos, emblemas, sellos distintivos, diseños modelos industriales, manuales operativos u obras de arte aplicado'->78
+        DB::table('actividades')->insert([
+            'nombre' => 'Creación de obras como ideas o frases publicitarias, logotipos, emblemas, sellos distintivos, diseños modelos industriales, manuales operativos u obras de arte aplicado',
+            'clave'=>'2324',
+            'categoria'=>'Explotacion',
+            'tasa_impositiva'=>1.0,
+            'regimene_id'=>3,
+            'tipopersona_id'=>1,
+        ]);
+
+
+
     }
 }

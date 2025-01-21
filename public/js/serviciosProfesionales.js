@@ -39,6 +39,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const togglefinancieros = document.getElementById('toggle-financieros');
     const checkboxContainer10 = document.getElementById('checkbox-container10');
     const icon10 = document.getElementById('toggle-icon10');
+
+    const toggleExplotacion = document.getElementById('toggle-Explotacion');
+    const checkboxContainer20 = document.getElementById('checkbox-container20');
+    const icon20 = document.getElementById('toggle-icon20');
+
+
     // Función para alternar el display y el icono
     function toggleVisibility(container, icon) {
         if (container.style.display === 'none') {
@@ -89,5 +95,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     togglefinancieros.addEventListener('click', function () {
         toggleVisibility(checkboxContainer10, icon10);
+    });
+    toggleExplotacion.addEventListener('click', function () {
+        toggleVisibility(checkboxContainer20, icon20);
     });
 });
