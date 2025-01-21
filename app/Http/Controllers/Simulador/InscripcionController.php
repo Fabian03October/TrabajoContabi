@@ -85,6 +85,12 @@ class InscripcionController extends Controller
                 case 'ActividadesEmpre':
                         // Redirige a preguntas relacionadas con profesionales
                         return redirect()->route('inscripcion.ActividadesEmpre');
+                case 'otros':
+                        // Redirige a preguntas relacionadas con Otros
+                        return redirect()->route('inscripcion.otros');
+                case 'rentasabitacion':
+                        // Redirige a preguntas relacionadas con Cobro de rentas
+                        return redirect()->route('inscripcion.CobroRentas');
                  default:
                      return redirect()->back()->with('error', 'Selección no válida.');
              }

@@ -105,7 +105,7 @@
                                 </div>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="otros" name="income[]" value="obras">
+                                    <input class="form-check-input" type="checkbox" id="otros" name="income[]" value="otros">
                                     <label class="form-check-label" for="otros">Otros ingresos</label>
                                 </div>
 

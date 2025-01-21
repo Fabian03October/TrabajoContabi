@@ -9,7 +9,7 @@ class Actividade extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre', 'clave','descripcion','categoria','obligacion','tasa_impositiva','periocidad_pago','regimene_id','tipopersona_id'];
+    protected $fillable = ['nombre', 'clave','categoria','tasa_impositiva','regimene_id','tipopersona_id'];
 
     public function ActividadIncripcione()
     {
@@ -18,6 +18,6 @@ class Actividade extends Model
 
     public function ActividadObligacione()
     {
-        return $this->hasMany(Obligacione_actividade::class, 'actividade_id');
+        return $this->hasMany(ObligacioneActividad::class, 'actividade_id');
     }
 }

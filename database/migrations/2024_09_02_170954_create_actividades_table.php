@@ -17,11 +17,8 @@ class CreateActividadesTable extends Migration
             $table->id();
             $table->String('nombre');
             $table->String('clave');
-            $table->text('descripcion');
             $table->String('categoria');
-            $table->string('obligacion');
             $table->decimal('tasa_impositiva');
-            $table->string('periocidad_pago');
             $table->foreignId('regimene_id') ->nullable()->constrained();
             $table->foreignId('tipopersona_id') ->nullable()->constrained();
             $table->timestamps();

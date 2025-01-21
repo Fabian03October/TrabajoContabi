@@ -12,8 +12,11 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\Simulador\InscripcionRFC\ProfesionalInscripcionController;
 use App\Http\Controllers\Simulador\InscripcionController;
 use App\Http\Controllers\Simulador\FacturaController;
-
-
+use App\Http\Controllers\Simulador\InscripcionRFC\OtrosInscripcionController;
+use App\Http\Controllers\Simulador\InscripcionRFC\CobroRentasInscripcionController;
+use App\Http\Controllers\ActividadesController;
+use App\Http\Controllers\ObligacionController;
+use App\Models\Actividade;
 use Mews\Captcha\Captcha;
 /*
 |--------------------------------------------------------------------------
@@ -73,8 +76,36 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/simulador/inscribirProfesional', [ProfesionalInscripcionController::class, 'inscribirProfesional'])->name('inscripcion.inscribirProfesional');
     Route::get('/simulador/procesarProfesional', [ProfesionalInscripcionController::class, 'regresarprocesarProfesional'])->name('inscripcion.procesarProfesionall');
 
+    //ACTIVIDAD- OTROS
+    Route::get('/simulador/otros', [OtrosInscripcionController::class, 'otrasActividades'])->name('inscripcion.otros');
+    Route::post('/simulador/porcientoOtros', [OtrosInscripcionController::class, 'porcientoOtros'])->name('inscripcion.porcientoOtros');
+    Route::post('/simulador/procesarOtros', [OtrosInscripcionController::class, 'procesarOtros'])->name('inscripcion.procesarOtro');
+    Route::post('/simulador/inscribirOtros', [OtrosInscripcionController::class, 'inscribirOtros'])->name('inscripcion.inscribirOtros');
+
+    //ACTIVIDAD- COBRO DE RENTAS
+    Route::get('/simulador/OtrasActividades', [CobroRentasInscripcionController::class, 'CobroActividades'])->name('inscripcion.CobroRentas');
+    Route::post('/simulador/porcientoCobrarRentas', [CobroRentasInscripcionController::class, 'porcientoCobroRentas'])->name('inscripcion.porcientoCobroRentas');
+    Route::post('/simulador/procesarCobrarRentas', [CobroRentasInscripcionController::class, 'procesarCobroRentas'])->name('inscripcion.procesarCobroRentas');
+    Route::post('/simulador/inscribirCobrarRentas', [CobroRentasInscripcionController::class, 'inscribirCobroRentas'])->name('inscripcion.inscribirCobroRentas');
+
+
     //para el modal de eliminar roles
     Route::post('roles/eliminar/{id}',[RolController::class, 'eliminar'])->name('roles.eliminar');
+
+
+    //CRUD DE ACTIVIDADES FISCALES
+    Route::resource('actividades', ActividadesController::class);
+    Route::get('actividades/asignar/{id}', [ActividadesController::class, 'asignar'])->name('actividades.asignar');
+    Route::put('actividades/{actividad}/asignar-obligaciones', [ActividadesController::class, 'asignarObligaciones'])->name('actividades.asignarObligaciones');
+
+
+    //CRUD DE OBLIGACIONES FISCALES
+    Route::resource('obligaciones', ObligacionController::class);
+
+     //para el modal de eliminar roles
+     Route::post('eliminar/actividad/{id}', [ActividadesController::class, 'eliminar'])->name('actividad.eliminar');
+
+
 
 
     //rutas para regresar atras en las vistas de inscripcion a regimen
@@ -133,3 +164,6 @@ Route::get('/simulador/Servicios', [InscripcionController::class, 'Servicios'])-
 
 //Servicios
 Route::get('/simulador/ServiciosB', [InscripcionController::class, 'ServiciosB'])->name('inscripcion.ServiciosB');
+
+
+// Route::post('actividad/delete/{id}',[ActividadesController::class, 'eliminarActividad'])->name('deleteActividad');

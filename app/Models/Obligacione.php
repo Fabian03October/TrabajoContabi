@@ -13,6 +13,6 @@ class Obligacione extends Model
 
     public function ActividObligacione()
     {
-        return $this->hasMany(Obligacione_actividade::class, 'obligacione_id');
+        return $this->hasMany(ObligacioneActividad::class, 'obligacione_id');
     }
 }
