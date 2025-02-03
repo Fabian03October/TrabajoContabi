@@ -62,9 +62,28 @@ class User extends Authenticatable
         return $this->hasMany(User_Actividade::class, 'user_id');
     }
 
+    /**
+     * Relación: Un usuario puede inscribirse a muchas actividades
+     */
     public function Inscripcion()
     {
         return $this->hasMany(Inscripcione::class, 'user_id');
+    }
+
+    /**
+     * Relación: Un usuario puede emitir muchas facturas.
+     */
+    public function facturasEmitidas()
+    {
+        return $this->hasMany(Factura::class, 'id_user_emisor');
+    }
+
+    /**
+     * Relación: Un usuario puede recibir muchas facturas.
+     */
+    public function facturasRecibidas()
+    {
+        return $this->hasMany(Factura::class, 'id_user_receptor');
     }
 
     /**
